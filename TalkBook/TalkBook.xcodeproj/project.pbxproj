@@ -14,6 +14,12 @@
 		1D858ADF2AE43C4A00FE6AC4 /* TalkBookTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1D858ADE2AE43C4A00FE6AC4 /* TalkBookTests.swift */; };
 		1D858AE92AE43C4A00FE6AC4 /* TalkBookUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1D858AE82AE43C4A00FE6AC4 /* TalkBookUITests.swift */; };
 		1D858AEB2AE43C4B00FE6AC4 /* TalkBookUITestsLaunchTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1D858AEA2AE43C4B00FE6AC4 /* TalkBookUITestsLaunchTests.swift */; };
+		1D858AFC2AE4471B00FE6AC4 /* TabContainerView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1D858AFB2AE4471B00FE6AC4 /* TabContainerView.swift */; };
+		1D858B012AE4476800FE6AC4 /* LoginView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1D858B002AE4476800FE6AC4 /* LoginView.swift */; };
+		1D858B052AE4479600FE6AC4 /* RegistrationView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1D858B042AE4479600FE6AC4 /* RegistrationView.swift */; };
+		1D858B072AE447A400FE6AC4 /* RegistrationVM.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1D858B062AE447A400FE6AC4 /* RegistrationVM.swift */; };
+		1D858B092AE447B900FE6AC4 /* LoginVM.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1D858B082AE447B900FE6AC4 /* LoginVM.swift */; };
+		1D858B0B2AE447E100FE6AC4 /* HomeView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1D858B0A2AE447E100FE6AC4 /* HomeView.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -45,6 +51,12 @@
 		1D858AE42AE43C4A00FE6AC4 /* TalkBookUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = TalkBookUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		1D858AE82AE43C4A00FE6AC4 /* TalkBookUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TalkBookUITests.swift; sourceTree = "<group>"; };
 		1D858AEA2AE43C4B00FE6AC4 /* TalkBookUITestsLaunchTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TalkBookUITestsLaunchTests.swift; sourceTree = "<group>"; };
+		1D858AFB2AE4471B00FE6AC4 /* TabContainerView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TabContainerView.swift; sourceTree = "<group>"; };
+		1D858B002AE4476800FE6AC4 /* LoginView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginView.swift; sourceTree = "<group>"; };
+		1D858B042AE4479600FE6AC4 /* RegistrationView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RegistrationView.swift; sourceTree = "<group>"; };
+		1D858B062AE447A400FE6AC4 /* RegistrationVM.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RegistrationVM.swift; sourceTree = "<group>"; };
+		1D858B082AE447B900FE6AC4 /* LoginVM.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginVM.swift; sourceTree = "<group>"; };
+		1D858B0A2AE447E100FE6AC4 /* HomeView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -95,9 +107,10 @@
 		1D858ACB2AE43C4800FE6AC4 /* TalkBook */ = {
 			isa = PBXGroup;
 			children = (
-				1D858ACC2AE43C4800FE6AC4 /* TalkBookApp.swift */,
-				1D858ACE2AE43C4800FE6AC4 /* ContentView.swift */,
-				1D858AD02AE43C4A00FE6AC4 /* Assets.xcassets */,
+				1D858AF82AE446C400FE6AC4 /* App */,
+				1D858AFA2AE4470100FE6AC4 /* Platform */,
+				1D858AF72AE446B600FE6AC4 /* Feature */,
+				1D858B0C2AE4485A00FE6AC4 /* Kit */,
 				1D858AD22AE43C4A00FE6AC4 /* TalkBook.entitlements */,
 				1D858AD32AE43C4A00FE6AC4 /* Preview Content */,
 			);
@@ -127,6 +140,107 @@
 				1D858AEA2AE43C4B00FE6AC4 /* TalkBookUITestsLaunchTests.swift */,
 			);
 			path = TalkBookUITests;
+			sourceTree = "<group>";
+		};
+		1D858AF72AE446B600FE6AC4 /* Feature */ = {
+			isa = PBXGroup;
+			children = (
+				1D858AFF2AE4475400FE6AC4 /* Auth */,
+			);
+			path = Feature;
+			sourceTree = "<group>";
+		};
+		1D858AF82AE446C400FE6AC4 /* App */ = {
+			isa = PBXGroup;
+			children = (
+				1D858ACC2AE43C4800FE6AC4 /* TalkBookApp.swift */,
+				1D858ACE2AE43C4800FE6AC4 /* ContentView.swift */,
+				1D858AD02AE43C4A00FE6AC4 /* Assets.xcassets */,
+			);
+			path = App;
+			sourceTree = "<group>";
+		};
+		1D858AFA2AE4470100FE6AC4 /* Platform */ = {
+			isa = PBXGroup;
+			children = (
+				1D858AFB2AE4471B00FE6AC4 /* TabContainerView.swift */,
+				1D858AFD2AE4472500FE6AC4 /* Home */,
+				1D858AFE2AE4472D00FE6AC4 /* Profile */,
+			);
+			path = Platform;
+			sourceTree = "<group>";
+		};
+		1D858AFD2AE4472500FE6AC4 /* Home */ = {
+			isa = PBXGroup;
+			children = (
+				1D858B0A2AE447E100FE6AC4 /* HomeView.swift */,
+			);
+			path = Home;
+			sourceTree = "<group>";
+		};
+		1D858AFE2AE4472D00FE6AC4 /* Profile */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Profile;
+			sourceTree = "<group>";
+		};
+		1D858AFF2AE4475400FE6AC4 /* Auth */ = {
+			isa = PBXGroup;
+			children = (
+				1D858B032AE4477700FE6AC4 /* Registration */,
+				1D858B022AE4476E00FE6AC4 /* Login */,
+			);
+			path = Auth;
+			sourceTree = "<group>";
+		};
+		1D858B022AE4476E00FE6AC4 /* Login */ = {
+			isa = PBXGroup;
+			children = (
+				1D858B002AE4476800FE6AC4 /* LoginView.swift */,
+				1D858B082AE447B900FE6AC4 /* LoginVM.swift */,
+			);
+			path = Login;
+			sourceTree = "<group>";
+		};
+		1D858B032AE4477700FE6AC4 /* Registration */ = {
+			isa = PBXGroup;
+			children = (
+				1D858B042AE4479600FE6AC4 /* RegistrationView.swift */,
+				1D858B062AE447A400FE6AC4 /* RegistrationVM.swift */,
+			);
+			path = Registration;
+			sourceTree = "<group>";
+		};
+		1D858B0C2AE4485A00FE6AC4 /* Kit */ = {
+			isa = PBXGroup;
+			children = (
+				1D858B0E2AE448A600FE6AC4 /* AppKit */,
+				1D858B0D2AE4489B00FE6AC4 /* DesignKit */,
+				1D858B0F2AE448BE00FE6AC4 /* NetworkKit */,
+			);
+			path = Kit;
+			sourceTree = "<group>";
+		};
+		1D858B0D2AE4489B00FE6AC4 /* DesignKit */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = DesignKit;
+			sourceTree = "<group>";
+		};
+		1D858B0E2AE448A600FE6AC4 /* AppKit */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = AppKit;
+			sourceTree = "<group>";
+		};
+		1D858B0F2AE448BE00FE6AC4 /* NetworkKit */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = NetworkKit;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -259,8 +373,14 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				1D858B092AE447B900FE6AC4 /* LoginVM.swift in Sources */,
+				1D858AFC2AE4471B00FE6AC4 /* TabContainerView.swift in Sources */,
 				1D858ACF2AE43C4800FE6AC4 /* ContentView.swift in Sources */,
+				1D858B012AE4476800FE6AC4 /* LoginView.swift in Sources */,
 				1D858ACD2AE43C4800FE6AC4 /* TalkBookApp.swift in Sources */,
+				1D858B0B2AE447E100FE6AC4 /* HomeView.swift in Sources */,
+				1D858B052AE4479600FE6AC4 /* RegistrationView.swift in Sources */,
+				1D858B072AE447A400FE6AC4 /* RegistrationVM.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
