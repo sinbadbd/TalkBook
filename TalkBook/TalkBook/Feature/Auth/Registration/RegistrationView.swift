@@ -28,13 +28,13 @@ struct RegistrationView: View {
             Color.black
                 .ignoresSafeArea()
             VStack(spacing: 16){
-                loginView
+                registrationView
                 
                 Button("Registraion", action: {
                     isShwoModal =  registraionVM.isSuccess
                     print("isShwoModal: \(isShwoModal)")
                     //registraionVM.isSuccess = false
-                    registraionVM.loginValidateWithLogin(username: username, password: password, firstname: firstname, lastname: lastname)
+                    registraionVM.registrationApiCall(username: username, password: password, firstname: firstname, lastname: lastname)
                 })
                 .buttonStyle(KitBaseButtonStyle(size: .lg, variant: .outline, backgroundColor: .clear, borderColor: .gray, foregroundColor: .white, buttonWidth: UIScreen.main.bounds.width * 0.8, borderWidth: 1))
                                 
@@ -55,7 +55,7 @@ struct RegistrationView: View {
         }
     }
     
-    private var loginView: some View{
+    private var registrationView: some View{
         VStack(alignment: .leading, spacing: 8){
             
             KitBaseFormField(title: "Username", error: registraionVM.error?.username, isValid: $registraionVM.isSuccess) {

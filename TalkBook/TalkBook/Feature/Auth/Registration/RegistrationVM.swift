@@ -23,7 +23,7 @@ class RegistrationVM: ObservableObject {
     @Published var userModel: UserModel?
     @Published var error: ErrorsObject?
     
-    func loginValidateWithLogin(username: String, password: String, firstname: String, lastname: String) {
+    func registrationApiCall(username: String, password: String, firstname: String, lastname: String) {
 
         let params: Parameters = [
             "username": username,
