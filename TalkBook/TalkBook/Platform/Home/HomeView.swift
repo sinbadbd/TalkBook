@@ -8,8 +8,13 @@
 import SwiftUI
 
 struct HomeView: View {
+    @ObservedObject private var homeVM: HomeVM = .init()
     var body: some View {
-        Text(/*@START_MENU_TOKEN@*/"Hello, World!"/*@END_MENU_TOKEN@*/)
+        VStack{
+            Text(homeVM.posts?.desciption ?? "")
+            Text("\(homeVM.posts?.likes?.count ?? 0)")
+        }
+        
     }
 }
 

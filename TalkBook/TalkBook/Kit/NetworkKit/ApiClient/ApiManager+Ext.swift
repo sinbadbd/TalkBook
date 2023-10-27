@@ -23,10 +23,11 @@ extension ApiManager {
     func handleCompletion(url: URL, completion: Subscribers.Completion<Error>){
         switch completion{
         case .finished:
+            
             print("Get Api Response Successfully from URL:\n✅\(url) ")
-        case .failure(let error  ):
+        case .failure(let error):
             print("Failed Api Response from URL:\n🚫\(url) ")
-            print("🚫bad response \(error)🚫")
+            print("🚫bad response \(error.localizedDescription)🚫")
             print("|----------------------------- Type Mismatch--------------------------------------------|")
             dump(error)
             print("|-----------------------------------------------------------------------------------|")

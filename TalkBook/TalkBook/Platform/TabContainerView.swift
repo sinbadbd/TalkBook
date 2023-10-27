@@ -9,7 +9,12 @@ import SwiftUI
 
 struct TabContainerView: View {
     var body: some View {
-        Text("Hello, World!")
+        TabView {
+            HomeView()
+                .tabItem {
+                    Label("Home", systemImage: "house").foregroundColor(.red)
+                }
+        }
     }
 }
 

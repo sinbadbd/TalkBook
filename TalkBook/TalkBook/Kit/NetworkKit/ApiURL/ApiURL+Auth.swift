@@ -15,6 +15,6 @@ extension ApiURL.Auth {
         case .register: endPart = "/register"
         case .login: endPart = "/login"
         }
-        return "\(baseURL)/\(endPart)"
+        return "\(baseURL)\(endPart)"
     }
 }
