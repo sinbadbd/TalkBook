@@ -1,0 +1,14 @@
+{
+  "pins" : [
+    {
+      "identity" : "kitbase",
+      "kind" : "remoteSourceControl",
+      "location" : "https://github.com/sinbadbd/KitBase",
+      "state" : {
+        "branch" : "main",
+        "revision" : "769d2ee4dedd31572f38fb07a685da5bde64f464"
+      }
+    }
+  ],
+  "version" : 2
+}

@@ -20,5 +20,11 @@ struct ApiURL {
     enum Auth {
         case register, login
     }
+    enum User{
+        
+    }
+    enum Post{
+        case allPost, timeLinePost
+    }
  
 }

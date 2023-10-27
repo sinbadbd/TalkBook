@@ -17,8 +17,6 @@
 		1D6CB7262AEB66DB00CE713F /* ConfigImage.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1D6CB6ED2AEB66DB00CE713F /* ConfigImage.swift */; };
 		1D6CB7272AEB66DB00CE713F /* EndPoint.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1D6CB6EE2AEB66DB00CE713F /* EndPoint.swift */; };
 		1D6CB7282AEB66DB00CE713F /* NetworkMonitor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1D6CB6EF2AEB66DB00CE713F /* NetworkMonitor.swift */; };
-		1D6CB7292AEB66DB00CE713F /* MovieSortFilter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1D6CB6F12AEB66DB00CE713F /* MovieSortFilter.swift */; };
-		1D6CB72A2AEB66DB00CE713F /* MovieURLString.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1D6CB6F22AEB66DB00CE713F /* MovieURLString.swift */; };
 		1D6CB72B2AEB66DB00CE713F /* Provider.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1D6CB6F42AEB66DB00CE713F /* Provider.swift */; };
 		1D6CB7302AEB66DB00CE713F /* ApiURL.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1D6CB6FA2AEB66DB00CE713F /* ApiURL.swift */; };
 		1D6CB7322AEB66DB00CE713F /* ApiURL+Auth.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1D6CB6FC2AEB66DB00CE713F /* ApiURL+Auth.swift */; };
@@ -53,6 +51,11 @@
 		1D6CB7572AEB687A00CE713F /* RestApi.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1D6CB7512AEB687A00CE713F /* RestApi.swift */; };
 		1D6CB7582AEB687A00CE713F /* String+Unit.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1D6CB7532AEB687A00CE713F /* String+Unit.swift */; };
 		1D6CB7592AEB687A00CE713F /* AppCoreKit.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1D6CB7542AEB687A00CE713F /* AppCoreKit.swift */; };
+		1D6CB75D2AEB6F3C00CE713F /* ApiURL+Post.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1D6CB75C2AEB6F3C00CE713F /* ApiURL+Post.swift */; };
+		1D6CB7602AEB726700CE713F /* PostModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1D6CB75F2AEB726600CE713F /* PostModel.swift */; };
+		1D6CB7652AEB73AC00CE713F /* HomeVM.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1D6CB7642AEB73AC00CE713F /* HomeVM.swift */; };
+		1D6CB7702AEB7BE100CE713F /* KitBase in Frameworks */ = {isa = PBXBuildFile; productRef = 1D6CB76F2AEB7BE100CE713F /* KitBase */; };
+		1D6CB7722AEB81A200CE713F /* Registration.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1D6CB7712AEB81A200CE713F /* Registration.swift */; };
 		1D858ACD2AE43C4800FE6AC4 /* TalkBookApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1D858ACC2AE43C4800FE6AC4 /* TalkBookApp.swift */; };
 		1D858ACF2AE43C4800FE6AC4 /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1D858ACE2AE43C4800FE6AC4 /* ContentView.swift */; };
 		1D858AD12AE43C4A00FE6AC4 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 1D858AD02AE43C4A00FE6AC4 /* Assets.xcassets */; };
@@ -96,8 +99,6 @@
 		1D6CB6ED2AEB66DB00CE713F /* ConfigImage.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ConfigImage.swift; sourceTree = "<group>"; };
 		1D6CB6EE2AEB66DB00CE713F /* EndPoint.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EndPoint.swift; sourceTree = "<group>"; };
 		1D6CB6EF2AEB66DB00CE713F /* NetworkMonitor.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NetworkMonitor.swift; sourceTree = "<group>"; };
-		1D6CB6F12AEB66DB00CE713F /* MovieSortFilter.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MovieSortFilter.swift; sourceTree = "<group>"; };
-		1D6CB6F22AEB66DB00CE713F /* MovieURLString.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MovieURLString.swift; sourceTree = "<group>"; };
 		1D6CB6F42AEB66DB00CE713F /* Provider.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Provider.swift; sourceTree = "<group>"; };
 		1D6CB6FA2AEB66DB00CE713F /* ApiURL.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ApiURL.swift; sourceTree = "<group>"; };
 		1D6CB6FC2AEB66DB00CE713F /* ApiURL+Auth.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "ApiURL+Auth.swift"; sourceTree = "<group>"; };
@@ -133,6 +134,10 @@
 		1D6CB7532AEB687A00CE713F /* String+Unit.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "String+Unit.swift"; sourceTree = "<group>"; };
 		1D6CB7542AEB687A00CE713F /* AppCoreKit.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AppCoreKit.swift; sourceTree = "<group>"; };
 		1D6CB75B2AEB696400CE713F /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist; path = Info.plist; sourceTree = "<group>"; };
+		1D6CB75C2AEB6F3C00CE713F /* ApiURL+Post.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "ApiURL+Post.swift"; sourceTree = "<group>"; };
+		1D6CB75F2AEB726600CE713F /* PostModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PostModel.swift; sourceTree = "<group>"; };
+		1D6CB7642AEB73AC00CE713F /* HomeVM.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeVM.swift; sourceTree = "<group>"; };
+		1D6CB7712AEB81A200CE713F /* Registration.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Registration.swift; sourceTree = "<group>"; };
 		1D858AC92AE43C4800FE6AC4 /* TalkBook.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = TalkBook.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		1D858ACC2AE43C4800FE6AC4 /* TalkBookApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TalkBookApp.swift; sourceTree = "<group>"; };
 		1D858ACE2AE43C4800FE6AC4 /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
@@ -157,6 +162,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				1D6CB7702AEB7BE100CE713F /* KitBase in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -181,7 +187,6 @@
 			isa = PBXGroup;
 			children = (
 				1D6CB6E42AEB66DB00CE713F /* ApiClient */,
-				1D6CB6F02AEB66DB00CE713F /* Enum */,
 				1D6CB6F32AEB66DB00CE713F /* Manager */,
 				1D6CB6F52AEB66DB00CE713F /* ApiURL */,
 				1D6CB6FD2AEB66DB00CE713F /* Model */,
@@ -214,15 +219,6 @@
 			path = EndPoint;
 			sourceTree = "<group>";
 		};
-		1D6CB6F02AEB66DB00CE713F /* Enum */ = {
-			isa = PBXGroup;
-			children = (
-				1D6CB6F12AEB66DB00CE713F /* MovieSortFilter.swift */,
-				1D6CB6F22AEB66DB00CE713F /* MovieURLString.swift */,
-			);
-			path = Enum;
-			sourceTree = "<group>";
-		};
 		1D6CB6F32AEB66DB00CE713F /* Manager */ = {
 			isa = PBXGroup;
 			children = (
@@ -236,6 +232,7 @@
 			children = (
 				1D6CB6FA2AEB66DB00CE713F /* ApiURL.swift */,
 				1D6CB6FC2AEB66DB00CE713F /* ApiURL+Auth.swift */,
+				1D6CB75C2AEB6F3C00CE713F /* ApiURL+Post.swift */,
 			);
 			path = ApiURL;
 			sourceTree = "<group>";
@@ -243,6 +240,7 @@
 		1D6CB6FD2AEB66DB00CE713F /* Model */ = {
 			isa = PBXGroup;
 			children = (
+				1D6CB75E2AEB725900CE713F /* Post */,
 				1D6CB6FE2AEB66DB00CE713F /* Maintenance.swift */,
 				1D6CB6FF2AEB66DB00CE713F /* Movie */,
 				1D6CB70E2AEB66DB00CE713F /* Auth */,
@@ -281,6 +279,7 @@
 				1D6CB7102AEB66DB00CE713F /* User.swift */,
 				1D6CB7112AEB66DB00CE713F /* Request */,
 				1D6CB7162AEB66DB00CE713F /* Account */,
+				1D6CB7712AEB81A200CE713F /* Registration.swift */,
 			);
 			path = Auth;
 			sourceTree = "<group>";
@@ -355,6 +354,14 @@
 				1D6CB7512AEB687A00CE713F /* RestApi.swift */,
 			);
 			path = Environment;
+			sourceTree = "<group>";
+		};
+		1D6CB75E2AEB725900CE713F /* Post */ = {
+			isa = PBXGroup;
+			children = (
+				1D6CB75F2AEB726600CE713F /* PostModel.swift */,
+			);
+			path = Post;
 			sourceTree = "<group>";
 		};
 		1D858AC02AE43C4800FE6AC4 = {
@@ -448,6 +455,7 @@
 			isa = PBXGroup;
 			children = (
 				1D858B0A2AE447E100FE6AC4 /* HomeView.swift */,
+				1D6CB7642AEB73AC00CE713F /* HomeVM.swift */,
 			);
 			path = Home;
 			sourceTree = "<group>";
@@ -519,6 +527,9 @@
 			dependencies = (
 			);
 			name = TalkBook;
+			packageProductDependencies = (
+				1D6CB76F2AEB7BE100CE713F /* KitBase */,
+			);
 			productName = TalkBook;
 			productReference = 1D858AC92AE43C4800FE6AC4 /* TalkBook.app */;
 			productType = "com.apple.product-type.application";
@@ -591,6 +602,9 @@
 				Base,
 			);
 			mainGroup = 1D858AC02AE43C4800FE6AC4;
+			packageReferences = (
+				1D6CB76E2AEB7BE100CE713F /* XCRemoteSwiftPackageReference "KitBase" */,
+			);
 			productRefGroup = 1D858ACA2AE43C4800FE6AC4 /* Products */;
 			projectDirPath = "";
 			projectRoot = "";
@@ -645,14 +659,15 @@
 				1D6CB7412AEB66DB00CE713F /* ReleaseDates.swift in Sources */,
 				1D6CB7362AEB66DB00CE713F /* Movie.swift in Sources */,
 				1D6CB7442AEB66DB00CE713F /* LoginRequest.swift in Sources */,
-				1D6CB72A2AEB66DB00CE713F /* MovieURLString.swift in Sources */,
 				1D6CB7272AEB66DB00CE713F /* EndPoint.swift in Sources */,
 				1D6CB7262AEB66DB00CE713F /* ConfigImage.swift in Sources */,
 				1D6CB7302AEB66DB00CE713F /* ApiURL.swift in Sources */,
 				1D6CB7432AEB66DB00CE713F /* RequestToken.swift in Sources */,
+				1D6CB7722AEB81A200CE713F /* Registration.swift in Sources */,
 				1D6CB73D2AEB66DB00CE713F /* TranslationsModel.swift in Sources */,
 				1D6CB7282AEB66DB00CE713F /* NetworkMonitor.swift in Sources */,
-				1D6CB7292AEB66DB00CE713F /* MovieSortFilter.swift in Sources */,
+				1D6CB75D2AEB6F3C00CE713F /* ApiURL+Post.swift in Sources */,
+				1D6CB7602AEB726700CE713F /* PostModel.swift in Sources */,
 				1D6CB74C2AEB66DB00CE713F /* DataKitError.swift in Sources */,
 				1D6CB73C2AEB66DB00CE713F /* FilterModel.swift in Sources */,
 				1D6CB7342AEB66DB00CE713F /* SocialIDModel.swift in Sources */,
@@ -683,6 +698,7 @@
 				1D6CB73A2AEB66DB00CE713F /* DemoModel.swift in Sources */,
 				1D6CB7382AEB66DB00CE713F /* AccountStatus.swift in Sources */,
 				1D6CB7592AEB687A00CE713F /* AppCoreKit.swift in Sources */,
+				1D6CB7652AEB73AC00CE713F /* HomeVM.swift in Sources */,
 				1D6CB7232AEB66DB00CE713F /* HTTPMethod.swift in Sources */,
 				1D6CB7392AEB66DB00CE713F /* ReviewsModel.swift in Sources */,
 				1D6CB7212AEB66DB00CE713F /* ApiManager+Ext.swift in Sources */,
@@ -1045,6 +1061,25 @@
 			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
+
+/* Begin XCRemoteSwiftPackageReference section */
+		1D6CB76E2AEB7BE100CE713F /* XCRemoteSwiftPackageReference "KitBase" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/sinbadbd/KitBase";
+			requirement = {
+				branch = main;
+				kind = branch;
+			};
+		};
+/* End XCRemoteSwiftPackageReference section */
+
+/* Begin XCSwiftPackageProductDependency section */
+		1D6CB76F2AEB7BE100CE713F /* KitBase */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 1D6CB76E2AEB7BE100CE713F /* XCRemoteSwiftPackageReference "KitBase" */;
+			productName = KitBase;
+		};
+/* End XCSwiftPackageProductDependency section */
 	};
 	rootObject = 1D858AC12AE43C4800FE6AC4 /* Project object */;
 }
