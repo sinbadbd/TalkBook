@@ -7,6 +7,9 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		1D61295A2AEC3201003C3854 /* AppState.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1D6129592AEC3201003C3854 /* AppState.swift */; };
+		1D6129602AECCCA0003C3854 /* SplashScreen.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1D61295F2AECCCA0003C3854 /* SplashScreen.swift */; };
+		1D6129632AECCCCE003C3854 /* OnboardingScreen.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1D6129622AECCCCE003C3854 /* OnboardingScreen.swift */; };
 		1D6CB71F2AEB66DB00CE713F /* Model.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1D6CB6E52AEB66DB00CE713F /* Model.swift */; };
 		1D6CB7202AEB66DB00CE713F /* ApiManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1D6CB6E62AEB66DB00CE713F /* ApiManager.swift */; };
 		1D6CB7212AEB66DB00CE713F /* ApiManager+Ext.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1D6CB6E72AEB66DB00CE713F /* ApiManager+Ext.swift */; };
@@ -89,6 +92,9 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		1D6129592AEC3201003C3854 /* AppState.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppState.swift; sourceTree = "<group>"; };
+		1D61295F2AECCCA0003C3854 /* SplashScreen.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SplashScreen.swift; sourceTree = "<group>"; };
+		1D6129622AECCCCE003C3854 /* OnboardingScreen.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OnboardingScreen.swift; sourceTree = "<group>"; };
 		1D6CB6E52AEB66DB00CE713F /* Model.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Model.swift; sourceTree = "<group>"; };
 		1D6CB6E62AEB66DB00CE713F /* ApiManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ApiManager.swift; sourceTree = "<group>"; };
 		1D6CB6E72AEB66DB00CE713F /* ApiManager+Ext.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "ApiManager+Ext.swift"; sourceTree = "<group>"; };
@@ -183,6 +189,30 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		1D6129582AEC31EE003C3854 /* AppState */ = {
+			isa = PBXGroup;
+			children = (
+				1D6129592AEC3201003C3854 /* AppState.swift */,
+			);
+			path = AppState;
+			sourceTree = "<group>";
+		};
+		1D61295D2AECCC89003C3854 /* OnBoard */ = {
+			isa = PBXGroup;
+			children = (
+				1D6129622AECCCCE003C3854 /* OnboardingScreen.swift */,
+			);
+			path = OnBoard;
+			sourceTree = "<group>";
+		};
+		1D61295E2AECCC8F003C3854 /* Splash */ = {
+			isa = PBXGroup;
+			children = (
+				1D61295F2AECCCA0003C3854 /* SplashScreen.swift */,
+			);
+			path = Splash;
+			sourceTree = "<group>";
+		};
 		1D6CB6E32AEB66DB00CE713F /* NetworkKit */ = {
 			isa = PBXGroup;
 			children = (
@@ -388,6 +418,7 @@
 			isa = PBXGroup;
 			children = (
 				1D6CB75B2AEB696400CE713F /* Info.plist */,
+				1D6129582AEC31EE003C3854 /* AppState */,
 				1D858AF82AE446C400FE6AC4 /* App */,
 				1D858AFA2AE4470100FE6AC4 /* Platform */,
 				1D858AF72AE446B600FE6AC4 /* Feature */,
@@ -426,6 +457,8 @@
 		1D858AF72AE446B600FE6AC4 /* Feature */ = {
 			isa = PBXGroup;
 			children = (
+				1D61295E2AECCC8F003C3854 /* Splash */,
+				1D61295D2AECCC89003C3854 /* OnBoard */,
 				1D858AFF2AE4475400FE6AC4 /* Auth */,
 			);
 			path = Feature;
@@ -668,6 +701,7 @@
 				1D6CB7282AEB66DB00CE713F /* NetworkMonitor.swift in Sources */,
 				1D6CB75D2AEB6F3C00CE713F /* ApiURL+Post.swift in Sources */,
 				1D6CB7602AEB726700CE713F /* PostModel.swift in Sources */,
+				1D61295A2AEC3201003C3854 /* AppState.swift in Sources */,
 				1D6CB74C2AEB66DB00CE713F /* DataKitError.swift in Sources */,
 				1D6CB73C2AEB66DB00CE713F /* FilterModel.swift in Sources */,
 				1D6CB7342AEB66DB00CE713F /* SocialIDModel.swift in Sources */,
@@ -676,6 +710,7 @@
 				1D6CB7572AEB687A00CE713F /* RestApi.swift in Sources */,
 				1D6CB7462AEB66DB00CE713F /* SuccessModel.swift in Sources */,
 				1D6CB7222AEB66DB00CE713F /* APIError.swift in Sources */,
+				1D6129632AECCCCE003C3854 /* OnboardingScreen.swift in Sources */,
 				1D6CB7322AEB66DB00CE713F /* ApiURL+Auth.swift in Sources */,
 				1D858B012AE4476800FE6AC4 /* LoginView.swift in Sources */,
 				1D6CB7472AEB66DB00CE713F /* Account.swift in Sources */,
@@ -684,6 +719,7 @@
 				1D6CB7242AEB66DB00CE713F /* APIResponse.swift in Sources */,
 				1D6CB7332AEB66DB00CE713F /* Maintenance.swift in Sources */,
 				1D6CB74A2AEB66DB00CE713F /* ActorsModel.swift in Sources */,
+				1D6129602AECCCA0003C3854 /* SplashScreen.swift in Sources */,
 				1D858ACD2AE43C4800FE6AC4 /* TalkBookApp.swift in Sources */,
 				1D6CB7562AEB687A00CE713F /* UserDefaultsManager.swift in Sources */,
 				1D6CB7372AEB66DB00CE713F /* MovieImages.swift in Sources */,

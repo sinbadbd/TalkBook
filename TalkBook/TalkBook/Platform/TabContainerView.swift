@@ -8,6 +8,9 @@
 import SwiftUI
 
 struct TabContainerView: View {
+    
+    @Binding var appState: AppState
+    
     var body: some View {
         TabView {
             HomeView()
@@ -19,5 +22,5 @@ struct TabContainerView: View {
 }
 
 #Preview {
-    TabContainerView()
+    TabContainerView(appState: .constant(.dashboard))
 }

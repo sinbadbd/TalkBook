@@ -9,9 +9,12 @@ import SwiftUI
 
 @main
 struct TalkBookApp: App {
+    
+    @State private var appState: AppState = .splash
+    
     var body: some Scene {
         WindowGroup {
-            ContentView()
+            ContentView(appState: $appState)
         }
     }
 }

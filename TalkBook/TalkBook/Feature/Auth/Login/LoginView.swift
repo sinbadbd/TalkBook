@@ -20,10 +20,9 @@ struct LoginView: View {
     
     @State private var isShwoModal = false
     @State private var route: Bool = false
+    @Binding var appState: AppState
     
-    init(){
-        print(loginVM.isSuccess)
-    }
+
     var body: some View {
         NavigationStack{
             ZStack{
@@ -37,6 +36,10 @@ struct LoginView: View {
                         print("isShwoModal: \(isShwoModal)")
                         //registraionVM.isSuccess = false
                         loginVM.loginApiCall(username: username, password: password)
+                        
+                        UserDefaultsManager.shared.isUserLoggedIn = true
+//                        UserDefaults.standard.set(Provider.session_id, forKey: "session_id")
+                        appState = .dashboard
                     })
                     .buttonStyle(KitBaseButtonStyle(size: .lg, variant: .outline, backgroundColor: .clear, borderColor: .gray, foregroundColor: .white, buttonWidth: UIScreen.main.bounds.width * 0.8, borderWidth: 1))
                     
@@ -82,5 +85,5 @@ struct LoginView: View {
 }
 
 #Preview {
-    LoginView()
+    LoginView(appState: .constant(.login))
 }
