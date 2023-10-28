@@ -12,6 +12,7 @@ struct PostModel: Model {
     var success: Bool?
     var message: String?
     var post: Posts?
+    var timeLinePosts: [Posts]?
 }
 
 // MARK: - Post
