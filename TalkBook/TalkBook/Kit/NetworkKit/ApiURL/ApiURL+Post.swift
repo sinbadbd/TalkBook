@@ -13,7 +13,7 @@ extension ApiURL.Post {
         var endPart = ""
         switch self {
         case .allPost: endPart = "%@"
-        case .timeLinePost: endPart = ""
+        case .timeLinePost: endPart = "%@/time-line-post"
         }
         return "\(baseURL)/\(endPart)"
     }

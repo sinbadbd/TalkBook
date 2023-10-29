@@ -8,11 +8,17 @@
 import SwiftUI
 
 struct HomeView: View {
+    
     @ObservedObject private var homeVM: HomeVM = .init()
+    
     var body: some View {
-        VStack{
-            Text(homeVM.posts?.desciption ?? "")
-            Text("\(homeVM.posts?.likes?.count ?? 0)")
+        NavigationStack{
+            List(homeVM.timeLinePosts, id: \.id) { posts in
+                VStack(alignment: .leading){
+                    Text(posts.desciption ?? "")
+                    Text("Like: \(posts.likes?.count ?? 0)")
+                }
+            }
         }
         
     }
