@@ -7,6 +7,7 @@
 
 import SwiftUI
 import Combine
+import NetworkKit
 
 class LoginVM: ObservableObject {
     var cancellables = Set<AnyCancellable>()
@@ -33,10 +34,10 @@ class LoginVM: ObservableObject {
         let endPoint = EndPoint(url: url, parameters: params, method: .post)
         print("endPoint; \(endPoint)")
         isSuccess = true
-        ApiManager.shared.request(endPoint)
+        NetworkKit.shared.request(endPoint)
             .sink(
                 receiveCompletion: { [self] completion in
-                    ApiManager.shared.handleCompletion(url: URL(string: endPoint.url)!, completion: completion)
+                    NetworkKit.shared.handleCompletion(url: URL(string: endPoint.url)!, completion: completion)
                     isSuccess = false
                 },
                 receiveValue: { [self] (response: User) in

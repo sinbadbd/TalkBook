@@ -7,7 +7,8 @@
 
 import SwiftUI
 import Combine
-
+import NetworkKit
+ 
 class RegistrationVM: ObservableObject {
     
     var cancellables = Set<AnyCancellable>()
@@ -37,12 +38,10 @@ class RegistrationVM: ObservableObject {
         let endPoint = EndPoint(url: url, parameters: params, method: .post)
         print("endPoint; \(endPoint)")
         isSuccess = true
-        ApiManager.shared.request(endPoint)
-            .sink(
-                receiveCompletion: { [self] completion in
-                    ApiManager.shared.handleCompletion(url: URL(string: endPoint.url)!, completion: completion)
-                    isSuccess = false
-                },
+        NetworkKit.shared.request(endPoint)
+            .sink(receiveCompletion: { completion in
+               
+              },
                 receiveValue: { [self] (response: User) in
                     isSuccess = response.success
 

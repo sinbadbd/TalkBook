@@ -6,7 +6,16 @@
       "location" : "https://github.com/sinbadbd/KitBase",
       "state" : {
         "branch" : "main",
-        "revision" : "769d2ee4dedd31572f38fb07a685da5bde64f464"
+        "revision" : "3b3e8429658fb3df51d08167c9f4924557ba36ab"
+      }
+    },
+    {
+      "identity" : "networkkit",
+      "kind" : "remoteSourceControl",
+      "location" : "https://github.com/sinbadbd/NetworkKit",
+      "state" : {
+        "branch" : "main",
+        "revision" : "af30df538fd403980d2b3d5613cd8ca4bac17a16"
       }
     }
   ],

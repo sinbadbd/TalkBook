@@ -7,6 +7,7 @@
 
 import SwiftUI
 import Combine
+import NetworkKit
 
 class HomeVM: ObservableObject{
     
@@ -28,10 +29,10 @@ extension HomeVM{
         let urlComponents = URLComponents(string: url)
         let endPoint = EndPoint(url: (urlComponents?.string)!, method: .get)
         
-        ApiManager.shared.request(endPoint)
+        NetworkKit.shared.request(endPoint)
             .sink(
                 receiveCompletion: { completion in
-                    ApiManager.shared.handleCompletion(url: URL(string: endPoint.url)!, completion: completion)
+                    NetworkKit.shared.handleCompletion(url: URL(string: endPoint.url)!, completion: completion)
                 },
                 receiveValue: { (response: PostModel) in
                     self.postsModel = response
@@ -46,10 +47,10 @@ extension HomeVM{
         let urlComponents = URLComponents(string: url)
         let endPoint = EndPoint(url: (urlComponents?.string)!, method: .get)
         
-        ApiManager.shared.request(endPoint)
+        NetworkKit.shared.request(endPoint)
             .sink(
                 receiveCompletion: { completion in
-                    ApiManager.shared.handleCompletion(url: URL(string: endPoint.url)!, completion: completion)
+                    NetworkKit.shared.handleCompletion(url: URL(string: endPoint.url)!, completion: completion)
                 },
                 receiveValue: { (response: PostModel) in
                     self.postsModel = response

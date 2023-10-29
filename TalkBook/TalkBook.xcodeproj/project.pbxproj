@@ -10,16 +10,8 @@
 		1D61295A2AEC3201003C3854 /* AppState.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1D6129592AEC3201003C3854 /* AppState.swift */; };
 		1D6129602AECCCA0003C3854 /* SplashScreen.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1D61295F2AECCCA0003C3854 /* SplashScreen.swift */; };
 		1D6129632AECCCCE003C3854 /* OnboardingScreen.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1D6129622AECCCCE003C3854 /* OnboardingScreen.swift */; };
+		1D61298A2AEECB6A003C3854 /* NetworkKit in Frameworks */ = {isa = PBXBuildFile; productRef = 1D6129892AEECB6A003C3854 /* NetworkKit */; };
 		1D6CB71F2AEB66DB00CE713F /* Model.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1D6CB6E52AEB66DB00CE713F /* Model.swift */; };
-		1D6CB7202AEB66DB00CE713F /* ApiManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1D6CB6E62AEB66DB00CE713F /* ApiManager.swift */; };
-		1D6CB7212AEB66DB00CE713F /* ApiManager+Ext.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1D6CB6E72AEB66DB00CE713F /* ApiManager+Ext.swift */; };
-		1D6CB7222AEB66DB00CE713F /* APIError.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1D6CB6E92AEB66DB00CE713F /* APIError.swift */; };
-		1D6CB7232AEB66DB00CE713F /* HTTPMethod.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1D6CB6EA2AEB66DB00CE713F /* HTTPMethod.swift */; };
-		1D6CB7242AEB66DB00CE713F /* APIResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1D6CB6EB2AEB66DB00CE713F /* APIResponse.swift */; };
-		1D6CB7252AEB66DB00CE713F /* EndPointConvertible.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1D6CB6EC2AEB66DB00CE713F /* EndPointConvertible.swift */; };
-		1D6CB7262AEB66DB00CE713F /* ConfigImage.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1D6CB6ED2AEB66DB00CE713F /* ConfigImage.swift */; };
-		1D6CB7272AEB66DB00CE713F /* EndPoint.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1D6CB6EE2AEB66DB00CE713F /* EndPoint.swift */; };
-		1D6CB7282AEB66DB00CE713F /* NetworkMonitor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1D6CB6EF2AEB66DB00CE713F /* NetworkMonitor.swift */; };
 		1D6CB72B2AEB66DB00CE713F /* Provider.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1D6CB6F42AEB66DB00CE713F /* Provider.swift */; };
 		1D6CB7302AEB66DB00CE713F /* ApiURL.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1D6CB6FA2AEB66DB00CE713F /* ApiURL.swift */; };
 		1D6CB7322AEB66DB00CE713F /* ApiURL+Auth.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1D6CB6FC2AEB66DB00CE713F /* ApiURL+Auth.swift */; };
@@ -79,15 +71,6 @@
 		1D61295F2AECCCA0003C3854 /* SplashScreen.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SplashScreen.swift; sourceTree = "<group>"; };
 		1D6129622AECCCCE003C3854 /* OnboardingScreen.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OnboardingScreen.swift; sourceTree = "<group>"; };
 		1D6CB6E52AEB66DB00CE713F /* Model.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Model.swift; sourceTree = "<group>"; };
-		1D6CB6E62AEB66DB00CE713F /* ApiManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ApiManager.swift; sourceTree = "<group>"; };
-		1D6CB6E72AEB66DB00CE713F /* ApiManager+Ext.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "ApiManager+Ext.swift"; sourceTree = "<group>"; };
-		1D6CB6E92AEB66DB00CE713F /* APIError.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = APIError.swift; sourceTree = "<group>"; };
-		1D6CB6EA2AEB66DB00CE713F /* HTTPMethod.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HTTPMethod.swift; sourceTree = "<group>"; };
-		1D6CB6EB2AEB66DB00CE713F /* APIResponse.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = APIResponse.swift; sourceTree = "<group>"; };
-		1D6CB6EC2AEB66DB00CE713F /* EndPointConvertible.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EndPointConvertible.swift; sourceTree = "<group>"; };
-		1D6CB6ED2AEB66DB00CE713F /* ConfigImage.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ConfigImage.swift; sourceTree = "<group>"; };
-		1D6CB6EE2AEB66DB00CE713F /* EndPoint.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EndPoint.swift; sourceTree = "<group>"; };
-		1D6CB6EF2AEB66DB00CE713F /* NetworkMonitor.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NetworkMonitor.swift; sourceTree = "<group>"; };
 		1D6CB6F42AEB66DB00CE713F /* Provider.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Provider.swift; sourceTree = "<group>"; };
 		1D6CB6FA2AEB66DB00CE713F /* ApiURL.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ApiURL.swift; sourceTree = "<group>"; };
 		1D6CB6FC2AEB66DB00CE713F /* ApiURL+Auth.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "ApiURL+Auth.swift"; sourceTree = "<group>"; };
@@ -134,6 +117,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				1D61298A2AEECB6A003C3854 /* NetworkKit in Frameworks */,
 				1D6CB7702AEB7BE100CE713F /* KitBase in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -182,37 +166,11 @@
 		1D6CB6E32AEB66DB00CE713F /* NetworkKit */ = {
 			isa = PBXGroup;
 			children = (
-				1D6CB6E42AEB66DB00CE713F /* ApiClient */,
 				1D6CB6F32AEB66DB00CE713F /* Manager */,
 				1D6CB6F52AEB66DB00CE713F /* ApiURL */,
 				1D6CB6FD2AEB66DB00CE713F /* Model */,
 			);
 			path = NetworkKit;
-			sourceTree = "<group>";
-		};
-		1D6CB6E42AEB66DB00CE713F /* ApiClient */ = {
-			isa = PBXGroup;
-			children = (
-				1D6CB6E52AEB66DB00CE713F /* Model.swift */,
-				1D6CB6E62AEB66DB00CE713F /* ApiManager.swift */,
-				1D6CB6E72AEB66DB00CE713F /* ApiManager+Ext.swift */,
-				1D6CB6E82AEB66DB00CE713F /* EndPoint */,
-				1D6CB6EF2AEB66DB00CE713F /* NetworkMonitor.swift */,
-			);
-			path = ApiClient;
-			sourceTree = "<group>";
-		};
-		1D6CB6E82AEB66DB00CE713F /* EndPoint */ = {
-			isa = PBXGroup;
-			children = (
-				1D6CB6E92AEB66DB00CE713F /* APIError.swift */,
-				1D6CB6EA2AEB66DB00CE713F /* HTTPMethod.swift */,
-				1D6CB6EB2AEB66DB00CE713F /* APIResponse.swift */,
-				1D6CB6EC2AEB66DB00CE713F /* EndPointConvertible.swift */,
-				1D6CB6ED2AEB66DB00CE713F /* ConfigImage.swift */,
-				1D6CB6EE2AEB66DB00CE713F /* EndPoint.swift */,
-			);
-			path = EndPoint;
 			sourceTree = "<group>";
 		};
 		1D6CB6F32AEB66DB00CE713F /* Manager */ = {
@@ -236,6 +194,7 @@
 		1D6CB6FD2AEB66DB00CE713F /* Model */ = {
 			isa = PBXGroup;
 			children = (
+				1D6CB6E52AEB66DB00CE713F /* Model.swift */,
 				1D6CB75E2AEB725900CE713F /* Post */,
 				1D6CB6FE2AEB66DB00CE713F /* Maintenance.swift */,
 				1D6CB70E2AEB66DB00CE713F /* Auth */,
@@ -495,6 +454,7 @@
 			name = TalkBook;
 			packageProductDependencies = (
 				1D6CB76F2AEB7BE100CE713F /* KitBase */,
+				1D6129892AEECB6A003C3854 /* NetworkKit */,
 			);
 			productName = TalkBook;
 			productReference = 1D858AC92AE43C4800FE6AC4 /* TalkBook.app */;
@@ -570,6 +530,7 @@
 			mainGroup = 1D858AC02AE43C4800FE6AC4;
 			packageReferences = (
 				1D6CB76E2AEB7BE100CE713F /* XCRemoteSwiftPackageReference "KitBase" */,
+				1D6129882AEECB6A003C3854 /* XCRemoteSwiftPackageReference "NetworkKit" */,
 			);
 			productRefGroup = 1D858ACA2AE43C4800FE6AC4 /* Products */;
 			projectDirPath = "";
@@ -614,19 +575,14 @@
 			buildActionMask = 2147483647;
 			files = (
 				1D6CB71F2AEB66DB00CE713F /* Model.swift in Sources */,
-				1D6CB7252AEB66DB00CE713F /* EndPointConvertible.swift in Sources */,
 				1D6CB7552AEB687A00CE713F /* EnvironmentManager.swift in Sources */,
 				1D858B092AE447B900FE6AC4 /* LoginVM.swift in Sources */,
 				1D6CB7482AEB66DB00CE713F /* TutorialModel.swift in Sources */,
-				1D6CB7202AEB66DB00CE713F /* ApiManager.swift in Sources */,
 				1D858AFC2AE4471B00FE6AC4 /* TabContainerView.swift in Sources */,
 				1D6CB7442AEB66DB00CE713F /* LoginRequest.swift in Sources */,
-				1D6CB7272AEB66DB00CE713F /* EndPoint.swift in Sources */,
-				1D6CB7262AEB66DB00CE713F /* ConfigImage.swift in Sources */,
 				1D6CB7302AEB66DB00CE713F /* ApiURL.swift in Sources */,
 				1D6CB7432AEB66DB00CE713F /* RequestToken.swift in Sources */,
 				1D6CB7722AEB81A200CE713F /* Registration.swift in Sources */,
-				1D6CB7282AEB66DB00CE713F /* NetworkMonitor.swift in Sources */,
 				1D6CB75D2AEB6F3C00CE713F /* ApiURL+Post.swift in Sources */,
 				1D6CB7602AEB726700CE713F /* PostModel.swift in Sources */,
 				1D61295A2AEC3201003C3854 /* AppState.swift in Sources */,
@@ -634,12 +590,10 @@
 				1D858ACF2AE43C4800FE6AC4 /* ContentView.swift in Sources */,
 				1D6CB7572AEB687A00CE713F /* RestApi.swift in Sources */,
 				1D6CB7462AEB66DB00CE713F /* SuccessModel.swift in Sources */,
-				1D6CB7222AEB66DB00CE713F /* APIError.swift in Sources */,
 				1D6129632AECCCCE003C3854 /* OnboardingScreen.swift in Sources */,
 				1D6CB7322AEB66DB00CE713F /* ApiURL+Auth.swift in Sources */,
 				1D858B012AE4476800FE6AC4 /* LoginView.swift in Sources */,
 				1D6CB7472AEB66DB00CE713F /* Account.swift in Sources */,
-				1D6CB7242AEB66DB00CE713F /* APIResponse.swift in Sources */,
 				1D6CB7332AEB66DB00CE713F /* Maintenance.swift in Sources */,
 				1D6129602AECCCA0003C3854 /* SplashScreen.swift in Sources */,
 				1D858ACD2AE43C4800FE6AC4 /* TalkBookApp.swift in Sources */,
@@ -652,8 +606,6 @@
 				1D6CB7582AEB687A00CE713F /* String+Unit.swift in Sources */,
 				1D6CB7592AEB687A00CE713F /* AppCoreKit.swift in Sources */,
 				1D6CB7652AEB73AC00CE713F /* HomeVM.swift in Sources */,
-				1D6CB7232AEB66DB00CE713F /* HTTPMethod.swift in Sources */,
-				1D6CB7212AEB66DB00CE713F /* ApiManager+Ext.swift in Sources */,
 				1D858B072AE447A400FE6AC4 /* RegistrationVM.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -829,7 +781,7 @@
 				"INFOPLIST_KEY_UIStatusBarStyle[sdk=iphonesimulator*]" = UIStatusBarStyleDefault;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
-				IPHONEOS_DEPLOYMENT_TARGET = 17.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 16.0;
 				LD_RUNPATH_SEARCH_PATHS = "@executable_path/Frameworks";
 				"LD_RUNPATH_SEARCH_PATHS[sdk=macosx*]" = "@executable_path/../Frameworks";
 				MACOSX_DEPLOYMENT_TARGET = 14.0;
@@ -868,7 +820,7 @@
 				"INFOPLIST_KEY_UIStatusBarStyle[sdk=iphonesimulator*]" = UIStatusBarStyleDefault;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
-				IPHONEOS_DEPLOYMENT_TARGET = 17.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 16.0;
 				LD_RUNPATH_SEARCH_PATHS = "@executable_path/Frameworks";
 				"LD_RUNPATH_SEARCH_PATHS[sdk=macosx*]" = "@executable_path/../Frameworks";
 				MACOSX_DEPLOYMENT_TARGET = 14.0;
@@ -1015,6 +967,14 @@
 /* End XCConfigurationList section */
 
 /* Begin XCRemoteSwiftPackageReference section */
+		1D6129882AEECB6A003C3854 /* XCRemoteSwiftPackageReference "NetworkKit" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/sinbadbd/NetworkKit";
+			requirement = {
+				branch = main;
+				kind = branch;
+			};
+		};
 		1D6CB76E2AEB7BE100CE713F /* XCRemoteSwiftPackageReference "KitBase" */ = {
 			isa = XCRemoteSwiftPackageReference;
 			repositoryURL = "https://github.com/sinbadbd/KitBase";
@@ -1026,6 +986,11 @@
 /* End XCRemoteSwiftPackageReference section */
 
 /* Begin XCSwiftPackageProductDependency section */
+		1D6129892AEECB6A003C3854 /* NetworkKit */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 1D6129882AEECB6A003C3854 /* XCRemoteSwiftPackageReference "NetworkKit" */;
+			productName = NetworkKit;
+		};
 		1D6CB76F2AEB7BE100CE713F /* KitBase */ = {
 			isa = XCSwiftPackageProductDependency;
 			package = 1D6CB76E2AEB7BE100CE713F /* XCRemoteSwiftPackageReference "KitBase" */;
