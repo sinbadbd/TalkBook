@@ -163,14 +163,14 @@
 			path = Splash;
 			sourceTree = "<group>";
 		};
-		1D6CB6E32AEB66DB00CE713F /* NetworkKit */ = {
+		1D6CB6E32AEB66DB00CE713F /* NetworkData */ = {
 			isa = PBXGroup;
 			children = (
 				1D6CB6F32AEB66DB00CE713F /* Manager */,
 				1D6CB6F52AEB66DB00CE713F /* ApiURL */,
 				1D6CB6FD2AEB66DB00CE713F /* Model */,
 			);
-			path = NetworkKit;
+			path = NetworkData;
 			sourceTree = "<group>";
 		};
 		1D6CB6F32AEB66DB00CE713F /* Manager */ = {
@@ -424,7 +424,7 @@
 			children = (
 				1D6CB74E2AEB687A00CE713F /* AppKit */,
 				1D858B0D2AE4489B00FE6AC4 /* DesignKit */,
-				1D6CB6E32AEB66DB00CE713F /* NetworkKit */,
+				1D6CB6E32AEB66DB00CE713F /* NetworkData */,
 			);
 			path = Kit;
 			sourceTree = "<group>";
