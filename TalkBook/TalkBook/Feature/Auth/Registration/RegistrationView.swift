@@ -14,8 +14,9 @@ struct RegistrationView: View {
     
     @State private var username: String = ""
     @State private var password: String = ""
-    @State private var firstname: String = ""
-    @State private var lastname: String = ""
+    @State private var fullName: String = ""
+    @State private var email: String = ""
+    @State private var gender: String = ""
     @State private var borderColor:Color? = Color.gray
     
     @State private var isShwoModal = false
@@ -34,7 +35,8 @@ struct RegistrationView: View {
                     isShwoModal =  registraionVM.isSuccess
                     print("isShwoModal: \(isShwoModal)")
                     //registraionVM.isSuccess = false
-                    registraionVM.registrationApiCall(username: username, password: password, firstname: firstname, lastname: lastname)
+//                    registraionVM.registrationApiCall(username: username, password: password, firstname: firstname, lastname: email)
+                    registraionVM.registrationApiCall(username: username, password: password, fullname:fullName , email: email, gender: gender)
                 })
                 .buttonStyle(KitBaseButtonStyle(size: .lg, variant: .outline, backgroundColor: .clear, borderColor: .gray, foregroundColor: .white, buttonWidth: UIScreen.main.bounds.width * 0.8, borderWidth: 1))
                                 
@@ -65,12 +67,16 @@ struct RegistrationView: View {
                 SecureField("Password", text: $password)
                     .keyboardType(.namePhonePad)
             }
-            KitBaseFormField(title: "First Name", error: registraionVM.error?.firstname, isValid: $registraionVM.isSuccess ) {
-                TextField("First name", text: $firstname)
+            KitBaseFormField(title: "Email", error: registraionVM.error?.password, isValid: $registraionVM.isSuccess ) {
+                TextField("Email", text: $email)
+                    .keyboardType(.namePhonePad)
+            }
+            KitBaseFormField(title: "Full Name", error: registraionVM.error?.firstname, isValid: $registraionVM.isSuccess ) {
+                TextField("Full name", text: $fullName)
             }
             
-            KitBaseFormField(title: "Last name", error: registraionVM.error?.lastname, isValid: $registraionVM.isSuccess) {
-                TextField("Last name", text: $lastname)
+            KitBaseFormField(title: "Gender", error: registraionVM.error?.lastname, isValid: $registraionVM.isSuccess) {
+                TextField("Gender", text: $gender)
             }
         }
     }

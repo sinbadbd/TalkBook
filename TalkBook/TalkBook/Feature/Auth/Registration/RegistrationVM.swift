@@ -23,13 +23,14 @@ class RegistrationVM: ObservableObject {
     @Published var userModel: UserModel?
     @Published var error: ErrorsObject?
     
-    func registrationApiCall(username: String, password: String, firstname: String, lastname: String) {
+    func registrationApiCall(username: String, password: String, fullname: String, email: String, gender: String) {
 
         let params: Parameters = [
+            "fullname":  fullname,
             "username": username,
+            "email":  email,
             "password":  password,
-            "firstname":  firstname,
-            "lastname":  lastname,
+            "gender":  gender,
         ]
         print("params-login: \(params)")
         let url = ApiURL.Auth.register.getURL()
@@ -56,3 +57,13 @@ class RegistrationVM: ObservableObject {
     }
 }
  
+/*
+ api/auth/register
+ {
+     "fullname": "",
+     "username": " dsfsfsf",
+     "email": "dxxxx@d.co",
+     "password": "dsfsfs",
+     "gender": "sfsfs"
+ }
+ */

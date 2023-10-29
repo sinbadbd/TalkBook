@@ -23,10 +23,10 @@ extension RestApi {
 extension RestApi {
     init(for environment: Environment) {
         switch environment {
-        case .production:       host = "localhost:8080/api/"
+        case .production:       host = "localhost:2000/api/"
         case .preProduction:    host = ""
         case .staging:          host = ""
-        case .develop:          host = "localhost:8080/api/"
+        case .develop:          host = "localhost:2000/api/"
         }
         version = ""
         apiKey = ""
