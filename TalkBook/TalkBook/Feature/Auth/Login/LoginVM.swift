@@ -13,9 +13,7 @@ class LoginVM: ObservableObject {
     var cancellables = Set<AnyCancellable>()
     
     @Published var email: String = ""
-    @Published var password: String = ""
-    @Published var firstname: String = ""
-    @Published var lastname: String = ""
+    @Published var password: String = "" 
     
     @Published var isSuccess: Bool = false
     
@@ -23,10 +21,10 @@ class LoginVM: ObservableObject {
     @Published var userModel: UserModel?
     @Published var error: ErrorsObject?
     
-    func loginApiCall(username: String, password: String) {
+    func loginApiCall(email: String, password: String, completion: @escaping ((User?)-> Void)) {
         
         let params: Parameters = [
-            "username": username,
+            "email": email,
             "password":  password
         ]
         print("params-login: \(params)")
@@ -48,6 +46,8 @@ class LoginVM: ObservableObject {
                     self.error = response.errors
                     print("user: \(response)")
                     print("userModel: \(self.userModel)")
+                    
+                    completion(response)
                     
                 })
             .store(in: &cancellables)
