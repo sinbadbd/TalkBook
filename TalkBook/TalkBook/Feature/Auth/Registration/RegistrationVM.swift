@@ -24,7 +24,7 @@ class RegistrationVM: ObservableObject {
     @Published var userModel: UserModel?
     @Published var error: ErrorsObject?
     
-    func registrationApiCall(username: String, password: String, fullname: String, email: String, gender: String) {
+    func registrationApiCall(username: String, password: String, fullname: String, email: String, gender: String, completion: @escaping ()->Void) {
 
         let params: Parameters = [
             "fullname":  fullname,
@@ -51,6 +51,8 @@ class RegistrationVM: ObservableObject {
                     self.error = response.errors
                     print("user: \(response)")
                     print("userModel: \(self.userModel)")
+                
+                    completion()
                      
                 })
             .store(in: &cancellables)
