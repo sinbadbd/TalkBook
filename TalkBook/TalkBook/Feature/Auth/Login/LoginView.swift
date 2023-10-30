@@ -41,7 +41,7 @@ struct LoginView: View {
 //                        UserDefaults.standard.set(Provider.session_id, forKey: "session_id")
                         //appState = .dashboard
                     })
-                    .buttonStyle(KitBaseButtonStyle(size: .lg, variant: .outline, backgroundColor: .clear, borderColor: .gray, foregroundColor: .white, buttonWidth: UIScreen.main.bounds.width * 0.8, borderWidth: 1))
+                    .buttonStyle(KitBaseButtonStyle(size: .lg, variant: .outline, backgroundColor: .clear, borderColor: .gray, foregroundColor: .white, buttonWidth: UIScreen.main.bounds.width * 0.85, borderWidth: 1))
                     
                     
                     Text("-------------OR-------------")
