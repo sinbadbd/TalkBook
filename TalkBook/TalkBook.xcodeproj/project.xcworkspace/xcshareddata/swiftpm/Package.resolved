@@ -6,7 +6,7 @@
       "location" : "https://github.com/sinbadbd/KitBase",
       "state" : {
         "branch" : "main",
-        "revision" : "3b3e8429658fb3df51d08167c9f4924557ba36ab"
+        "revision" : "3923d08aac54074e9a7a96f4fa448d6a2251e45b"
       }
     },
     {
@@ -15,7 +15,7 @@
       "location" : "https://github.com/sinbadbd/NetworkKit",
       "state" : {
         "branch" : "main",
-        "revision" : "af30df538fd403980d2b3d5613cd8ca4bac17a16"
+        "revision" : "49c2909f6c5ed094ef29ef23c9574123007f4b4d"
       }
     }
   ],

@@ -16,10 +16,16 @@ enum Field: Hashable {
     case gender
 }
 
+
 struct RegistrationView: View {
     
-    @ObservedObject private var registraionVM: RegistrationVM = .init()
     
+    @ObservedObject private var registraionVM: RegistrationVM = .init()
+//    @Environment(\.presentationMode) var presentationMode
+    
+//    @Environment(\.colorScheme) var colorScheme: ColorScheme
+
+
     @State private var username: String = ""
     @State private var password: String = ""
     @State private var fullName: String = ""
@@ -31,16 +37,14 @@ struct RegistrationView: View {
     @State private var selected = 1
     @FocusState private var focusedField: Field?
     
-    init(){
-        print(registraionVM.isSuccess)
-    }
-    
+ 
     enum Gender: String, CaseIterable, Identifiable {
         case Male, Female, Other
         var id: Self { self }
     }
     
     @State private var selectedFlavor: Gender = .Male
+    
     
     var body: some View {
         
@@ -56,7 +60,6 @@ struct RegistrationView: View {
                     Button("Signup", action: {
                         if username.isEmpty {
                             focusedField = .usernameField
-                            print("Can't blank")
                         } else if password.isEmpty {
                             focusedField = .passwordField
                         } else if email.isEmpty {
@@ -70,11 +73,8 @@ struct RegistrationView: View {
                                 fullname:fullName,
                                 email: email,
                                 gender: selectedFlavor.rawValue) {
-                                    username = ""
-                                    password = ""
-                                    fullName = ""
-                                    email = ""
-                                    focusedField = nil
+                                   // clearFields()
+                                    //presentationMode.wrappedValue.dismiss()
                                 }
                         }
                     })
@@ -93,11 +93,6 @@ struct RegistrationView: View {
                 LoadingView(progressColor: .red)
                     .frame(maxWidth: .infinity, maxHeight: .infinity)
             }
-            
-            //            if registraionVM.isSuccess {
-            //                showPopup()
-            //            }
-            
         }
     }
     
@@ -115,7 +110,7 @@ struct RegistrationView: View {
                         .foregroundColor(.red)
                 }
             }
-            VStack{
+            VStack(alignment: .leading){
                 KitBaseFormField(title: "Password", error: registraionVM.error?.password, isValid: $registraionVM.isSuccess ) {
                     SecureField("Password", text: $password)
                         .keyboardType(.namePhonePad)
@@ -124,29 +119,29 @@ struct RegistrationView: View {
                 
                 if focusedField == .passwordField && password.isEmpty {
                     Text("Password can't be blank")
-                        .font(.callout)
+                        .font(.footnote)
                         .foregroundColor(.red)
                 }
             }
-            VStack{
+            VStack(alignment: .leading){
                 KitBaseFormField(title: "Email", error: registraionVM.error?.email, isValid: $registraionVM.isSuccess ) {
                     TextField("Email", text: $email)
                         .focused($focusedField, equals: .emailField)
                 }
                 if focusedField == .emailField && email.isEmpty {
                     Text("Email can't be blank")
-                        .font(.callout)
+                        .font(.footnote)
                         .foregroundColor(.red)
                 }
             }
-            VStack{
+            VStack(alignment: .leading){
                 KitBaseFormField(title: "Full Name", error: registraionVM.error?.fullname, isValid: $registraionVM.isSuccess ) {
                     TextField("Full name", text: $fullName)
                         .focused($focusedField, equals: .fullNameField)
                 }
                 if focusedField == .fullNameField && fullName.isEmpty {
                     Text("Full Name can't be blank")
-                        .font(.callout)
+                        .font(.footnote)
                         .foregroundColor(.red)
                 }
             }
@@ -160,6 +155,14 @@ struct RegistrationView: View {
             .pickerStyle(.menu)
             .frame(height: 40)
         }
+    }
+    
+    private func clearFields() {
+        username = ""
+        password = ""
+        fullName = ""
+        email = ""
+        focusedField = nil
     }
 }
 
