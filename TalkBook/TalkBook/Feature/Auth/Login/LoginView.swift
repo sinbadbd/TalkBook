@@ -37,9 +37,9 @@ struct LoginView: View {
                         //registraionVM.isSuccess = false
                         loginVM.loginApiCall(username: username, password: password)
                         
-                        UserDefaultsManager.shared.isUserLoggedIn = true
+                       // UserDefaultsManager.shared.isUserLoggedIn = true
 //                        UserDefaults.standard.set(Provider.session_id, forKey: "session_id")
-                        appState = .dashboard
+                        //appState = .dashboard
                     })
                     .buttonStyle(KitBaseButtonStyle(size: .lg, variant: .outline, backgroundColor: .clear, borderColor: .gray, foregroundColor: .white, buttonWidth: UIScreen.main.bounds.width * 0.8, borderWidth: 1))
                     
