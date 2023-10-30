@@ -8,6 +8,14 @@
 import SwiftUI
 import KitBase
 
+enum Field: Hashable {
+    case usernameField
+    case passwordField
+    case fullNameField
+    case emailField
+    case gender
+}
+
 struct RegistrationView: View {
     
     @ObservedObject private var registraionVM: RegistrationVM = .init()
@@ -20,64 +28,101 @@ struct RegistrationView: View {
     @State private var borderColor:Color? = Color.gray
     
     @State private var isShwoModal = false
+    @State private var selected = 1
+    @FocusState private var focusedField: Field?
     
     init(){
         print(registraionVM.isSuccess)
     }
+    
+    enum Flavor: String, CaseIterable, Identifiable {
+        case Male, Female, Other
+        var id: Self { self }
+    }
+    
+    @State private var selectedFlavor: Flavor = .Male
+    
     var body: some View {
+        
         ZStack{
-            Color.black
+            Color.white
                 .ignoresSafeArea()
-            VStack(spacing: 16){
-                registrationView
-                
-                Button("Registraion", action: {
-                    isShwoModal =  registraionVM.isSuccess
-                    print("isShwoModal: \(isShwoModal)")
-                    //registraionVM.isSuccess = false
-//                    registraionVM.registrationApiCall(username: username, password: password, firstname: firstname, lastname: email)
-                    registraionVM.registrationApiCall(username: username, password: password, fullname:fullName , email: email, gender: gender)
-                })
-                .buttonStyle(KitBaseButtonStyle(size: .lg, variant: .outline, backgroundColor: .clear, borderColor: .gray, foregroundColor: .white, buttonWidth: UIScreen.main.bounds.width * 0.8, borderWidth: 1))
-                                
-                Text(registraionVM.isSuccess == false ? registraionVM.user?.message ?? "" : "")
-                    .foregroundColor(.red)
+            
+            Form{
+                VStack(spacing: 16){
+                    
+                    registrationView
+                    
+                    Button("Signup", action: {
+                        if username.isEmpty {
+                            focusedField = .usernameField
+                        } else if password.isEmpty {
+                            focusedField = .passwordField
+                        } else if email.isEmpty {
+                            focusedField = .emailField
+                        } else if fullName.isEmpty {
+                            focusedField = .fullNameField
+                        }else {
+                            registraionVM.registrationApiCall(
+                                username: username,
+                                password: password,
+                                fullname:fullName,
+                                email: email,
+                                gender: selectedFlavor.rawValue)
+                        }
+                    })
+                    .buttonStyle(KitBaseButtonStyle(size: .lg, variant: .outline, backgroundColor: .clear, borderColor: .red, foregroundColor: .gray,borderWidth: 1))
+                    
+                    Text(registraionVM.isSuccess == false ? registraionVM.user?.message ?? "" : "")
+                        .foregroundColor(.red)
+                }
             }
-            .padding(.horizontal, 16)
+            
+            .background {  Color.clear }
+            .scrollContentBackground(.hidden)
+            .background {  Color.clear }
+            // .padding(.horizontal, 16)
             
             if registraionVM.isSuccess{
                 LoadingView(progressColor: .red)
                     .frame(maxWidth: .infinity, maxHeight: .infinity)
             }
             
-//            if registraionVM.isSuccess {
-//                showPopup()
-//            }
+            //            if registraionVM.isSuccess {
+            //                showPopup()
+            //            }
             
         }
     }
     
     private var registrationView: some View{
         VStack(alignment: .leading, spacing: 8){
-            
             KitBaseFormField(title: "Username", error: registraionVM.error?.username, isValid: $registraionVM.isSuccess) {
                 TextField("username", text: $username)
+                    .focused($focusedField, equals: .usernameField)
             }
             KitBaseFormField(title: "Password", error: registraionVM.error?.password, isValid: $registraionVM.isSuccess ) {
                 SecureField("Password", text: $password)
                     .keyboardType(.namePhonePad)
+                    .focused($focusedField, equals: .passwordField)
             }
-            KitBaseFormField(title: "Email", error: registraionVM.error?.password, isValid: $registraionVM.isSuccess ) {
+            KitBaseFormField(title: "Email", error: registraionVM.error?.email, isValid: $registraionVM.isSuccess ) {
                 TextField("Email", text: $email)
-                    .keyboardType(.namePhonePad)
+                    .focused($focusedField, equals: .emailField)
             }
-            KitBaseFormField(title: "Full Name", error: registraionVM.error?.firstname, isValid: $registraionVM.isSuccess ) {
+            KitBaseFormField(title: "Full Name", error: registraionVM.error?.fullname, isValid: $registraionVM.isSuccess ) {
                 TextField("Full name", text: $fullName)
+                    .focused($focusedField, equals: .fullNameField)
             }
             
-            KitBaseFormField(title: "Gender", error: registraionVM.error?.lastname, isValid: $registraionVM.isSuccess) {
-                TextField("Gender", text: $gender)
+            Picker("Genger", selection: $selectedFlavor) {
+                Text("Male").tag(Flavor.Male)
+                Text("Female").tag(Flavor.Female)
+                Text("Other").tag(Flavor.Other)
             }
+            .foregroundColor(.gray)
+            .pickerStyle(.menu)
+            .frame(height: 40)
         }
     }
 }
@@ -87,12 +132,12 @@ struct RegistrationView: View {
 }
 
 //extension RegistrationView{
-//    
+//
 //    @ViewBuilder
 //    func showPopup() -> some View{
 //        ZStack{
 //            ModalViewBuilder(isShowPopup: $registraionVM.isSuccess) {
-//               
+//
 //            }
 //            .title("Confirm")
 //            .summary("Are you want to logout?")

@@ -39,8 +39,9 @@ class RegistrationVM: ObservableObject {
         print("endPoint; \(endPoint)")
         isSuccess = true
         NetworkKit.shared.request(endPoint)
-            .sink(receiveCompletion: { completion in
-               
+            .sink(receiveCompletion: { [self] completion in
+                isSuccess = false
+                NetworkKit.shared.handleCompletion(url: URL(string: endPoint.url)!, completion: completion)
               },
                 receiveValue: { [self] (response: User) in
                     isSuccess = response.success

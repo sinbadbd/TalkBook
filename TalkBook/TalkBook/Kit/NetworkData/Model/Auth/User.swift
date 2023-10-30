@@ -42,7 +42,7 @@ struct UserModel: Model {
 
 // MARK: - Errors
 struct ErrorsObject: Codable {
-    var username, password, firstname, lastname: String?
+    var username, password, email, firstname, fullname, gender: String?
 }
 
 /*
