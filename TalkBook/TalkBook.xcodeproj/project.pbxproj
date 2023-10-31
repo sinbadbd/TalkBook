@@ -7,6 +7,13 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		1D1A2DD92AF12672001FD271 /* Cloudinary in Frameworks */ = {isa = PBXBuildFile; productRef = 1D1A2DD82AF12672001FD271 /* Cloudinary */; };
+		1D1A2DDB2AF1361F001FD271 /* CloudinaryConfig.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1D1A2DDA2AF1361F001FD271 /* CloudinaryConfig.swift */; };
+		1D1A2DDD2AF1384C001FD271 /* CloudinaryUtility.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1D1A2DDC2AF1384C001FD271 /* CloudinaryUtility.swift */; };
+		1D1A2DE42AF147BB001FD271 /* FriendsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1D1A2DE32AF147BB001FD271 /* FriendsView.swift */; };
+		1D1A2DE62AF147C5001FD271 /* ProfileView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1D1A2DE52AF147C4001FD271 /* ProfileView.swift */; };
+		1D1A2DE82AF147D0001FD271 /* NotificationsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1D1A2DE72AF147D0001FD271 /* NotificationsView.swift */; };
+		1D1A2DEA2AF147D7001FD271 /* MenuView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1D1A2DE92AF147D7001FD271 /* MenuView.swift */; };
 		1D61295A2AEC3201003C3854 /* AppState.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1D6129592AEC3201003C3854 /* AppState.swift */; };
 		1D6129602AECCCA0003C3854 /* SplashScreen.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1D61295F2AECCCA0003C3854 /* SplashScreen.swift */; };
 		1D6129632AECCCCE003C3854 /* OnboardingScreen.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1D6129622AECCCCE003C3854 /* OnboardingScreen.swift */; };
@@ -67,6 +74,12 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		1D1A2DDA2AF1361F001FD271 /* CloudinaryConfig.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CloudinaryConfig.swift; sourceTree = "<group>"; };
+		1D1A2DDC2AF1384C001FD271 /* CloudinaryUtility.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CloudinaryUtility.swift; sourceTree = "<group>"; };
+		1D1A2DE32AF147BB001FD271 /* FriendsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FriendsView.swift; sourceTree = "<group>"; };
+		1D1A2DE52AF147C4001FD271 /* ProfileView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileView.swift; sourceTree = "<group>"; };
+		1D1A2DE72AF147D0001FD271 /* NotificationsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NotificationsView.swift; sourceTree = "<group>"; };
+		1D1A2DE92AF147D7001FD271 /* MenuView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MenuView.swift; sourceTree = "<group>"; };
 		1D6129592AEC3201003C3854 /* AppState.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppState.swift; sourceTree = "<group>"; };
 		1D61295F2AECCCA0003C3854 /* SplashScreen.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SplashScreen.swift; sourceTree = "<group>"; };
 		1D6129622AECCCCE003C3854 /* OnboardingScreen.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OnboardingScreen.swift; sourceTree = "<group>"; };
@@ -119,6 +132,7 @@
 			files = (
 				1D61298A2AEECB6A003C3854 /* NetworkKit in Frameworks */,
 				1D6CB7702AEB7BE100CE713F /* KitBase in Frameworks */,
+				1D1A2DD92AF12672001FD271 /* Cloudinary in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -139,6 +153,45 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		1D1A2DDE2AF14763001FD271 /* Home */ = {
+			isa = PBXGroup;
+			children = (
+				1D1A2DDF2AF14769001FD271 /* New Group */,
+			);
+			path = Home;
+			sourceTree = "<group>";
+		};
+		1D1A2DDF2AF14769001FD271 /* New Group */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = "New Group";
+			sourceTree = "<group>";
+		};
+		1D1A2DE02AF1477F001FD271 /* Friends */ = {
+			isa = PBXGroup;
+			children = (
+				1D1A2DE32AF147BB001FD271 /* FriendsView.swift */,
+			);
+			path = Friends;
+			sourceTree = "<group>";
+		};
+		1D1A2DE12AF14792001FD271 /* Notifications */ = {
+			isa = PBXGroup;
+			children = (
+				1D1A2DE72AF147D0001FD271 /* NotificationsView.swift */,
+			);
+			path = Notifications;
+			sourceTree = "<group>";
+		};
+		1D1A2DE22AF1479D001FD271 /* Menu */ = {
+			isa = PBXGroup;
+			children = (
+				1D1A2DE92AF147D7001FD271 /* MenuView.swift */,
+			);
+			path = Menu;
+			sourceTree = "<group>";
+		};
 		1D6129582AEC31EE003C3854 /* AppState */ = {
 			isa = PBXGroup;
 			children = (
@@ -274,6 +327,8 @@
 				1D6CB74F2AEB687A00CE713F /* EnvironmentManager.swift */,
 				1D6CB7502AEB687A00CE713F /* UserDefaultsManager.swift */,
 				1D6CB7512AEB687A00CE713F /* RestApi.swift */,
+				1D1A2DDA2AF1361F001FD271 /* CloudinaryConfig.swift */,
+				1D1A2DDC2AF1384C001FD271 /* CloudinaryUtility.swift */,
 			);
 			path = Environment;
 			sourceTree = "<group>";
@@ -371,7 +426,10 @@
 			children = (
 				1D858AFB2AE4471B00FE6AC4 /* TabContainerView.swift */,
 				1D858AFD2AE4472500FE6AC4 /* Home */,
+				1D1A2DE02AF1477F001FD271 /* Friends */,
 				1D858AFE2AE4472D00FE6AC4 /* Profile */,
+				1D1A2DE12AF14792001FD271 /* Notifications */,
+				1D1A2DE22AF1479D001FD271 /* Menu */,
 			);
 			path = Platform;
 			sourceTree = "<group>";
@@ -388,6 +446,7 @@
 		1D858AFE2AE4472D00FE6AC4 /* Profile */ = {
 			isa = PBXGroup;
 			children = (
+				1D1A2DE52AF147C4001FD271 /* ProfileView.swift */,
 			);
 			path = Profile;
 			sourceTree = "<group>";
@@ -432,6 +491,7 @@
 		1D858B0D2AE4489B00FE6AC4 /* DesignKit */ = {
 			isa = PBXGroup;
 			children = (
+				1D1A2DDE2AF14763001FD271 /* Home */,
 			);
 			path = DesignKit;
 			sourceTree = "<group>";
@@ -455,6 +515,7 @@
 			packageProductDependencies = (
 				1D6CB76F2AEB7BE100CE713F /* KitBase */,
 				1D6129892AEECB6A003C3854 /* NetworkKit */,
+				1D1A2DD82AF12672001FD271 /* Cloudinary */,
 			);
 			productName = TalkBook;
 			productReference = 1D858AC92AE43C4800FE6AC4 /* TalkBook.app */;
@@ -531,6 +592,7 @@
 			packageReferences = (
 				1D6CB76E2AEB7BE100CE713F /* XCRemoteSwiftPackageReference "KitBase" */,
 				1D6129882AEECB6A003C3854 /* XCRemoteSwiftPackageReference "NetworkKit" */,
+				1D1A2DD72AF12672001FD271 /* XCRemoteSwiftPackageReference "cloudinary_ios" */,
 			);
 			productRefGroup = 1D858ACA2AE43C4800FE6AC4 /* Products */;
 			projectDirPath = "";
@@ -576,9 +638,13 @@
 			files = (
 				1D6CB71F2AEB66DB00CE713F /* Model.swift in Sources */,
 				1D6CB7552AEB687A00CE713F /* EnvironmentManager.swift in Sources */,
+				1D1A2DDD2AF1384C001FD271 /* CloudinaryUtility.swift in Sources */,
 				1D858B092AE447B900FE6AC4 /* LoginVM.swift in Sources */,
 				1D6CB7482AEB66DB00CE713F /* TutorialModel.swift in Sources */,
+				1D1A2DE82AF147D0001FD271 /* NotificationsView.swift in Sources */,
 				1D858AFC2AE4471B00FE6AC4 /* TabContainerView.swift in Sources */,
+				1D1A2DEA2AF147D7001FD271 /* MenuView.swift in Sources */,
+				1D1A2DE62AF147C5001FD271 /* ProfileView.swift in Sources */,
 				1D6CB7442AEB66DB00CE713F /* LoginRequest.swift in Sources */,
 				1D6CB7302AEB66DB00CE713F /* ApiURL.swift in Sources */,
 				1D6CB7432AEB66DB00CE713F /* RequestToken.swift in Sources */,
@@ -595,6 +661,7 @@
 				1D858B012AE4476800FE6AC4 /* LoginView.swift in Sources */,
 				1D6CB7472AEB66DB00CE713F /* Account.swift in Sources */,
 				1D6CB7332AEB66DB00CE713F /* Maintenance.swift in Sources */,
+				1D1A2DDB2AF1361F001FD271 /* CloudinaryConfig.swift in Sources */,
 				1D6129602AECCCA0003C3854 /* SplashScreen.swift in Sources */,
 				1D858ACD2AE43C4800FE6AC4 /* TalkBookApp.swift in Sources */,
 				1D6CB7562AEB687A00CE713F /* UserDefaultsManager.swift in Sources */,
@@ -602,6 +669,7 @@
 				1D6CB7452AEB66DB00CE713F /* RequestSession.swift in Sources */,
 				1D6CB72B2AEB66DB00CE713F /* Provider.swift in Sources */,
 				1D6CB7422AEB66DB00CE713F /* User.swift in Sources */,
+				1D1A2DE42AF147BB001FD271 /* FriendsView.swift in Sources */,
 				1D858B052AE4479600FE6AC4 /* RegistrationView.swift in Sources */,
 				1D6CB7582AEB687A00CE713F /* String+Unit.swift in Sources */,
 				1D6CB7592AEB687A00CE713F /* AppCoreKit.swift in Sources */,
@@ -967,6 +1035,14 @@
 /* End XCConfigurationList section */
 
 /* Begin XCRemoteSwiftPackageReference section */
+		1D1A2DD72AF12672001FD271 /* XCRemoteSwiftPackageReference "cloudinary_ios" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/cloudinary/cloudinary_ios.git";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 4.2.0;
+			};
+		};
 		1D6129882AEECB6A003C3854 /* XCRemoteSwiftPackageReference "NetworkKit" */ = {
 			isa = XCRemoteSwiftPackageReference;
 			repositoryURL = "https://github.com/sinbadbd/NetworkKit";
@@ -986,6 +1062,11 @@
 /* End XCRemoteSwiftPackageReference section */
 
 /* Begin XCSwiftPackageProductDependency section */
+		1D1A2DD82AF12672001FD271 /* Cloudinary */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 1D1A2DD72AF12672001FD271 /* XCRemoteSwiftPackageReference "cloudinary_ios" */;
+			productName = Cloudinary;
+		};
 		1D6129892AEECB6A003C3854 /* NetworkKit */ = {
 			isa = XCSwiftPackageProductDependency;
 			package = 1D6129882AEECB6A003C3854 /* XCRemoteSwiftPackageReference "NetworkKit" */;
