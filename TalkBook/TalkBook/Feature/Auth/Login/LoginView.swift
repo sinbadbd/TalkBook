@@ -32,6 +32,11 @@ struct LoginView: View {
                     loginView
                     
                     Button("Login", action: {
+                        
+                        print("Login success")
+                        UserDefaultsManager.shared.isUserLoggedIn = true
+                        UserDefaults.standard.set(Provider.session_id, forKey: "session_id")
+                        appState = .dashboard
                         isShwoModal =  loginVM.isSuccess
                         print("isShwoModal: \(isShwoModal)")
                         //registraionVM.isSuccess = false
