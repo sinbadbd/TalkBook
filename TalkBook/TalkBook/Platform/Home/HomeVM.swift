@@ -18,7 +18,7 @@ class HomeVM: ObservableObject{
     
     init(){
        // getPost(id: "653aa416df3317d5d487860d")
-        getTimeLinePost(id: "65340015c61ec1c2d8a06d92")
+       // getTimeLinePost(id: "65340015c61ec1c2d8a06d92")
     }
 }
 
