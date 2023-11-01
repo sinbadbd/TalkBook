@@ -8,6 +8,7 @@
 import SwiftUI
 import Combine
 import NetworkKit
+import Photos
 
 class HomeVM: ObservableObject{
     
@@ -23,11 +24,22 @@ class HomeVM: ObservableObject{
 }
 
 extension HomeVM{
+
     
-    func getPost( id: String) {
-        let url = String(format: ApiURL.Post.allPost.getURL(), id)
-        let urlComponents = URLComponents(string: url)
-        let endPoint = EndPoint(url: (urlComponents?.string)!, method: .get)
+    func createPost(statusText: String, iamges:[PHAsset]?){
+
+        
+        
+        let params: Parameters = [
+            "content": statusText,
+            "images":  iamges ?? []
+        ]
+        print("params-login: \(params)")
+        let url = String(format: ApiURL.Post.createPost.getURL())
+        let endPoint = EndPoint(url: url, parameters: params, method: .post)
+        print("endPoint; \(endPoint)")
+        //isSuccess = true
+        
         
         NetworkKit.shared.request(endPoint)
             .sink(
@@ -36,26 +48,8 @@ extension HomeVM{
                 },
                 receiveValue: { (response: PostModel) in
                     self.postsModel = response
-                    self.posts = self.postsModel?.post
+                    self.posts = self.postsModel?.newPost
                     print("self.posts: \(String(describing: self.posts))")
-                })
-            .store(in: &cancellables)
-    }
-    
-    func getTimeLinePost( id: String) {
-        let url = String(format: ApiURL.Post.timeLinePost.getURL(), id)
-        let urlComponents = URLComponents(string: url)
-        let endPoint = EndPoint(url: (urlComponents?.string)!, method: .get)
-        
-        NetworkKit.shared.request(endPoint)
-            .sink(
-                receiveCompletion: { completion in
-                    NetworkKit.shared.handleCompletion(url: URL(string: endPoint.url)!, completion: completion)
-                },
-                receiveValue: { (response: PostModel) in
-                    self.postsModel = response
-                    self.timeLinePosts = self.postsModel?.timeLinePosts ?? []
-                    print("self.posts: \(String(describing: response))")
                 })
             .store(in: &cancellables)
     }

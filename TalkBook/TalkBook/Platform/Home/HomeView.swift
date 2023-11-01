@@ -7,6 +7,7 @@
 
 import SwiftUI
 import Cloudinary
+import Photos
 
 struct HomeView: View {
     
@@ -14,15 +15,32 @@ struct HomeView: View {
     
     @State private var image: UIImage? = nil
     @State private var imageURL: String? = nil
-    
-    
+    @State private var selectedPhotos: [PHAsset] = []
+    @State private var statusText: String = "What's on your mind?"
+    init(){
+        print("Home View")
+        print("Home---: \(selectedPhotos)")
+        print("Home.count: \(selectedPhotos.count)")
+    }
     var body: some View {
         NavigationStack{
             ZStack{
                 VStack {
                     VStack{
                         HeaderView()
-                        HeaderCreatePostView()
+                        HeaderCreatePostView(selectedPhotos: selectedPhotos, statusText: $statusText) {
+                            homeVM.createPost(statusText: statusText, iamges: selectedPhotos.map({$0}))
+                            //uploadImage(imageData: imageData)
+                            let data = selectedPhotos
+                            print("data: \(data)")
+//                            CloudinaryManager.uploadImage(data: Data) { result, error in
+//                                if let error = error {
+//                                    print(error.localizedDescription)
+//                                }else {
+//                                    let result = result
+//                                }
+//                            }
+                        }
                     }
                     .padding(.horizontal, 16)
                     

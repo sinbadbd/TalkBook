@@ -12,10 +12,8 @@ extension ApiURL.Post {
         let baseURL = ApiConfig.httpBase + "post"
         var endPart = ""
         switch self {
-        case .allPost: endPart = "%@"
-        case .timeLinePost: endPart = "%@/time-line-post"
+        case .createPost: endPart = "createPost"
         }
         return "\(baseURL)/\(endPart)"
     }
 }
-//localhost:8080/api/post/6539248bbc407d3d3a446e2d
