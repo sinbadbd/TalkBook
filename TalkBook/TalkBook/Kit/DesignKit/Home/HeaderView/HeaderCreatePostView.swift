@@ -7,12 +7,27 @@
 
 import SwiftUI
 import KitBase
+import Photos
 
+@MainActor
 struct HeaderCreatePostView: View {
-    
+    @State private var textEditorHeight: CGFloat = 106
     @State private var showPostModal = false
     @State private var showPhotoModal = false
+    //    @State private var statusText = "A "
+    @State private var selectedPhotos: [PHAsset] = []
+    @Binding var statusText: String
+    @State private var isUploading = false // Loading indicator state
     
+    var onUploaded: (([String]) -> Void)?
+    var onPost: (()->Void)?
+    
+    init(selectedPhotos: [PHAsset], statusText: Binding<String>, /*onPost: (()->Void)?,*/ onUploaded: (([String])->Void)?) {
+        self.selectedPhotos = selectedPhotos
+        self._statusText = statusText
+//        self.onPost = onPost
+        self.onUploaded = onUploaded
+    }
     var body: some View {
         
         HStack{
@@ -36,8 +51,60 @@ struct HeaderCreatePostView: View {
                         showPostModal = false
                     } savePost: {
                         showPostModal = false
+                        isUploading = true
+                        //onPost?()
+                        uploadSelectedPhotos { image in
+                            onUploaded?(image)
+                        }
                     }
-                                   
+                    .disabled(isUploading) // Disable the button while uploading
+                    ScrollView {
+                        Text("selectedPhotos:\(selectedPhotos.count)")
+                        TextEditor(text: $statusText)
+                            .frame(minHeight: 106)
+                        //                .border(Color.gray, width: 1)
+                        //                .cornerRadius(8)
+                            .onAppear {
+                                UITextView.appearance().backgroundColor = .clear
+                            }
+                            .overlay(content: {
+                                RoundedRectangle(cornerRadius: 8, style: .continuous)
+                                    .stroke(Color.gray.opacity(0.5))
+                                //                        .fill(Color.lightEnd)
+                            })
+                            .onPreferenceChange(TextViewHeightPreferenceKey.self) { height in
+                                DispatchQueue.main.async {
+                                    self.updateTextEditorHeight(height)
+                                }
+                            }
+                        // TextEditor(text: $statusText)
+                        LazyVGrid(columns: [
+                            GridItem(.flexible(minimum: 100, maximum: 200), spacing: 8),
+                            GridItem(.flexible(minimum: 100, maximum: 200), spacing: 8),
+                            // Add more GridItems for additional columns if needed
+                        ], spacing: 8) {
+                            
+                            ForEach(selectedPhotos, id: \.localIdentifier) { asset in
+                                
+                                // Text("image: \(asset.localIdentifier)")
+                                
+                                if let selectedPhoto = PhotoManager.loadPhoto(asset: asset) {
+                                    Image(uiImage: selectedPhoto)
+                                        .resizable()
+                                        .aspectRatio(contentMode: .fit)
+                                        .frame(width: 100, height: 100)
+                                        .background {
+                                            Color.red
+                                        }
+                                }
+                            }
+                        }
+                        
+                    }
+                    .onAppear {
+                        print("selectedPhotos: \(selectedPhotos)")
+                        print("selectedPhotos.count: \(selectedPhotos.count)")
+                    }
                 }
                 .frame(maxWidth:.infinity, maxHeight: .infinity, alignment: .top)
             }
@@ -53,11 +120,82 @@ struct HeaderCreatePostView: View {
                         showPhotoModal = false
                     } savePost: {
                         showPhotoModal = false
+                        // Add a slight delay before showing the "Create Post" view
+                        DispatchQueue.main.asyncAfter(deadline: .now() + 0.1) {
+                            showPostModal = true
+                        }
+                        
+                        print("selectedPhotos: \(selectedPhotos)")
+                        print("selectedPhotos.count: \(selectedPhotos.count)")
                     }
-                    
+                    ScrollView {
+                        PhotoGridView(selectedAssets: $selectedPhotos)
+                        //print($selectedPhotos)
+                    }
                 }
                 .frame(maxWidth:.infinity, maxHeight: .infinity, alignment: .top)
             }
+            
+            if isUploading {
+                ProgressView("Uploading...")
+                    .progressViewStyle(CircularProgressViewStyle(tint: .blue))
+            }
+        }
+    }
+    
+    private func updateTextEditorHeight(_ height: CGFloat) {
+        let minHeight: CGFloat = 106
+        let maxHeight: CGFloat = 500
+        let clampedHeight = min(max(height, minHeight), maxHeight)
+        if clampedHeight != textEditorHeight {
+            textEditorHeight = clampedHeight
+        }
+    }
+    
+    func uploadSelectedPhotos(onDone:@escaping (([String]) -> Void?)) {
+        let dispatchGroup = DispatchGroup()
+        var uploadedImageURLs: [String] = []
+        print("hi")
+        for asset in selectedPhotos {
+            dispatchGroup.enter()
+            print("hello")
+            PhotoManager.convertPHAssetToData(asset: asset) { data in
+                print("tello")
+                if let data = data {
+                    print("mello:\(data)")
+                    CloudinaryManager.uploadImage(data: data) { result, error in
+                        if let error = error {
+                            print(error.localizedDescription)
+                        } else {
+                            print("ahahahha")
+                            // Handle the upload result if needed
+                            // For example, you can store the uploaded image URL or do something else with it
+                            if let result = result {
+                                print("Image uploaded successfully. Result: \(result)")
+                                print("Public ID: \(result.publicId ?? "N/A")")
+                                print("URL: \(result.url ?? "N/A")")
+                                
+                                // Store the image URL in the uploadedImageURLs array
+                                if let imageURL = result.url {
+                                    uploadedImageURLs.append(imageURL)
+                                    onDone(uploadedImageURLs)
+                                    print("huuuhuhuhuh")
+                                }
+                            }
+                        }
+                        dispatchGroup.leave()
+                    }
+                } else {
+                    // Handle the case where image data couldn't be retrieved or converted
+                    dispatchGroup.leave()
+                }
+            }
+        }
+        
+        dispatchGroup.notify(queue: .main) {
+            // All uploads are complete
+            // Stop the loading indicator
+            isUploading = false
         }
     }
 }
@@ -69,7 +207,10 @@ struct HeaderCreatePostView: View {
 #Preview {
     HomeView()
 }
-
-
-//
-
+struct TextViewHeightPreferenceKey: PreferenceKey {
+    static var defaultValue: CGFloat = 0
+    
+    static func reduce(value: inout CGFloat, nextValue: () -> CGFloat) {
+        value = max(value, nextValue())
+    }
+}

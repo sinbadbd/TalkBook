@@ -24,7 +24,7 @@ struct ApiURL {
         
     }
     enum Post{
-        case allPost, timeLinePost
+        case createPost
     }
  
 }

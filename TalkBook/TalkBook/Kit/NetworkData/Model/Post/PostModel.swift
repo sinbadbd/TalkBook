@@ -7,41 +7,47 @@
 
 import Foundation
 
-// MARK: - PostModel
+// MARK: - Post
 struct PostModel: Model {
-    var success: Bool?
+    var code: Int?
+    var success: Bool
     var message: String?
-    var post: Posts?
-    var timeLinePosts: [Posts]?
+    var newPost: Posts?
 }
 
-// MARK: - Post
-struct Posts: Model {
-    var id, userID, desciption: String?
-    var likes: [String]?
-    var createdAt, updatedAt: String?
+// MARK: - NewPost
+struct Posts: Codable {
+    var images: [String]?
+    var likes, comments: [String]?
+    var id, content, createdAt, updatedAt: String?
     var v: Int?
 
     enum CodingKeys: String, CodingKey {
+        case images, likes, comments
         case id = "_id"
-        case userID = "userId"
-        case desciption, likes, createdAt, updatedAt
+        case content, createdAt, updatedAt
         case v = "__v"
     }
 }
-
 /*
  {
+ {
+     "code": 201,
      "success": true,
-     "message": "Post Fetch",
-     "post": {
-         "_id": "6539248bbc407d3d3a446e2d",
-         "userId": "6532aa616c3dc5b313cb2e19",
-         "desciption": "test",
+     "message": "Created post successfully",
+     "newPost": {
+         "images": [
+             "a",
+             "d"
+         ],
          "likes": [],
-         "createdAt": "2023-10-25T14:22:03.332Z",
-         "updatedAt": "2023-10-25T14:22:03.332Z",
+         "comments": [],
+         "_id": "6542749401fadb5116af624d",
+         "content": "tst",
+         "createdAt": "2023-11-01T15:53:56.542Z",
+         "updatedAt": "2023-11-01T15:53:56.542Z",
          "__v": 0
      }
+ }
  }
  */

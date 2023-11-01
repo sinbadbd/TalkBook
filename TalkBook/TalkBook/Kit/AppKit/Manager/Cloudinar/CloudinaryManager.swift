@@ -8,7 +8,7 @@
 import Foundation
 import Cloudinary
  
-struct CloudinaryUtility {
+struct CloudinaryManager {
     static func uploadImage(data: Data, completion: @escaping (CLDUploadResult?, Error?) -> Void) {
         let cloudinary = CloudinaryConfig.createCloudinary()
         let uploader = cloudinary.createUploader()
