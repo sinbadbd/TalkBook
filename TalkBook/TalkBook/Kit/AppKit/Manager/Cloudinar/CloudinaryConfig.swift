@@ -16,6 +16,7 @@ struct CloudinaryConfig {
     
     static func createCloudinary() -> CLDCloudinary {
         let config = CLDConfiguration(cloudName: cloudName, apiKey: apiKey, apiSecret: apiSecret)
+        print("config:\(config)")
         return CLDCloudinary(configuration: config)
     }
 }

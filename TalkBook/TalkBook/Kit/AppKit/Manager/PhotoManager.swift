@@ -50,4 +50,28 @@ struct PhotoManager {
         
         return image
     }
+    
+    static  func convertPHAssetToData(asset: PHAsset, completion: @escaping (Data?) -> Void) {
+        let imageManager = PHImageManager.default()
+        let requestOptions = PHImageRequestOptions()
+        requestOptions.isSynchronous = false
+        requestOptions.deliveryMode = .opportunistic
+        
+        // Request the image data for the PHAsset
+        imageManager.requestImage(for: asset, targetSize: PHImageManagerMaximumSize, contentMode: .default, options: requestOptions) { (image, info) in
+            if let image = image {
+                if let imageData = image.pngData() { // Convert UIImage to Data
+                    completion(imageData)
+                    print("xxxxx")
+                } else {
+                    // Handle the case where imageData couldn't be created from the UIImage
+                    completion(nil)
+                    print("zzzzz")
+                }
+            } else {
+                // Handle the case where
+            }
+        }
+    }
+                
 }

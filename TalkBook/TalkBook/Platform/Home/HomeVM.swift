@@ -26,13 +26,11 @@ class HomeVM: ObservableObject{
 extension HomeVM{
 
     
-    func createPost(statusText: String, iamges:[PHAsset]?){
+    func createPost(statusText: String, images: [String]?){
 
-        
-        
         let params: Parameters = [
             "content": statusText,
-            "images":  iamges ?? []
+            "images":  images ?? []
         ]
         print("params-login: \(params)")
         let url = String(format: ApiURL.Post.createPost.getURL())
