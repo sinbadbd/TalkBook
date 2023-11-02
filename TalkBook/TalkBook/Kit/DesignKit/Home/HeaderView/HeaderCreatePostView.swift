@@ -11,6 +11,7 @@ import Photos
 
 @MainActor
 struct HeaderCreatePostView: View {
+    
     @State private var textEditorHeight: CGFloat = 106
     @State private var showPostModal = false
     @State private var showPhotoModal = false
@@ -25,9 +26,10 @@ struct HeaderCreatePostView: View {
     init(selectedPhotos: [PHAsset], statusText: Binding<String>, /*onPost: (()->Void)?,*/ onUploaded: (([String])->Void)?) {
         self.selectedPhotos = selectedPhotos
         self._statusText = statusText
-//        self.onPost = onPost
+        //        self.onPost = onPost
         self.onUploaded = onUploaded
     }
+    
     var body: some View {
         
         HStack{
@@ -47,17 +49,19 @@ struct HeaderCreatePostView: View {
             .frame(maxWidth: .infinity, alignment: .leading)
             .fullScreenCover(isPresented: $showPostModal) {
                 VStack{
-                    SheetHeaderTopView(title: "Create Post") {
+                    SheetHeaderTopView(title: "Create Post", buttonTitle: "Post") {
                         showPostModal = false
                     } savePost: {
                         showPostModal = false
-                        isUploading = true
+                        //isUploading = true
                         //onPost?()
-                        uploadSelectedPhotos { image in
+                        PhotoManager.uploadSelectedPhotos(selectedPhotos: selectedPhotos) { image in
                             onUploaded?(image)
+                            statusText = ""
+                            selectedPhotos.removeAll()
                         }
                     }
-                    .disabled(isUploading) // Disable the button while uploading
+                    //.disabled(isUploading) // Disable the button while uploading
                     ScrollView {
                         Text("selectedPhotos:\(selectedPhotos.count)")
                         TextEditor(text: $statusText)
@@ -78,24 +82,25 @@ struct HeaderCreatePostView: View {
                                 }
                             }
                         // TextEditor(text: $statusText)
-                        LazyVGrid(columns: [
-                            GridItem(.flexible(minimum: 100, maximum: 200), spacing: 8),
-                            GridItem(.flexible(minimum: 100, maximum: 200), spacing: 8),
-                            // Add more GridItems for additional columns if needed
-                        ], spacing: 8) {
-                            
-                            ForEach(selectedPhotos, id: \.localIdentifier) { asset in
-                                
-                                // Text("image: \(asset.localIdentifier)")
-                                
-                                if let selectedPhoto = PhotoManager.loadPhoto(asset: asset) {
-                                    Image(uiImage: selectedPhoto)
-                                        .resizable()
-                                        .aspectRatio(contentMode: .fit)
-                                        .frame(width: 100, height: 100)
-                                        .background {
-                                            Color.red
-                                        }
+                        // Only show the image list if there are selected photos
+                        if !selectedPhotos.isEmpty {
+                            LazyVGrid(columns: [
+                                GridItem(.flexible(minimum: 100, maximum: 200), spacing: 8),
+                                GridItem(.flexible(minimum: 100, maximum: 200), spacing: 8),
+                                // Add more GridItems for additional columns if needed
+                            ], spacing: 8) {
+                                ForEach(selectedPhotos, id: \.localIdentifier) { asset in
+                                    Text("image: \(asset.localIdentifier)")
+                                    
+                                    if let selectedPhoto = PhotoManager.loadPhoto(asset: asset) {
+                                        Image(uiImage: selectedPhoto)
+                                            .resizable()
+                                            .aspectRatio(contentMode: .fit)
+                                            .frame(width: 100, height: 100)
+                                            .background {
+                                                Color.red
+                                            }
+                                    }
                                 }
                             }
                         }
@@ -116,8 +121,9 @@ struct HeaderCreatePostView: View {
             }
             .fullScreenCover(isPresented: $showPhotoModal) {
                 VStack{
-                    SheetHeaderTopView(title: "Camera roll") {
+                    SheetHeaderTopView(title: "Camera roll", buttonTitle: "Done") {
                         showPhotoModal = false
+                        selectedPhotos.removeAll()
                     } savePost: {
                         showPhotoModal = false
                         // Add a slight delay before showing the "Create Post" view
@@ -128,6 +134,9 @@ struct HeaderCreatePostView: View {
                         print("selectedPhotos: \(selectedPhotos)")
                         print("selectedPhotos.count: \(selectedPhotos.count)")
                     }
+                    //.disabled(selectedPhotos.count > 0 ? false : true)
+           
+                    
                     ScrollView {
                         PhotoGridView(selectedAssets: $selectedPhotos)
                         //print($selectedPhotos)
@@ -136,10 +145,10 @@ struct HeaderCreatePostView: View {
                 .frame(maxWidth:.infinity, maxHeight: .infinity, alignment: .top)
             }
             
-            if isUploading {
-                ProgressView("Uploading...")
-                    .progressViewStyle(CircularProgressViewStyle(tint: .blue))
-            }
+            //            if isUploading {
+            //                ProgressView("Uploading...")
+            //                    .progressViewStyle(CircularProgressViewStyle(tint: .blue))
+            //            }
         }
     }
     
@@ -149,53 +158,6 @@ struct HeaderCreatePostView: View {
         let clampedHeight = min(max(height, minHeight), maxHeight)
         if clampedHeight != textEditorHeight {
             textEditorHeight = clampedHeight
-        }
-    }
-    
-    func uploadSelectedPhotos(onDone:@escaping (([String]) -> Void?)) {
-        let dispatchGroup = DispatchGroup()
-        var uploadedImageURLs: [String] = []
-        print("hi")
-        for asset in selectedPhotos {
-            dispatchGroup.enter()
-            print("hello")
-            PhotoManager.convertPHAssetToData(asset: asset) { data in
-                print("tello")
-                if let data = data {
-                    print("mello:\(data)")
-                    CloudinaryManager.uploadImage(data: data) { result, error in
-                        if let error = error {
-                            print(error.localizedDescription)
-                        } else {
-                            print("ahahahha")
-                            // Handle the upload result if needed
-                            // For example, you can store the uploaded image URL or do something else with it
-                            if let result = result {
-                                print("Image uploaded successfully. Result: \(result)")
-                                print("Public ID: \(result.publicId ?? "N/A")")
-                                print("URL: \(result.url ?? "N/A")")
-                                
-                                // Store the image URL in the uploadedImageURLs array
-                                if let imageURL = result.url {
-                                    uploadedImageURLs.append(imageURL)
-                                    onDone(uploadedImageURLs)
-                                    print("huuuhuhuhuh")
-                                }
-                            }
-                        }
-                        dispatchGroup.leave()
-                    }
-                } else {
-                    // Handle the case where image data couldn't be retrieved or converted
-                    dispatchGroup.leave()
-                }
-            }
-        }
-        
-        dispatchGroup.notify(queue: .main) {
-            // All uploads are complete
-            // Stop the loading indicator
-            isUploading = false
         }
     }
 }

@@ -10,28 +10,40 @@ import KitBase
 
 struct SheetHeaderTopView: View {
     
-    let title: String
+    enum ButtonType{
+        case post
+        case camera
+        case done
+    }
     
+    let title: String
+    let buttonTitle: String
     let onClose: () -> Void
     let savePost: () -> Void
+//    let type: but
     var body: some View {
         HStack{
+            
             Button {
                 onClose()
             } label: {
                 KBButtonCircleView(iconName: "xmark", foregroundColor: .black
                                    , backgroundColor: .clear, borderColor: .clear, width: 10, height: 10, fontSize: 20)
             }
+            
             Spacer()
+            
             Text(title)
                 .bold()
+            
             Spacer()
+            
             Button {
                 savePost()
             } label: {
-                Text("Post")
+                Text(buttonTitle)
             }
-            .buttonStyle(KitBaseButtonStyle(size: .sm, variant: .solid, backgroundColor: .red, foregroundColor: .white))
+            .buttonStyle(KitBaseButtonStyle(size: .xs, variant: .solid, backgroundColor: .clear, borderColor: .red, foregroundColor: .black, borderWidth: 1))
             
         }
         .padding(.horizontal, 16)
@@ -48,15 +60,13 @@ struct SheetHeaderTopView: View {
         .background {
             Color("gray3")
         }
-        
-        
     }
 }
 
 #Preview {
-    SheetHeaderTopView(title: "tewst") {
+    SheetHeaderTopView(title: "tewst", buttonTitle: "post") {
         
-    } savePost: {
+    } savePost: { 
             
     }
 
