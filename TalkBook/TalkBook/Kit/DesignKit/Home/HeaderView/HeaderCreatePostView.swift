@@ -15,7 +15,6 @@ struct HeaderCreatePostView: View {
     @State private var textEditorHeight: CGFloat = 106
     @State private var showPostModal = false
     @State private var showPhotoModal = false
-    //    @State private var statusText = "A "
     @State private var selectedPhotos: [PHAsset] = []
     @Binding var statusText: String
     @State private var isUploading = false // Loading indicator state
@@ -26,7 +25,7 @@ struct HeaderCreatePostView: View {
     init(selectedPhotos: [PHAsset], statusText: Binding<String>, /*onPost: (()->Void)?,*/ onUploaded: (([String])->Void)?) {
         self.selectedPhotos = selectedPhotos
         self._statusText = statusText
-        //        self.onPost = onPost
+        //self.onPost = onPost
         self.onUploaded = onUploaded
     }
     
@@ -38,7 +37,6 @@ struct HeaderCreatePostView: View {
                 .aspectRatio(contentMode: .fill)
                 .frame(width: 40, height: 40)
                 .clipShape(Circle())
-            
             Button {
                 showPostModal = true
             } label: {
@@ -135,7 +133,7 @@ struct HeaderCreatePostView: View {
                         print("selectedPhotos.count: \(selectedPhotos.count)")
                     }
                     //.disabled(selectedPhotos.count > 0 ? false : true)
-           
+                    
                     
                     ScrollView {
                         PhotoGridView(selectedAssets: $selectedPhotos)

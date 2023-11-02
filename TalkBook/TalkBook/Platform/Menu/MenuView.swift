@@ -17,6 +17,7 @@ struct MenuView: View {
             auth.logout { success in
                 if success == true {
                     appState = .login
+                    Provider.access_token = ""
                     UserDefaultsManager.shared.isUserLoggedIn = false
                 }else {
                     print("Something wrong!")

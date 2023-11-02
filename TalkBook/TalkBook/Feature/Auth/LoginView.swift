@@ -48,7 +48,7 @@ struct LoginView: View {
                                     
                                     print("Login success")
                                     UserDefaultsManager.shared.isUserLoggedIn = true
-                                    UserDefaults.standard.set(Provider.session_id, forKey: "session_id")
+                                    UserDefaults.standard.set(Provider.access_token, forKey: "token")
                                     appState = .dashboard
                                 }
                             }

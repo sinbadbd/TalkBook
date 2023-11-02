@@ -8,12 +8,12 @@
 import Foundation
 
 struct Provider {
-    static var session_id: String? {
+    static var access_token: String {
         get {
-            return UserDefaults.standard.string(forKey: "session_id")
+            return UserDefaults.standard.string(forKey: "token") ?? ""
         }
         set {
-            UserDefaults.standard.set(newValue, forKey: "session_id")
+            UserDefaults.standard.set(newValue, forKey: "token")
         }
     }
 }
