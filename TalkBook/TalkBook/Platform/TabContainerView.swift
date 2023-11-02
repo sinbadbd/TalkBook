@@ -29,7 +29,7 @@ struct TabContainerView: View {
                 .tabItem {
                     Label("Notifications", systemImage: "bell").foregroundColor(.red)
                 }
-            MenuView()
+            MenuView(appState: $appState)
                 .tabItem {
                     Label("Menu", systemImage: "gear").foregroundColor(.red)
                 }

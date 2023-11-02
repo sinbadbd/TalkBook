@@ -10,7 +10,7 @@ import KitBase
 
 struct LoginView: View {
     
-    @ObservedObject private var loginVM: LoginVM = .init()
+    @ObservedObject private var authVM: AuthVM = .init()
     
     @State private var email: String = ""
     @State private var password: String = ""
@@ -32,12 +32,8 @@ struct LoginView: View {
                     loginView
                     
                     Button("Login", action: {
-                        
-                        print("Login success")
-                        UserDefaultsManager.shared.isUserLoggedIn = true
-                        UserDefaults.standard.set(Provider.session_id, forKey: "session_id")
-                        appState = .dashboard
-                        isShwoModal =  loginVM.isSuccess
+
+                        isShwoModal =  authVM.isSuccess
                         print("isShwoModal: \(isShwoModal)")
                         //registraionVM.isSuccess = false
                         
@@ -47,7 +43,7 @@ struct LoginView: View {
                             focusedField = .passwordField
                         }else {
                             
-                            loginVM.loginApiCall(email: email, password: password) { user in
+                            authVM.loginApiCall(email: email, password: password) { user in
                                 if user?.success == true {
                                     
                                     print("Login success")
@@ -72,12 +68,12 @@ struct LoginView: View {
                     })
                     .buttonStyle(KitBaseButtonStyle(size: .lg, variant: .solid, backgroundColor: .red, borderColor: .clear, foregroundColor: .white, buttonWidth: UIScreen.main.bounds.width * 0.8, borderWidth: 1))
                     
-                    Text(loginVM.isSuccess == false ? loginVM.user?.message ?? "" : "")
+                    Text(authVM.isSuccess == false ? authVM.user?.message ?? "" : "")
                         .foregroundColor(.red)
                 }
                 .padding(.horizontal, 16)
                 
-                if loginVM.isSuccess{
+                if authVM.isSuccess{
                     LoadingView(progressColor: .red)
                         .frame(maxWidth: .infinity, maxHeight: .infinity)
                 }
@@ -92,7 +88,7 @@ struct LoginView: View {
         VStack(alignment: .leading, spacing: 8){
             
             VStack(alignment: .leading){
-                KitBaseFormField(title: "Email", error: loginVM.error?.email, isValid: $loginVM.isSuccess ) {
+                KitBaseFormField(title: "Email", error: authVM.error?.email, isValid: $authVM.isSuccess ) {
                     TextField("Email", text: $email)
                         .focused($focusedField, equals: .emailField)
                 }
@@ -103,7 +99,7 @@ struct LoginView: View {
                 }
             }
             VStack(alignment: .leading){
-                KitBaseFormField(title: "Password", error: loginVM.error?.password, isValid: $loginVM.isSuccess ) {
+                KitBaseFormField(title: "Password", error: authVM.error?.password, isValid: $authVM.isSuccess ) {
                     SecureField("Password", text: $password)
                         .keyboardType(.namePhonePad)
                         .focused($focusedField, equals: .passwordField)

@@ -18,7 +18,7 @@ struct ApiURL {
         case settings
     }
     enum Auth {
-        case register, login
+        case register, login, logout
     }
     enum User{
         

@@ -15,7 +15,9 @@ struct TalkBookApp: App {
 
     var body: some Scene {
         WindowGroup {
-            ContentView(appState: $appState)
+            //NavigationView {
+                ContentView(appState: $appState)
+            //}
         }
     }
 }

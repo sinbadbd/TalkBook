@@ -6,13 +6,30 @@
 //
 
 import SwiftUI
+import KitBase
 
 struct MenuView: View {
+    
+    @ObservedObject private var auth: AuthVM = .init()
+    @Binding var appState: AppState
     var body: some View {
-        Text(/*@START_MENU_TOKEN@*/"Hello, World!"/*@END_MENU_TOKEN@*/)
+        Button {
+            auth.logout { success in
+                if success == true {
+                    appState = .login
+                    UserDefaultsManager.shared.isUserLoggedIn = false
+                }else {
+                    print("Something wrong!")
+                }
+            }
+        } label: {
+            Text("logout")
+        }
+        .buttonStyle(KitBaseButtonStyle(size: .lg, variant: .solid, backgroundColor: .red, foregroundColor: .white))
+        
     }
 }
 
 #Preview {
-    MenuView()
+    MenuView(appState: .constant(.dashboard))
 }

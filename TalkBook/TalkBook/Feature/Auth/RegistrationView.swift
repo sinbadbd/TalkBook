@@ -20,7 +20,7 @@ enum Field: Hashable {
 struct RegistrationView: View {
     
     
-    @ObservedObject private var registraionVM: RegistrationVM = .init()
+    @ObservedObject private var authVM: AuthVM = .init()
 //    @Environment(\.presentationMode) var presentationMode
     
 //    @Environment(\.colorScheme) var colorScheme: ColorScheme
@@ -67,7 +67,7 @@ struct RegistrationView: View {
                         } else if fullName.isEmpty {
                             focusedField = .fullNameField
                         }else {
-                            registraionVM.registrationApiCall(
+                            authVM.registrationApiCall(
                                 username: username,
                                 password: password,
                                 fullname:fullName,
@@ -79,7 +79,7 @@ struct RegistrationView: View {
                         }
                     })
                     .buttonStyle(KitBaseButtonStyle(size: .lg, variant: .solid, backgroundColor: .white, borderColor: .red, foregroundColor: .gray,buttonWidth: UIScreen.main.bounds.width * 0.7 ,borderWidth: 1))
-                    Text(registraionVM.isSuccess == false ? registraionVM.user?.message ?? "" : "")
+                    Text(authVM.isSuccess == false ? authVM.user?.message ?? "" : "")
                         .foregroundColor(.red)
                 }
             }
@@ -89,7 +89,7 @@ struct RegistrationView: View {
             .background {  Color.clear }
             // .padding(.horizontal, 16)
             
-            if registraionVM.isSuccess{
+            if authVM.isSuccess{
                 LoadingView(progressColor: .red)
                     .frame(maxWidth: .infinity, maxHeight: .infinity)
             }
@@ -99,7 +99,7 @@ struct RegistrationView: View {
     private var registrationView: some View{
         VStack(alignment: .leading, spacing: 8){
             VStack(alignment: .leading){
-                KitBaseFormField(title: "Username", error: registraionVM.error?.username, isValid: $registraionVM.isSuccess) {
+                KitBaseFormField(title: "Username", error: authVM.error?.username, isValid: $authVM.isSuccess) {
                     TextField("username", text: $username)
                         .focused($focusedField, equals: .usernameField)
                 }
@@ -111,7 +111,7 @@ struct RegistrationView: View {
                 }
             }
             VStack(alignment: .leading){
-                KitBaseFormField(title: "Password", error: registraionVM.error?.password, isValid: $registraionVM.isSuccess ) {
+                KitBaseFormField(title: "Password", error: authVM.error?.password, isValid: $authVM.isSuccess ) {
                     SecureField("Password", text: $password)
                         .keyboardType(.namePhonePad)
                         .focused($focusedField, equals: .passwordField)
@@ -124,7 +124,7 @@ struct RegistrationView: View {
                 }
             }
             VStack(alignment: .leading){
-                KitBaseFormField(title: "Email", error: registraionVM.error?.email, isValid: $registraionVM.isSuccess ) {
+                KitBaseFormField(title: "Email", error: authVM.error?.email, isValid: $authVM.isSuccess ) {
                     TextField("Email", text: $email)
                         .focused($focusedField, equals: .emailField)
                 }
@@ -135,7 +135,7 @@ struct RegistrationView: View {
                 }
             }
             VStack(alignment: .leading){
-                KitBaseFormField(title: "Full Name", error: registraionVM.error?.fullname, isValid: $registraionVM.isSuccess ) {
+                KitBaseFormField(title: "Full Name", error: authVM.error?.fullname, isValid: $authVM.isSuccess ) {
                     TextField("Full name", text: $fullName)
                         .focused($focusedField, equals: .fullNameField)
                 }
