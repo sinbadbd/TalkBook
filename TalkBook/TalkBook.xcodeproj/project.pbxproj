@@ -21,6 +21,7 @@
 		1D1A2DF62AF1E124001FD271 /* PhotoGridView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1D1A2DF52AF1E124001FD271 /* PhotoGridView.swift */; };
 		1D5A687E2AF3805A0049AE68 /* MoreVM.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1D5A687D2AF3805A0049AE68 /* MoreVM.swift */; };
 		1D5A68802AF3813F0049AE68 /* AuthVM.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1D5A687F2AF3813F0049AE68 /* AuthVM.swift */; };
+		1D5A68832AF3BC390049AE68 /* Kingfisher in Frameworks */ = {isa = PBXBuildFile; productRef = 1D5A68822AF3BC390049AE68 /* Kingfisher */; };
 		1D61295A2AEC3201003C3854 /* AppState.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1D6129592AEC3201003C3854 /* AppState.swift */; };
 		1D6129602AECCCA0003C3854 /* SplashScreen.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1D61295F2AECCCA0003C3854 /* SplashScreen.swift */; };
 		1D6129632AECCCCE003C3854 /* OnboardingScreen.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1D6129622AECCCCE003C3854 /* OnboardingScreen.swift */; };
@@ -140,6 +141,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				1D5A68832AF3BC390049AE68 /* Kingfisher in Frameworks */,
 				1D61298A2AEECB6A003C3854 /* NetworkKit in Frameworks */,
 				1D6CB7702AEB7BE100CE713F /* KitBase in Frameworks */,
 				1D1A2DD92AF12672001FD271 /* Cloudinary in Frameworks */,
@@ -539,6 +541,7 @@
 				1D6CB76F2AEB7BE100CE713F /* KitBase */,
 				1D6129892AEECB6A003C3854 /* NetworkKit */,
 				1D1A2DD82AF12672001FD271 /* Cloudinary */,
+				1D5A68822AF3BC390049AE68 /* Kingfisher */,
 			);
 			productName = TalkBook;
 			productReference = 1D858AC92AE43C4800FE6AC4 /* TalkBook.app */;
@@ -616,6 +619,7 @@
 				1D6CB76E2AEB7BE100CE713F /* XCRemoteSwiftPackageReference "KitBase" */,
 				1D6129882AEECB6A003C3854 /* XCRemoteSwiftPackageReference "NetworkKit" */,
 				1D1A2DD72AF12672001FD271 /* XCRemoteSwiftPackageReference "cloudinary_ios" */,
+				1D5A68812AF3BC390049AE68 /* XCRemoteSwiftPackageReference "Kingfisher" */,
 			);
 			productRefGroup = 1D858ACA2AE43C4800FE6AC4 /* Products */;
 			projectDirPath = "";
@@ -1073,6 +1077,14 @@
 				minimumVersion = 4.2.0;
 			};
 		};
+		1D5A68812AF3BC390049AE68 /* XCRemoteSwiftPackageReference "Kingfisher" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/onevcat/Kingfisher.git";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 7.10.0;
+			};
+		};
 		1D6129882AEECB6A003C3854 /* XCRemoteSwiftPackageReference "NetworkKit" */ = {
 			isa = XCRemoteSwiftPackageReference;
 			repositoryURL = "https://github.com/sinbadbd/NetworkKit";
@@ -1096,6 +1108,11 @@
 			isa = XCSwiftPackageProductDependency;
 			package = 1D1A2DD72AF12672001FD271 /* XCRemoteSwiftPackageReference "cloudinary_ios" */;
 			productName = Cloudinary;
+		};
+		1D5A68822AF3BC390049AE68 /* Kingfisher */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 1D5A68812AF3BC390049AE68 /* XCRemoteSwiftPackageReference "Kingfisher" */;
+			productName = Kingfisher;
 		};
 		1D6129892AEECB6A003C3854 /* NetworkKit */ = {
 			isa = XCSwiftPackageProductDependency;

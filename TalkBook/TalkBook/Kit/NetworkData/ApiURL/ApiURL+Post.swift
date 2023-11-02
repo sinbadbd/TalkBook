@@ -13,6 +13,7 @@ extension ApiURL.Post {
         var endPart = ""
         switch self {
         case .createPost: endPart = "createPost"
+        case .getPosts: endPart = "getPosts"
         }
         return "\(baseURL)/\(endPart)"
     }

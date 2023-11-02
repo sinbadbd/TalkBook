@@ -12,7 +12,8 @@ struct PostModel: Model {
     var code: Int?
     var success: Bool
     var message: String?
-    var newPost: Posts?
+    var newPost: Posts? // For create new post
+    var posts: [Posts]? // For get all post []
 }
 
 // MARK: - NewPost

@@ -83,7 +83,8 @@ struct PhotoManager {
             dispatchGroup.enter()
             
             // Inside this loop, you should call `convertPHAssetToData` and enter the `dispatchGroup` when it completes.
-            PhotoManager.convertPHAssetToData(asset: asset) { data in
+            PhotoManager.convertPHAssetToData(asset: asset) { [weak self] data in
+                guard let self = self else { return }
                 if let data = data {
                     let imageData = Data(data)
                     CloudinaryManager.uploadImage(data: imageData) { result, error in
