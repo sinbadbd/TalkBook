@@ -53,7 +53,7 @@ struct HeaderCreatePostView: View {
                         showPostModal = false
                         //isUploading = true
                         //onPost?()
-                        PhotoManager.uploadSelectedPhotos(selectedPhotos: selectedPhotos) { image in
+                        PhotoManager.shared.uploadSelectedPhotos(selectedPhotos: selectedPhotos) { image in
                             onUploaded?(image)
                             statusText = ""
                             selectedPhotos.removeAll()
@@ -90,7 +90,7 @@ struct HeaderCreatePostView: View {
                                 ForEach(selectedPhotos, id: \.localIdentifier) { asset in
                                     Text("image: \(asset.localIdentifier)")
                                     
-                                    if let selectedPhoto = PhotoManager.loadPhoto(asset: asset) {
+                                    if let selectedPhoto = PhotoManager.shared.loadPhoto(asset: asset) {
                                         Image(uiImage: selectedPhoto)
                                             .resizable()
                                             .aspectRatio(contentMode: .fit)

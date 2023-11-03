@@ -60,7 +60,7 @@ struct PhotoGridView: View {
                 }
             }
             .onAppear {
-                PhotoManager.requestPhotoLibraryPermission { granted in
+                PhotoManager.shared.requestPhotoLibraryPermission { granted in
                     if !granted {
                         permissionDenied = true
                     } else {
@@ -72,11 +72,11 @@ struct PhotoGridView: View {
     }
     
     
-    func fetchPhotos() {
-        photos = PhotoManager.fetchPhotos()
+    @MainActor func fetchPhotos() {
+        photos = PhotoManager.shared.fetchPhotos()
     }
     
-    func loadPhoto(asset: PHAsset) -> UIImage {
-        return PhotoManager.loadPhoto(asset: asset) ?? UIImage()
+    @MainActor func loadPhoto(asset: PHAsset) -> UIImage {
+        return  PhotoManager.shared.loadPhoto(asset: asset) ?? UIImage()
     }
 }

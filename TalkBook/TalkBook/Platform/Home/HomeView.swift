@@ -45,6 +45,7 @@ struct HomeView: View {
                                     VStack{
                                         Text(posts.content ?? "no posts")
                                         image(image: posts.images ?? [])
+//                                            .frame(height: 100)
                                     }
                                 }
                             }
