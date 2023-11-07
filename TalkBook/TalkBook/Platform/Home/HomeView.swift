@@ -21,6 +21,7 @@ struct HomeView: View {
     
     @State private var isUploading = false // Loading indicator state
     
+    @StateObject private var authVM: AuthVM = .init()
     
     init(){
         print("Home View")
@@ -35,24 +36,28 @@ struct HomeView: View {
                     ScrollView{
                         VStack{
                             HeaderView()
+                                .padding(.horizontal, 16)
                             
                             HeaderCreatePostView(selectedPhotos: selectedPhotos, statusText: $statusText) { data in
-                                homeVM.createPost(statusText: statusText, images: data)
+//                                homeVM.createPost(statusText: statusText, images: data)
+                                homeVM.createPost(statusText: statusText, images: data) {
+                                    homeVM.getPosts()
+                                }
                                 self.statusText = ""
                             }
+                            
+                            .padding(.horizontal, 16)
                             VStack{
                                 ForEach(homeVM.allPosts, id: \.id) { posts in
                                     VStack{
-                                        Text(posts.content ?? "no posts")
-                                        image(image: posts.images ?? [])
-//                                            .frame(height: 100)
+                                        PostsView(post: posts)
                                     }
                                 }
                             }
                             
                         }
                     }
-                    .padding(.horizontal, 16)
+                    
                 }
                 .frame(maxWidth: .infinity, maxHeight: .infinity, alignment: .top)
             }

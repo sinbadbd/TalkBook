@@ -91,7 +91,7 @@ class PhotoManager {
                 if let data = data {
                     let imageData = Data(data)
                     CloudinaryManager.uploadImage(data: imageData) { result, error in
-                        // Log asset and upload progress
+                        // Log asset cand upload progress
                         print("Processing asset \(index + 1)")
                         
                         if let error = error {

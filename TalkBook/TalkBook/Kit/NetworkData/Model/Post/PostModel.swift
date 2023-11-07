@@ -20,13 +20,13 @@ struct PostModel: Model {
 struct Posts: Codable {
     var images: [String]?
     var likes, comments: [String]?
-    var id, content, createdAt, updatedAt: String?
+    var id, postContent, createdAt, updatedAt: String?
     var v: Int?
 
     enum CodingKeys: String, CodingKey {
         case images, likes, comments
         case id = "_id"
-        case content, createdAt, updatedAt
+        case postContent, createdAt, updatedAt
         case v = "__v"
     }
 }
