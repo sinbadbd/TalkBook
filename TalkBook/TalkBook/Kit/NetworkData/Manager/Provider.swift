@@ -16,4 +16,12 @@ struct Provider {
             UserDefaults.standard.set(newValue, forKey: "token")
         }
     }
+    static var userId: String{
+        get{
+           return UserDefaults.standard.string(forKey: "userId") ?? ""
+        }
+        set{
+            UserDefaults.standard.set(newValue, forKey: "userId")
+        }
+    }
 }

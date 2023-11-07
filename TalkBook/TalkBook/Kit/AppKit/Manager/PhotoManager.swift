@@ -8,12 +8,16 @@
 import UIKit
 import Photos
 
-struct PhotoManager {
-    static private var permissionDenied = false
-    static private var selectedPhotos: [PHAsset] = []
-    static private var isUploading: Bool = false
+@MainActor
+class PhotoManager {
     
-    static func requestPhotoLibraryPermission(completion: @escaping (Bool) -> Void) {
+    public static var shared = PhotoManager()
+    
+    private var permissionDenied = false
+    private var selectedPhotos: [PHAsset] = []
+    private var isUploading: Bool = false
+    
+    func requestPhotoLibraryPermission(completion: @escaping (Bool) -> Void) {
         PHPhotoLibrary.requestAuthorization { status in
             switch status {
             case .authorized:
@@ -24,7 +28,7 @@ struct PhotoManager {
         }
     }
     
-    static func fetchPhotos() -> [PHAsset] {
+    func fetchPhotos() -> [PHAsset] {
         var photos: [PHAsset] = []
         
         let fetchOptions = PHFetchOptions()
@@ -38,7 +42,7 @@ struct PhotoManager {
     }
     
     
-    static func loadPhoto(asset: PHAsset) -> UIImage? {
+    func loadPhoto(asset: PHAsset) -> UIImage? {
         var image: UIImage?
         let requestOptions = PHImageRequestOptions()
         requestOptions.isSynchronous = true
@@ -53,7 +57,7 @@ struct PhotoManager {
         return image
     }
     
-    static  func convertPHAssetToData(asset: PHAsset, completion: @escaping (Data?) -> Void) {
+    func convertPHAssetToData(asset: PHAsset, completion: @escaping (Data?) -> Void?) {
         let imageManager = PHImageManager.default()
         let requestOptions = PHImageRequestOptions()
         requestOptions.isSynchronous = false
@@ -75,21 +79,25 @@ struct PhotoManager {
             }
         }
     }
-    static func uploadSelectedPhotos(selectedPhotos: [PHAsset], onDone: @escaping ([String]) -> Void) {
+    
+    func uploadSelectedPhotos(selectedPhotos: [PHAsset], onDone: @escaping ([String]) -> Void) {
         let dispatchGroup = DispatchGroup()
         var uploadedImageURLs: [String] = []
         
-        for asset in selectedPhotos {
+        for (index, asset) in selectedPhotos.enumerated() {
             dispatchGroup.enter()
             
-            // Inside this loop, you should call `convertPHAssetToData` and enter the `dispatchGroup` when it completes.
-            PhotoManager.convertPHAssetToData(asset: asset) { data in
+            PhotoManager.shared.convertPHAssetToData(asset: asset) { data in
                 if let data = data {
                     let imageData = Data(data)
                     CloudinaryManager.uploadImage(data: imageData) { result, error in
+                        // Log asset cand upload progress
+                        print("Processing asset \(index + 1)")
+                        
                         if let error = error {
-                            print(error.localizedDescription)
+                            print("Image \(index + 1) upload failed: \(error.localizedDescription)")
                         } else if let result = result {
+                            print("Image \(index + 1) uploaded successfully: \(result)")
                             print("Image uploaded successfully. Result: \(result)")
                             print("Public ID: \(result.publicId ?? "N/A")")
                             print("URL: \(result.url ?? "N/A")")
@@ -97,11 +105,12 @@ struct PhotoManager {
                                 uploadedImageURLs.append(imageURL)
                             }
                         }
-                        
-                        dispatchGroup.leave() // Leave the dispatch group when image is uploaded.
+                        dispatchGroup.leave()
                     }
                 } else {
-                    dispatchGroup.leave() // Leave the dispatch group if there's an issue with the asset.
+                    // Log asset processing failure
+                    print("Image \(index + 1) processing failed")
+                    dispatchGroup.leave()
                 }
             }
         }
@@ -111,6 +120,9 @@ struct PhotoManager {
             onDone(uploadedImageURLs)
         }
     }
+    
+    
+    
 }
 // Helper function to combine multiple image data into one Data object
 extension Data {

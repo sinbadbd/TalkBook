@@ -8,10 +8,11 @@
 import SwiftUI
 import Cloudinary
 import Photos
+import Kingfisher
 
 struct HomeView: View {
     
-    @ObservedObject private var homeVM: HomeVM = .init()
+    @StateObject private var homeVM: HomeVM = .init()
     
     @State private var image: UIImage? = nil
     @State private var imageURL: String? = nil
@@ -20,6 +21,7 @@ struct HomeView: View {
     
     @State private var isUploading = false // Loading indicator state
     
+    @StateObject private var authVM: AuthVM = .init()
     
     init(){
         print("Home View")
@@ -31,22 +33,63 @@ struct HomeView: View {
         NavigationStack{
             ZStack{
                 VStack {
-                    VStack{
-                        HeaderView()
-                        
-                        HeaderCreatePostView(selectedPhotos: selectedPhotos, statusText: $statusText) { data in
-                                homeVM.createPost(statusText: statusText, images: data)
-                            self.statusText = ""
-                            //selectedPhotos = []
+                    ScrollView{
+                        VStack{
+                            HeaderView()
+                                .padding(.horizontal, 16)
+                            
+                            HeaderCreatePostView(selectedPhotos: selectedPhotos, statusText: $statusText) { data in
+//                                homeVM.createPost(statusText: statusText, images: data)
+                                homeVM.createPost(statusText: statusText, images: data) {
+                                    homeVM.getPosts()
+                                }
+                                self.statusText = ""
+                            }
+                            
+                            .padding(.horizontal, 16)
+                            VStack{
+                                ForEach(homeVM.allPosts, id: \.id) { posts in
+                                    VStack{
+                                        PostsView(post: posts)
+                                    }
+                                }
+                            }
+                            
                         }
                     }
-                    .padding(.horizontal, 16)
+                    
                 }
                 .frame(maxWidth: .infinity, maxHeight: .infinity, alignment: .top)
             }
+            .onAppear(perform: {
+                homeVM.getPosts()
+            })
+            .refreshable {
+                homeVM.getPosts()
+            }
         }
     }
-
+    
+    @ViewBuilder
+    func image(image: [String]) -> some View {
+        VStack{
+            VStack {
+                ForEach(image, id: \.self) { imageURL in
+                    KFImage.url(URL(string: imageURL))
+//                             .placeholder(placeholderImage)
+//                             .setProcessor(processor)
+                             .loadDiskFileSynchronously()
+                             .cacheMemoryOnly()
+                             .fade(duration: 0.25)
+//                             .lowDataModeSource(.network(lowResolutionURL))
+                             .onProgress { receivedSize, totalSize in  }
+                             .onSuccess { result in  }
+                             .onFailure { error in }
+                }
+            }
+        }
+    }
+    
 }
 #Preview {
     HomeView()

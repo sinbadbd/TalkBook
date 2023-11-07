@@ -85,6 +85,7 @@ class AuthVM: ObservableObject {
                     print("userModel: \(self.userModel)")
                     
                     Provider.access_token =  self.user?.accessToken ?? ""
+                    Provider.userId =  self.user?.user?.id ?? ""
                     completion(response)
                     
                 })
