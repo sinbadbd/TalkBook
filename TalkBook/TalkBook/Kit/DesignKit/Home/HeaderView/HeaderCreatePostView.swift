@@ -148,6 +148,10 @@ struct HeaderCreatePostView: View {
             //                    .progressViewStyle(CircularProgressViewStyle(tint: .blue))
             //            }
         }
+        .padding(.horizontal, 16)
+        .background {
+            Color.white
+        }
     }
     
     private func updateTextEditorHeight(_ height: CGFloat) {

@@ -18,6 +18,9 @@ struct MenuView: View {
                 if success == true {
                     appState = .login
                     Provider.access_token = ""
+                    Provider.userId = ""
+                    print("Provider.access_token: \(Provider.access_token)")
+                    print("Provider.userId: \(Provider.userId)")
                     UserDefaultsManager.shared.isUserLoggedIn = false
                 }else {
                     print("Something wrong!")

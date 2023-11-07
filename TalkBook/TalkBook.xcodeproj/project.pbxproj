@@ -50,6 +50,11 @@
 		1D6CB7652AEB73AC00CE713F /* HomeVM.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1D6CB7642AEB73AC00CE713F /* HomeVM.swift */; };
 		1D6CB7702AEB7BE100CE713F /* KitBase in Frameworks */ = {isa = PBXBuildFile; productRef = 1D6CB76F2AEB7BE100CE713F /* KitBase */; };
 		1D6CB7722AEB81A200CE713F /* Registration.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1D6CB7712AEB81A200CE713F /* Registration.swift */; };
+		1D6E6CDF2AFAB8DC00292740 /* PostsProfileHeaderView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1D6E6CDE2AFAB8DC00292740 /* PostsProfileHeaderView.swift */; };
+		1D6E6CE12AFAB9A400292740 /* PostLikeCommentCounterView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1D6E6CE02AFAB9A400292740 /* PostLikeCommentCounterView.swift */; };
+		1D6E6CE32AFABA0C00292740 /* PostButtonView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1D6E6CE22AFABA0C00292740 /* PostButtonView.swift */; };
+		1D6E6CE52AFABACF00292740 /* PostImagesView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1D6E6CE42AFABACF00292740 /* PostImagesView.swift */; };
+		1D6E6CE72AFABB3900292740 /* HomeVM+API.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1D6E6CE62AFABB3900292740 /* HomeVM+API.swift */; };
 		1D858ACD2AE43C4800FE6AC4 /* TalkBookApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1D858ACC2AE43C4800FE6AC4 /* TalkBookApp.swift */; };
 		1D858ACF2AE43C4800FE6AC4 /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1D858ACE2AE43C4800FE6AC4 /* ContentView.swift */; };
 		1D858AD12AE43C4A00FE6AC4 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 1D858AD02AE43C4A00FE6AC4 /* Assets.xcassets */; };
@@ -121,6 +126,11 @@
 		1D6CB75F2AEB726600CE713F /* PostModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PostModel.swift; sourceTree = "<group>"; };
 		1D6CB7642AEB73AC00CE713F /* HomeVM.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeVM.swift; sourceTree = "<group>"; };
 		1D6CB7712AEB81A200CE713F /* Registration.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Registration.swift; sourceTree = "<group>"; };
+		1D6E6CDE2AFAB8DC00292740 /* PostsProfileHeaderView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PostsProfileHeaderView.swift; sourceTree = "<group>"; };
+		1D6E6CE02AFAB9A400292740 /* PostLikeCommentCounterView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PostLikeCommentCounterView.swift; sourceTree = "<group>"; };
+		1D6E6CE22AFABA0C00292740 /* PostButtonView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PostButtonView.swift; sourceTree = "<group>"; };
+		1D6E6CE42AFABACF00292740 /* PostImagesView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PostImagesView.swift; sourceTree = "<group>"; };
+		1D6E6CE62AFABB3900292740 /* HomeVM+API.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "HomeVM+API.swift"; sourceTree = "<group>"; };
 		1D858AC92AE43C4800FE6AC4 /* TalkBook.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = TalkBook.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		1D858ACC2AE43C4800FE6AC4 /* TalkBookApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TalkBookApp.swift; sourceTree = "<group>"; };
 		1D858ACE2AE43C4800FE6AC4 /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
@@ -241,6 +251,10 @@
 			isa = PBXGroup;
 			children = (
 				1D5A68852AF77C070049AE68 /* PostsView.swift */,
+				1D6E6CE42AFABACF00292740 /* PostImagesView.swift */,
+				1D6E6CE22AFABA0C00292740 /* PostButtonView.swift */,
+				1D6E6CDE2AFAB8DC00292740 /* PostsProfileHeaderView.swift */,
+				1D6E6CE02AFAB9A400292740 /* PostLikeCommentCounterView.swift */,
 			);
 			path = PostView;
 			sourceTree = "<group>";
@@ -491,6 +505,7 @@
 			children = (
 				1D858B0A2AE447E100FE6AC4 /* HomeView.swift */,
 				1D6CB7642AEB73AC00CE713F /* HomeVM.swift */,
+				1D6E6CE62AFABB3900292740 /* HomeVM+API.swift */,
 			);
 			path = Home;
 			sourceTree = "<group>";
@@ -682,6 +697,7 @@
 				1D6CB7482AEB66DB00CE713F /* TutorialModel.swift in Sources */,
 				1D1A2DE82AF147D0001FD271 /* NotificationsView.swift in Sources */,
 				1D858AFC2AE4471B00FE6AC4 /* TabContainerView.swift in Sources */,
+				1D6E6CE72AFABB3900292740 /* HomeVM+API.swift in Sources */,
 				1D5A68862AF77C080049AE68 /* PostsView.swift in Sources */,
 				1D1A2DEA2AF147D7001FD271 /* MenuView.swift in Sources */,
 				1D1A2DE62AF147C5001FD271 /* ProfileView.swift in Sources */,
@@ -691,8 +707,10 @@
 				1D6CB7722AEB81A200CE713F /* Registration.swift in Sources */,
 				1D1A2DF12AF179AC001FD271 /* SheetHeaderTopView.swift in Sources */,
 				1D6CB75D2AEB6F3C00CE713F /* ApiURL+Post.swift in Sources */,
+				1D6E6CDF2AFAB8DC00292740 /* PostsProfileHeaderView.swift in Sources */,
 				1D6CB7602AEB726700CE713F /* PostModel.swift in Sources */,
 				1D1A2DEC2AF1503A001FD271 /* HeaderView.swift in Sources */,
+				1D6E6CE12AFAB9A400292740 /* PostLikeCommentCounterView.swift in Sources */,
 				1D61295A2AEC3201003C3854 /* AppState.swift in Sources */,
 				1D6CB74C2AEB66DB00CE713F /* DataKitError.swift in Sources */,
 				1D858ACF2AE43C4800FE6AC4 /* ContentView.swift in Sources */,
@@ -700,6 +718,8 @@
 				1D6CB7462AEB66DB00CE713F /* SuccessModel.swift in Sources */,
 				1D6129632AECCCCE003C3854 /* OnboardingScreen.swift in Sources */,
 				1D6CB7322AEB66DB00CE713F /* ApiURL+Auth.swift in Sources */,
+				1D6E6CE52AFABACF00292740 /* PostImagesView.swift in Sources */,
+				1D6E6CE32AFABA0C00292740 /* PostButtonView.swift in Sources */,
 				1D1A2DEE2AF1625B001FD271 /* HeaderCreatePostView.swift in Sources */,
 				1D1A2DF42AF1DDE4001FD271 /* PhotoManager.swift in Sources */,
 				1D858B012AE4476800FE6AC4 /* LoginView.swift in Sources */,
