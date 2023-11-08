@@ -9,12 +9,14 @@ import Foundation
 
 // MARK: - User
 struct User: Model {
+    var code: Int
     var success: Bool
     var message, accessToken: String?
     var user: UserModel?
     var errors: ErrorsObject?
 
     enum CodingKeys: String, CodingKey {
+        case code
         case success, message
         case accessToken = "access_token"
         case user, errors

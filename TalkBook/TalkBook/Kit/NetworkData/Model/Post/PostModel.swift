@@ -12,12 +12,12 @@ struct PostModel: Model {
     var code: Int?
     var success: Bool
     var message: String?
-    var newPost: Posts? // For create new post
+    var newPost: NewPosts? // For create new post
     var posts: [Posts]? // For get all post []
 }
 
 // MARK: - NewPost
-struct Posts: Codable {
+struct NewPosts: Model {
     var images: [String]?
     var likes, comments: [String]?
     var id, postContent, createdAt, updatedAt: String?
@@ -28,6 +28,23 @@ struct Posts: Codable {
         case id = "_id"
         case postContent, createdAt, updatedAt
         case v = "__v"
+    }
+}
+
+// MARK: - Post
+struct Posts: Model {
+    var images: [String]?
+    var likes, comments: [String]?
+    var id, postContent, createdAt, updatedAt: String?
+    var v: Int?
+    var user: UserModel?
+    
+    enum CodingKeys: String, CodingKey {
+        case images, likes, comments
+        case id = "_id"
+        case postContent, createdAt, updatedAt
+        case v = "__v"
+        case user
     }
 }
 /*

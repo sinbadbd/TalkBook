@@ -32,21 +32,27 @@ struct HomeView: View {
     var body: some View {
         NavigationStack{
             ZStack{
+                Color.gray3
                 VStack {
                     ScrollView{
                         VStack{
-                            HeaderView()
-                                .padding(.horizontal, 16)
-                            
-                            HeaderCreatePostView(selectedPhotos: selectedPhotos, statusText: $statusText) { data in
-//                                homeVM.createPost(statusText: statusText, images: data)
-                                homeVM.createPost(statusText: statusText, images: data) {
-                                    homeVM.getPosts()
+                            VStack{
+                                HeaderView()
+                                   
+                                
+                                HeaderCreatePostView(selectedPhotos: selectedPhotos, statusText: $statusText) { data in
+    //                                homeVM.createPost(statusText: statusText, images: data)
+                                    homeVM.createPost(statusText: statusText, images: data) {
+                                        homeVM.getPosts()
+                                    }
+                                    self.statusText = ""
                                 }
-                                self.statusText = ""
+                                .offset(y: -20)
+                            }
+                            .background {
+                                Color.white
                             }
                             
-                            .padding(.horizontal, 16)
                             VStack{
                                 ForEach(homeVM.allPosts, id: \.id) { posts in
                                     VStack{
