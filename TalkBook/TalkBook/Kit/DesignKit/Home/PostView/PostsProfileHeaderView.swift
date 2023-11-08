@@ -9,27 +9,29 @@ import SwiftUI
 import Kingfisher
 
 struct PostsProfileHeaderView: View {
+    
+    //@Binding var
     var post: Posts?
+    
     init(post: Posts?) {
         self.post = post
     }
     var body: some View {
-        HStack{
+        HStack(alignment:.center){
             KFImage.url(URL(string: post?.user?.avatar ?? ""))
                 .resizable()
                 .placeholder({ ProgressView() })
-                //.setProcessor(processor)
+            //.setProcessor(processor)
                 .loadDiskFileSynchronously()
                 .cacheMemoryOnly()
                 .fade(duration: 0.25)
-                //.lowDataModeSource(.network(image as! Resource))
+            //.lowDataModeSource(.network(image as! Resource))
                 .onProgress { receivedSize, totalSize in  }
                 .onSuccess { result in  }
                 .onFailure { error in }
                 .frame(width: 40, height: 40)
             
-            
-            VStack(alignment: .leading, spacing: 2){
+            VStack(alignment: .leading, spacing: 0){
                 Text(post?.user?.fullname ?? "")
                     .bold()
                     .foregroundColor(.black)
@@ -37,11 +39,34 @@ struct PostsProfileHeaderView: View {
                     .font(.caption)
                     .foregroundColor(.gray)
             }
-
-            Button {
+            
+            Spacer()
+            
+            HStack(spacing:16){
+                Button {
+                    
+                } label: {
+                    VStack{
+                        Image(systemName: "ellipsis")
+                            .resizable()
+                            .bold()
+                            .foregroundColor(.gray)
+                            .frame(width: 14, height: 2)
+                    }.frame(width: 14, height: 14)
+                    
+                }
                 
-            } label: {
-                
+                if Provider.userId != post?.user?.id {
+                    Button {
+                        
+                    } label: {
+                        Image(systemName: "xmark")
+                            .resizable()
+                            .bold()
+                            .foregroundColor(.gray)
+                            .frame(width: 14, height: 14)
+                    }
+                }
             }
         }
         .frame(maxWidth: .infinity, alignment: .leading)
