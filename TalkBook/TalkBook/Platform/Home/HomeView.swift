@@ -56,7 +56,7 @@ struct HomeView: View {
                             VStack{
                                 ForEach(homeVM.allPosts, id: \.id) { posts in
                                     VStack{
-                                        PostsView(post: posts)
+                                        PostsView(postContent: posts.postContent ?? "-", post: posts)
                                     }
                                 }
                             }

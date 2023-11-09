@@ -15,12 +15,21 @@ struct PostsView: View {
     
     @State var isPresentPost: Bool = false
     @State var isEditPost: Bool = false
-    @State var postContent: String = ""
+    @State var postContent: String = "--"
     
     var post: Posts?
     
-    init(post: Posts? = nil) {
+//    init(post: Posts? = nil) {
+//        self.post = post
+//        self.postContent = post?.postContent ?? "--"
+//    }
+//    
+//
+    
+    init(postContent: String, post: Posts? = nil) {
+        self.postContent = postContent
         self.post = post
+        print("postContent: \(postContent)")
     }
     
     var body: some View {
@@ -52,7 +61,7 @@ struct PostsView: View {
 }
 
 
-
-#Preview {
-    PostsView()
-}
+//
+//#Preview {
+//   // PostsView(isLikeTapped: , isPresentPost: <#Bool#>, isEditPost: <#Bool#>, postContent: <#String#>)
+//}

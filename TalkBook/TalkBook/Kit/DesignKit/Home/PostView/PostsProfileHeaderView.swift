@@ -12,7 +12,9 @@ struct PostsProfileHeaderView: View {
     
     @Binding var isPresentPost: Bool
     @Binding var isEditPost: Bool
+//    @Binding var isPostContent: String
     @Binding var isPostContent: String
+    @State var text = ""
     
     var post: Posts
     
@@ -54,8 +56,21 @@ struct PostsProfileHeaderView: View {
             Spacer()
             
             HStack(spacing:16){
+                
+                NavigationLink {
+                    PostEditView(post: post)
+                } label: {
+                    VStack{
+                        Image(systemName: "ellipsis")
+                            .resizable()
+                            .bold()
+                            .foregroundColor(.gray)
+                            .frame(width: 14, height: 2)
+                    }.frame(width: 14, height: 14)
+                }
+/*
                 Button {
-                    isPresentPost.toggle()
+                    //isPresentPost.toggle()
                 } label: {
                     VStack{
                         Image(systemName: "ellipsis")
@@ -71,6 +86,16 @@ struct PostsProfileHeaderView: View {
                         VStack{
                         
                             TextEditor(text: $isPostContent)
+//                                .onChange(of: text, perform: { value in
+//                                    isPostContent.postContent = value
+//                                })
+                                .background(content: {
+                                    Color.red.opacity(0.5)
+                                })
+                                .border(.black)
+                                .frame(height: 100)
+                            
+                                                    
                             Text(post.postContent ?? "")
                             Button {
                                 isEditPost.toggle()
@@ -94,7 +119,7 @@ struct PostsProfileHeaderView: View {
                     .onDisappear {
                         print("onDisappear..")
                     }
-                }
+                }*/
                 
                 if Provider.userId != post.user?.id {
                     Button {
@@ -114,6 +139,6 @@ struct PostsProfileHeaderView: View {
     }
 }
 
-#Preview {
-    PostsProfileHeaderView(isPresentPost: .constant(true), isEditPost: .constant(true), isPostContent: .constant(""), post: .init())
-}
+//#Preview {
+//    PostsProfileHeaderView(isPresentPost: .constant(true), isEditPost: .constant(true), isPostContent: .constant(""), post: .init())
+//}
