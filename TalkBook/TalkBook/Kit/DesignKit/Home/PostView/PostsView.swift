@@ -12,6 +12,11 @@ struct PostsView: View {
     
     @State private var isLikeTapped: Bool = false
     @State private var likeCoint = 210 // this count come from api []
+    
+    @State var isPresentPost: Bool = false
+    @State var isEditPost: Bool = false
+    @State var postContent: String = ""
+    
     var post: Posts?
     
     init(post: Posts? = nil) {
@@ -21,7 +26,7 @@ struct PostsView: View {
     var body: some View {
         VStack(alignment: .leading){
             
-            PostsProfileHeaderView(post: post)
+            PostsProfileHeaderView(isPresentPost: $isPresentPost, isEditPost: $isEditPost, isPostContent: $postContent, post: post ?? .init())
                 .padding(.horizontal, 12)
             
             Text(post?.postContent ?? "not working")

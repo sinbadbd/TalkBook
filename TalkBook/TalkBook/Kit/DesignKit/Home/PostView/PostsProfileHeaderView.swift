@@ -10,15 +10,26 @@ import Kingfisher
 
 struct PostsProfileHeaderView: View {
     
-    //@Binding var
-    var post: Posts?
+    @Binding var isPresentPost: Bool
+    @Binding var isEditPost: Bool
+    @Binding var isPostContent: String
     
-    init(post: Posts?) {
+    var post: Posts
+    
+    init(isPresentPost:
+         Binding<Bool>,
+         isEditPost: Binding<Bool>,
+         isPostContent: Binding<String>,
+         post: Posts) {
+        self._isPresentPost = isPresentPost
+        self._isEditPost = isEditPost
+        self._isPostContent = isPostContent
         self.post = post
     }
+     
     var body: some View {
         HStack(alignment:.center){
-            KFImage.url(URL(string: post?.user?.avatar ?? ""))
+            KFImage.url(URL(string: post.user?.avatar ?? ""))
                 .resizable()
                 .placeholder({ ProgressView() })
             //.setProcessor(processor)
@@ -32,10 +43,10 @@ struct PostsProfileHeaderView: View {
                 .frame(width: 40, height: 40)
             
             VStack(alignment: .leading, spacing: 0){
-                Text(post?.user?.fullname ?? "")
+                Text(post.user?.fullname ?? "")
                     .bold()
                     .foregroundColor(.black)
-                Text(post?.user?.createdAt ?? "set converted time")
+                Text(post.user?.createdAt ?? "set converted time")
                     .font(.caption)
                     .foregroundColor(.gray)
             }
@@ -44,7 +55,7 @@ struct PostsProfileHeaderView: View {
             
             HStack(spacing:16){
                 Button {
-                    
+                    isPresentPost.toggle()
                 } label: {
                     VStack{
                         Image(systemName: "ellipsis")
@@ -55,8 +66,37 @@ struct PostsProfileHeaderView: View {
                     }.frame(width: 14, height: 14)
                     
                 }
+                .sheet(isPresented: $isPresentPost) {
+                    ScrollView{
+                        VStack{
+                        
+                            TextEditor(text: $isPostContent)
+                            Text(post.postContent ?? "")
+                            Button {
+                                isEditPost.toggle()
+                            } label: {
+                                HStack{
+                                    Image(systemName:"square.and.pencil")
+                                        .resizable()
+                                        .aspectRatio(contentMode: .fit)
+                                        .frame(width: 12, height: 12)
+                                    
+                                    Text("Edit Post")
+                                }
+                            }
+
+                        }
+                        .padding(.horizontal, 40)
+                        .frame(maxWidth: .infinity, alignment: .leading)
+                    }
+                    
+                    .presentationDetents([.large, .medium])
+                    .onDisappear {
+                        print("onDisappear..")
+                    }
+                }
                 
-                if Provider.userId != post?.user?.id {
+                if Provider.userId != post.user?.id {
                     Button {
                         
                     } label: {
@@ -75,5 +115,5 @@ struct PostsProfileHeaderView: View {
 }
 
 #Preview {
-    PostsProfileHeaderView(post: nil)
+    PostsProfileHeaderView(isPresentPost: .constant(true), isEditPost: .constant(true), isPostContent: .constant(""), post: .init())
 }
