@@ -14,6 +14,7 @@ extension ApiURL.Post {
         switch self {
         case .createPost: endPart = "createPost"
         case .getPosts: endPart = "getPosts"
+        case .updatePost: endPart = "%@"
         }
         return "\(baseURL)/\(endPart)"
     }

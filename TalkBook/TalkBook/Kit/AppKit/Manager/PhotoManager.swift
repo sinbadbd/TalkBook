@@ -105,6 +105,7 @@ class PhotoManager {
                                 uploadedImageURLs.append(imageURL)
                             }
                         }
+                        
                         dispatchGroup.leave()
                     }
                 } else {

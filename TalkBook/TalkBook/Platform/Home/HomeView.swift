@@ -38,10 +38,10 @@ struct HomeView: View {
                         VStack{
                             VStack{
                                 HeaderView()
-                                   
+                                
                                 
                                 HeaderCreatePostView(selectedPhotos: selectedPhotos, statusText: $statusText) { data in
-    //                                homeVM.createPost(statusText: statusText, images: data)
+                                    //                                homeVM.createPost(statusText: statusText, images: data)
                                     homeVM.createPost(statusText: statusText, images: data) {
                                         homeVM.getPosts()
                                     }
@@ -56,7 +56,7 @@ struct HomeView: View {
                             VStack{
                                 ForEach(homeVM.allPosts, id: \.id) { posts in
                                     VStack{
-                                        PostsView(post: posts)
+                                        PostsView(postContent: posts.postContent ?? "-", post: posts)
                                     }
                                 }
                             }
@@ -82,15 +82,15 @@ struct HomeView: View {
             VStack {
                 ForEach(image, id: \.self) { imageURL in
                     KFImage.url(URL(string: imageURL))
-//                             .placeholder(placeholderImage)
-//                             .setProcessor(processor)
-                             .loadDiskFileSynchronously()
-                             .cacheMemoryOnly()
-                             .fade(duration: 0.25)
-//                             .lowDataModeSource(.network(lowResolutionURL))
-                             .onProgress { receivedSize, totalSize in  }
-                             .onSuccess { result in  }
-                             .onFailure { error in }
+                    // .placeholder(placeholderImage)
+                    //  .setProcessor(processor)
+                        .loadDiskFileSynchronously()
+                        .cacheMemoryOnly()
+                        .fade(duration: 0.25)
+                    //   .lowDataModeSource(.network(lowResolutionURL))
+                        .onProgress { receivedSize, totalSize in  }
+                        .onSuccess { result in  }
+                        .onFailure { error in }
                 }
             }
         }
