@@ -16,19 +16,14 @@ struct PostsView: View {
     @State var isPresentPost: Bool = false
     @State var isEditPost: Bool = false
     @State var postContent: String = "--"
+    var onSuccess: (() -> Void)?
     
     var post: Posts?
-    
-//    init(post: Posts? = nil) {
-//        self.post = post
-//        self.postContent = post?.postContent ?? "--"
-//    }
-//    
-//
-    
-    init(postContent: String, post: Posts? = nil) {
+
+    init(postContent: String, post: Posts? = nil, onSuccess: (() -> Void)?) {
         self.postContent = postContent
         self.post = post
+        self.onSuccess = onSuccess
         print("postContent: \(postContent)")
     }
     
@@ -43,12 +38,14 @@ struct PostsView: View {
             
             PostImagesView(image: post?.images ?? [])
             
-            PostLikeCommentCounterView(likeCount: $likeCoint)
+            PostLikeCommentCounterView(post: post)
                 .padding(.horizontal, 12)
                 .offset(y: 14)
             
             Divider().padding([.top], 8)
-            PostButtonView(isLikeTapped: $isLikeTapped)
+            PostButtonView(isLikeTapped: $isLikeTapped) {
+                onSuccess?()
+            }
                
 //            Divider().padding([.bottom], 8)
         }

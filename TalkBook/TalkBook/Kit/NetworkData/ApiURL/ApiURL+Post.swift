@@ -15,6 +15,7 @@ extension ApiURL.Post {
         case .createPost: endPart = "createPost"
         case .getPosts: endPart = "getPosts"
         case .updatePost: endPart = "%@"
+        case .likePost: endPart = "%@/like"
         }
         return "\(baseURL)/\(endPart)"
     }

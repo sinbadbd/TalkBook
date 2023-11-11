@@ -34,7 +34,8 @@ struct NewPosts: Model {
 // MARK: - Post
 struct Posts: Model {
     var images: [String]?
-    var likes, comments: [String]?
+    var likes: [UserModel]?
+    var comments: [String]?
     var id, postContent, createdAt, updatedAt: String?
     var v: Int?
     var user: UserModel?

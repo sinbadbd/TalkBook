@@ -24,9 +24,6 @@ class HomeVM: ObservableObject{
     init(){
         //getPosts()
     }
-    
-    func postLike(){
-        likeCount += 1
-    }
+
 }
 
