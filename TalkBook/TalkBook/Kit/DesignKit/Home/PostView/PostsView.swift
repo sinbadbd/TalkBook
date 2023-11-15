@@ -24,6 +24,8 @@ struct PostsView: View {
         self.postContent = postContent
         self.post = post
         self.onSuccess = onSuccess
+        
+        //_isLikeTapped = State(initialValue: post?.liked ?? false)
         print("postContent: \(postContent)")
     }
     

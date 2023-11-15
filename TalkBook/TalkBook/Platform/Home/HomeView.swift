@@ -49,13 +49,12 @@ struct HomeView: View {
                             .background {
                                 Color.white
                             }
-                            
+                            Text("\(Provider.userId)")
                             VStack{
                                 ForEach(homeVM.allPosts, id: \.id) { posts in
                                     VStack{
                                         PostsView(postContent: posts.postContent ?? "-", post: posts) {
-                                            homeVM.likePost(postId: posts.id ?? "") {
-                                                print("success like")
+                                            homeVM.toggleLikePost(postId: posts.id ?? "") {
                                                 homeVM.getPosts()
                                             }
                                         }

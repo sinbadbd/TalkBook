@@ -21,7 +21,7 @@ struct PostButtonView: View {
                 print("post button view pressed")
             }, label: {
                 HStack{
-                    Image(systemName: isLikeTapped ? "hand.thumbsup.fill" : "hand.thumbsup")
+                    Image(systemName:  isLikeTapped  ? "hand.thumbsup.fill" : "hand.thumbsup")
                         .foregroundColor(isLikeTapped ? .red : .gray)
                     Text("Like")
                         .font(.callout)
