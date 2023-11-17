@@ -24,7 +24,7 @@ struct ApiURL {
         
     }
     enum Post{
-        case createPost, getPosts, updatePost
+        case createPost, getPosts, updatePost, likePost, unLike, toggleLikePost
     }
  
 }

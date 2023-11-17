@@ -9,24 +9,30 @@ import SwiftUI
 
 struct PostLikeCommentCounterView: View {
     
-    @Binding var likeCount: Int
+    var post: Posts?
     
     var body: some View {
         HStack{
-            HStack{
-                Image(systemName: "hand.thumbsup.circle.fill")
-                    .font(.caption)
-                    .foregroundColor(.red)
+            
+            if let totalLike = post?.likes, !totalLike.isEmpty {
                 Button {
-                    
+                    print("like button pressed...")
                 } label: {
-                    Text("\(likeCount)")
-                        .font(.caption)
-                        .foregroundColor(.gray)
+                    HStack{
+                        Image(systemName: "hand.thumbsup.circle.fill")
+                            .font(.caption)
+                            .foregroundColor(.red)
+                        Text("\(totalLike.count)")
+                            .font(.caption)
+                            .foregroundColor(.gray)
+                    }
                 }
-
             }
-            Spacer()
+            
+            if let totalLike = post?.likes, !totalLike.isEmpty {
+                Spacer()
+            }
+            
             HStack{
                 Text("122")
                     .font(.caption)
@@ -36,10 +42,9 @@ struct PostLikeCommentCounterView: View {
                     .foregroundColor(.gray)
             }
         }
-//        .padding(.vertical, 12)
     }
 }
 
 #Preview {
-    PostLikeCommentCounterView(likeCount: .constant(100))
+    PostLikeCommentCounterView()
 }

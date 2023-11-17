@@ -38,11 +38,8 @@ struct HomeView: View {
                         VStack{
                             VStack{
                                 HeaderView()
-                                
-                                
                                 HeaderCreatePostView(selectedPhotos: selectedPhotos, statusText: $statusText) { data in
-                                    //                                homeVM.createPost(statusText: statusText, images: data)
-                                    homeVM.createPost(statusText: statusText, images: data) {
+                                     homeVM.createPost(statusText: statusText, images: data) {
                                         homeVM.getPosts()
                                     }
                                     self.statusText = ""
@@ -52,11 +49,15 @@ struct HomeView: View {
                             .background {
                                 Color.white
                             }
-                            
+                            Text("\(Provider.userId)")
                             VStack{
                                 ForEach(homeVM.allPosts, id: \.id) { posts in
                                     VStack{
-                                        PostsView(postContent: posts.postContent ?? "-", post: posts)
+                                        PostsView(postContent: posts.postContent ?? "-", post: posts) {
+                                            homeVM.toggleLikePost(postId: posts.id ?? "") {
+                                                homeVM.getPosts()
+                                            }
+                                        }
                                     }
                                 }
                             }
@@ -68,7 +69,9 @@ struct HomeView: View {
                 .frame(maxWidth: .infinity, maxHeight: .infinity, alignment: .top)
             }
             .onAppear(perform: {
-                homeVM.getPosts()
+                DispatchQueue.main.async {
+                    homeVM.getPosts()
+                }
             })
             .refreshable {
                 homeVM.getPosts()

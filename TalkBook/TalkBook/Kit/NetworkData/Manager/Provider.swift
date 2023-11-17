@@ -24,4 +24,15 @@ struct Provider {
             UserDefaults.standard.set(newValue, forKey: "userId")
         }
     }
+    
+    
+    /*
+    static var isLoggedIn: Bool{
+        get{
+            return UserDefaults.standard.bool(forKey: "isLoggedIn")
+        }
+        set{
+            return UserDefaults.standard.set(newValue, forKey: "isLoggedIn")
+        }
+    }*/
 }
