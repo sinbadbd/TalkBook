@@ -23,11 +23,13 @@ struct HomeView: View {
     
     @StateObject private var authVM: AuthVM = .init()
     
-    init(){
-        print("Home View")
-        print("Home---: \(selectedPhotos)")
-        print("Home.count: \(selectedPhotos.count)")
-    }
+    @Binding var appState: AppState
+    
+//    init(){
+//        print("Home View")
+//        print("Home---: \(selectedPhotos)")
+//        print("Home.count: \(selectedPhotos.count)")
+//    }
     
     var body: some View {
         NavigationStack{
@@ -70,7 +72,19 @@ struct HomeView: View {
             }
             .onAppear(perform: {
                 DispatchQueue.main.async {
+                    
                     homeVM.getPosts()
+//                    if homeVM.isSuccess == true {
+//                        homeVM.getPosts()
+//                    } else {
+//                      //  appState = .login
+////                        Provider.access_token = ""
+////                        Provider.userId = ""
+////                        print("Provider.access_token: \(Provider.access_token)")
+////                        print("Provider.userId: \(Provider.userId)")
+////                        UserDefaultsManager.shared.isUserLoggedIn = false
+//                    }
+                   
                 }
             })
             .refreshable {
@@ -101,5 +115,5 @@ struct HomeView: View {
     
 }
 #Preview {
-    HomeView()
+    HomeView(appState: .constant(.dashboard))
 }

@@ -64,6 +64,8 @@ extension HomeVM{
                     NetworkKit.shared.handleCompletion(url: URL(string: endPoint.url)!, completion: completion)
                 },
                 receiveValue: { (response: PostModel) in
+                    self.isSuccess = response.success
+                    print("self.isSuccess: \(self.isSuccess)")
                     self.postsModel = response
                     self.allPosts = self.postsModel?.posts ?? []
                     print("self.get-posts: \(String(describing: self.allPosts))")

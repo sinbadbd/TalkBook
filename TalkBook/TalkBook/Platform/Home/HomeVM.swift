@@ -20,6 +20,9 @@ class HomeVM: ObservableObject{
     
     //Like and comments
     @Published var likeCount: Int = 0
+    @Published var error: ErrorsObject?
+    
+    @Published var isSuccess: Bool = false
     
     init(){
         //getPosts()

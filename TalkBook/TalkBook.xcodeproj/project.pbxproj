@@ -66,6 +66,7 @@
 		1D858B012AE4476800FE6AC4 /* LoginView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1D858B002AE4476800FE6AC4 /* LoginView.swift */; };
 		1D858B052AE4479600FE6AC4 /* RegistrationView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1D858B042AE4479600FE6AC4 /* RegistrationView.swift */; };
 		1D858B0B2AE447E100FE6AC4 /* HomeView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1D858B0A2AE447E100FE6AC4 /* HomeView.swift */; };
+		1DDA612E2B07EC5F003D4C5B /* PostDetailContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1DDA612D2B07EC5F003D4C5B /* PostDetailContentView.swift */; };
 		1DFB01992AFD4767006C41CB /* PostEditView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1DFB01982AFD4767006C41CB /* PostEditView.swift */; };
 /* End PBXBuildFile section */
 
@@ -147,6 +148,7 @@
 		1D858B002AE4476800FE6AC4 /* LoginView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginView.swift; sourceTree = "<group>"; };
 		1D858B042AE4479600FE6AC4 /* RegistrationView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RegistrationView.swift; sourceTree = "<group>"; };
 		1D858B0A2AE447E100FE6AC4 /* HomeView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeView.swift; sourceTree = "<group>"; };
+		1DDA612D2B07EC5F003D4C5B /* PostDetailContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PostDetailContentView.swift; sourceTree = "<group>"; };
 		1DFB01982AFD4767006C41CB /* PostEditView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PostEditView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -182,6 +184,7 @@
 		1D1A2DDE2AF14763001FD271 /* Home */ = {
 			isa = PBXGroup;
 			children = (
+				1DDA612C2B07EC43003D4C5B /* PostDetail */,
 				1D5A68842AF77BED0049AE68 /* PostView */,
 				1D1A2DDF2AF14769001FD271 /* HeaderView */,
 				1DFB01982AFD4767006C41CB /* PostEditView.swift */,
@@ -550,6 +553,14 @@
 			path = DesignKit;
 			sourceTree = "<group>";
 		};
+		1DDA612C2B07EC43003D4C5B /* PostDetail */ = {
+			isa = PBXGroup;
+			children = (
+				1DDA612D2B07EC5F003D4C5B /* PostDetailContentView.swift */,
+			);
+			path = PostDetail;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -717,6 +728,7 @@
 				1D6E6CE12AFAB9A400292740 /* PostLikeCommentCounterView.swift in Sources */,
 				1D61295A2AEC3201003C3854 /* AppState.swift in Sources */,
 				1D6CB74C2AEB66DB00CE713F /* DataKitError.swift in Sources */,
+				1DDA612E2B07EC5F003D4C5B /* PostDetailContentView.swift in Sources */,
 				1D858ACF2AE43C4800FE6AC4 /* ContentView.swift in Sources */,
 				1D6CB7572AEB687A00CE713F /* RestApi.swift in Sources */,
 				1D6CB7462AEB66DB00CE713F /* SuccessModel.swift in Sources */,

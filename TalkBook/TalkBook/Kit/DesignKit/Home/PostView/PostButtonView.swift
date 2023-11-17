@@ -29,13 +29,16 @@ struct PostButtonView: View {
                 }
             })
             Spacer()
-            Button(action: {}, label: {
+            NavigationLink {
+                PostDetailContentView()
+            } label: {
                 Image(systemName: "ellipsis.message")
                     .foregroundColor(.gray)
                 Text("Comments")
                     .font(.callout)
                     .foregroundColor(.gray)
-            })
+            }
+ 
             Spacer()
             Button(action: {}, label: {
                 Image(systemName: "square.and.arrow.up")

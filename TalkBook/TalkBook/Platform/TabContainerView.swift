@@ -13,7 +13,7 @@ struct TabContainerView: View {
     
     var body: some View {
         TabView {
-            HomeView()
+            HomeView(appState: $appState)
                 .tabItem {
                     Label("Home", systemImage: "house").foregroundColor(.red)
                 }
