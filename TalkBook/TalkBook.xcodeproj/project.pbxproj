@@ -67,6 +67,8 @@
 		1D858B052AE4479600FE6AC4 /* RegistrationView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1D858B042AE4479600FE6AC4 /* RegistrationView.swift */; };
 		1D858B0B2AE447E100FE6AC4 /* HomeView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1D858B0A2AE447E100FE6AC4 /* HomeView.swift */; };
 		1DDA612E2B07EC5F003D4C5B /* PostDetailContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1DDA612D2B07EC5F003D4C5B /* PostDetailContentView.swift */; };
+		1DDA61312B087693003D4C5B /* ApiHeader.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1DDA61302B087693003D4C5B /* ApiHeader.swift */; };
+		1DDA61342B089A02003D4C5B /* PostDetailVM.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1DDA61332B089A02003D4C5B /* PostDetailVM.swift */; };
 		1DFB01992AFD4767006C41CB /* PostEditView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1DFB01982AFD4767006C41CB /* PostEditView.swift */; };
 /* End PBXBuildFile section */
 
@@ -149,6 +151,8 @@
 		1D858B042AE4479600FE6AC4 /* RegistrationView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RegistrationView.swift; sourceTree = "<group>"; };
 		1D858B0A2AE447E100FE6AC4 /* HomeView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeView.swift; sourceTree = "<group>"; };
 		1DDA612D2B07EC5F003D4C5B /* PostDetailContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PostDetailContentView.swift; sourceTree = "<group>"; };
+		1DDA61302B087693003D4C5B /* ApiHeader.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ApiHeader.swift; sourceTree = "<group>"; };
+		1DDA61332B089A02003D4C5B /* PostDetailVM.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PostDetailVM.swift; sourceTree = "<group>"; };
 		1DFB01982AFD4767006C41CB /* PostEditView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PostEditView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -302,6 +306,7 @@
 		1D6CB6F32AEB66DB00CE713F /* Manager */ = {
 			isa = PBXGroup;
 			children = (
+				1DDA61302B087693003D4C5B /* ApiHeader.swift */,
 				1D6CB6F42AEB66DB00CE713F /* Provider.swift */,
 			);
 			path = Manager;
@@ -479,6 +484,7 @@
 				1D61295E2AECCC8F003C3854 /* Splash */,
 				1D61295D2AECCC89003C3854 /* OnBoard */,
 				1D858AFF2AE4475400FE6AC4 /* Auth */,
+				1DDA61322B0899E9003D4C5B /* PostDetails */,
 			);
 			path = Feature;
 			sourceTree = "<group>";
@@ -556,9 +562,17 @@
 		1DDA612C2B07EC43003D4C5B /* PostDetail */ = {
 			isa = PBXGroup;
 			children = (
-				1DDA612D2B07EC5F003D4C5B /* PostDetailContentView.swift */,
 			);
 			path = PostDetail;
+			sourceTree = "<group>";
+		};
+		1DDA61322B0899E9003D4C5B /* PostDetails */ = {
+			isa = PBXGroup;
+			children = (
+				1DDA612D2B07EC5F003D4C5B /* PostDetailContentView.swift */,
+				1DDA61332B089A02003D4C5B /* PostDetailVM.swift */,
+			);
+			path = PostDetails;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -706,6 +720,7 @@
 				1D6CB71F2AEB66DB00CE713F /* Model.swift in Sources */,
 				1D6CB7552AEB687A00CE713F /* EnvironmentManager.swift in Sources */,
 				1D5A68802AF3813F0049AE68 /* AuthVM.swift in Sources */,
+				1DDA61342B089A02003D4C5B /* PostDetailVM.swift in Sources */,
 				1D1A2DDD2AF1384C001FD271 /* CloudinaryManager.swift in Sources */,
 				1D5A687E2AF3805A0049AE68 /* MoreVM.swift in Sources */,
 				1D6CB7482AEB66DB00CE713F /* TutorialModel.swift in Sources */,
@@ -716,6 +731,7 @@
 				1D5A68862AF77C080049AE68 /* PostsView.swift in Sources */,
 				1D1A2DEA2AF147D7001FD271 /* MenuView.swift in Sources */,
 				1D1A2DE62AF147C5001FD271 /* ProfileView.swift in Sources */,
+				1DDA61312B087693003D4C5B /* ApiHeader.swift in Sources */,
 				1D6CB7442AEB66DB00CE713F /* LoginRequest.swift in Sources */,
 				1D6CB7302AEB66DB00CE713F /* ApiURL.swift in Sources */,
 				1D6CB7432AEB66DB00CE713F /* RequestToken.swift in Sources */,

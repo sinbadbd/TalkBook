@@ -14,6 +14,7 @@ struct PostModel: Model {
     var message: String?
     var newPost: NewPosts? // For create new post
     var posts: [Posts]? // For get all post []
+    var post: Posts?
 }
 
 // MARK: - NewPost

@@ -45,7 +45,8 @@ struct PostsView: View {
                 .offset(y: 14)
             
             Divider().padding([.top], 8)
-            PostButtonView(isLikeTapped: $isLikeTapped) {
+           
+            PostButtonView(isLikeTapped: $isLikeTapped, post: post) {
                 onSuccess?()
             }
                
