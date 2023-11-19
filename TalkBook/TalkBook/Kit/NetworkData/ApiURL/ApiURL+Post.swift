@@ -18,6 +18,7 @@ extension ApiURL.Post {
         case .likePost: endPart = "%@/like"
         case .unLike: endPart = "%@/unlike"
         case .toggleLikePost: endPart = "%@/toggleLikePost"
+        case .getSinglePost: endPart = "%@"
         }
         return "\(baseURL)/\(endPart)"
     }

@@ -10,6 +10,7 @@ import SwiftUI
 struct PostButtonView: View {
     
     @Binding var isLikeTapped: Bool
+    var post: Posts?
     var onSuccess: (() -> Void)?
     
     var body: some View {
@@ -30,7 +31,7 @@ struct PostButtonView: View {
             })
             Spacer()
             NavigationLink {
-                PostDetailContentView()
+                PostDetailContentView(id: post?.id ?? "")
             } label: {
                 Image(systemName: "ellipsis.message")
                     .foregroundColor(.gray)
