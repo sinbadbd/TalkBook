@@ -8,11 +8,23 @@
 import SwiftUI
 
 struct PostDetailHeaderView: View {
+        
+    @Environment(\.presentationMode) var dismiss
+    
     var body: some View {
-        Text(/*@START_MENU_TOKEN@*/"Hello, World!"/*@END_MENU_TOKEN@*/)
+        HStack{
+            Button(action: {
+                dismiss.wrappedValue.dismiss()
+            }, label: {
+                Image(systemName: "arrow.left")
+                    .resizable()
+                    .frame(width: 24, height: 24)
+            })
+        }
     }
 }
 
 #Preview {
-    PostDetailHeaderView()
+//    PostDetailHeaderView()
+    PostDetailContentView(id: "1  ")
 }

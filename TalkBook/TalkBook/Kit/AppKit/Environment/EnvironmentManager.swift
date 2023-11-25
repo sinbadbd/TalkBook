@@ -7,11 +7,11 @@
 
 import Foundation
 
-public enum Environment: String { case production, preProduction, staging, develop }
+public enum TalkBookEnvironment: String { case production, preProduction, staging, develop }
 
 final class EnvironmentManager {
     static let shared: EnvironmentManager = .init()
-    var environment: Environment {
+    var environment: TalkBookEnvironment {
         didSet {
             UserDefaults.standard.setValue(environment.rawValue, forKey: "LiveMovie_APP_Environment")
         }
@@ -19,7 +19,7 @@ final class EnvironmentManager {
     
     init() {
         let value = UserDefaults.standard.string(forKey: "LiveMovie_APP_Environment") ?? "production"
-        environment = Environment(rawValue: value) ?? .production
+        environment = TalkBookEnvironment(rawValue: value) ?? .production
     }
 }
 

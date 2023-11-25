@@ -21,7 +21,7 @@ extension RestApi {
 }
 
 extension RestApi {
-    init(for environment: Environment) {
+    init(for environment: TalkBookEnvironment) {
         switch environment {
         case .production:       host = "localhost:2000/api/"
         case .preProduction:    host = ""
