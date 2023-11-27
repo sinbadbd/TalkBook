@@ -11,10 +11,10 @@ struct ContentView: View {
     @Binding var appState: AppState
     var body: some View {
         
-        //NavigationStack{
+        NavigationStack{
             viewForState(appState)
                 .onAppear {
-                    DispatchQueue.main.asyncAfter(deadline: .now() + 0.5) {
+                    DispatchQueue.main.asyncAfter(deadline: .now() + 0.2) {
                         if UserDefaultsManager.shared.isUserLoggedIn {
                             appState = .dashboard
                         } else if !UserDefaultsManager.shared.isFirstLaunch {
@@ -24,7 +24,7 @@ struct ContentView: View {
                         }
                     }
                 }
-        //}
+        }
     }
 }
 extension ContentView{

@@ -14,10 +14,15 @@ struct PostDetailContentView: View {
         self.id = id
     }
     var body: some View {
-        VStack{
-            Text(detailVM.singlePost?.postContent ?? "")
-        }.onAppear {
-            detailVM.getSinglePosts(id: id)
+        ScrollView {
+            PostDetailHeaderView()
+            VStack{
+                Text(detailVM.singlePost?.postContent ?? "")
+            }.onAppear {
+                detailVM.getSinglePosts(id: id)
+            }
+            .ignoresSafeArea()
+            .navigationBarBackButtonHidden()
         }
     }
 }

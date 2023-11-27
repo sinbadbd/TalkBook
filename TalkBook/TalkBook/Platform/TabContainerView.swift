@@ -34,6 +34,9 @@ struct TabContainerView: View {
                     Label("Menu", systemImage: "gear").foregroundColor(.red)
                 }
         }
+        .background {
+            Color.white
+        }
     }
 }
 

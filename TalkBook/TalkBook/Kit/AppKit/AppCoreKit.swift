@@ -11,6 +11,6 @@ public final class AppCoreKit { }
 
 extension AppCoreKit{
     
-    public static var environment: Environment { return EnvironmentManager.shared.environment }
+    public static var environment: TalkBookEnvironment { return EnvironmentManager.shared.environment }
 
 }

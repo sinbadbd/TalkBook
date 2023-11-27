@@ -19,6 +19,7 @@
 		1D1A2DF12AF179AC001FD271 /* SheetHeaderTopView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1D1A2DF02AF179AC001FD271 /* SheetHeaderTopView.swift */; };
 		1D1A2DF42AF1DDE4001FD271 /* PhotoManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1D1A2DF32AF1DDE4001FD271 /* PhotoManager.swift */; };
 		1D1A2DF62AF1E124001FD271 /* PhotoGridView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1D1A2DF52AF1E124001FD271 /* PhotoGridView.swift */; };
+		1D1F6A712B0D1978007F0EB1 /* PostDetailHeaderView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1D1F6A702B0D1978007F0EB1 /* PostDetailHeaderView.swift */; };
 		1D5A687E2AF3805A0049AE68 /* MoreVM.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1D5A687D2AF3805A0049AE68 /* MoreVM.swift */; };
 		1D5A68802AF3813F0049AE68 /* AuthVM.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1D5A687F2AF3813F0049AE68 /* AuthVM.swift */; };
 		1D5A68832AF3BC390049AE68 /* Kingfisher in Frameworks */ = {isa = PBXBuildFile; productRef = 1D5A68822AF3BC390049AE68 /* Kingfisher */; };
@@ -66,6 +67,7 @@
 		1D858B012AE4476800FE6AC4 /* LoginView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1D858B002AE4476800FE6AC4 /* LoginView.swift */; };
 		1D858B052AE4479600FE6AC4 /* RegistrationView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1D858B042AE4479600FE6AC4 /* RegistrationView.swift */; };
 		1D858B0B2AE447E100FE6AC4 /* HomeView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1D858B0A2AE447E100FE6AC4 /* HomeView.swift */; };
+		1DC97B932B13B20200D32C04 /* ShimmerEffect.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1DC97B922B13B20200D32C04 /* ShimmerEffect.swift */; };
 		1DDA612E2B07EC5F003D4C5B /* PostDetailContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1DDA612D2B07EC5F003D4C5B /* PostDetailContentView.swift */; };
 		1DDA61312B087693003D4C5B /* ApiHeader.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1DDA61302B087693003D4C5B /* ApiHeader.swift */; };
 		1DDA61342B089A02003D4C5B /* PostDetailVM.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1DDA61332B089A02003D4C5B /* PostDetailVM.swift */; };
@@ -101,6 +103,7 @@
 		1D1A2DF02AF179AC001FD271 /* SheetHeaderTopView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SheetHeaderTopView.swift; sourceTree = "<group>"; };
 		1D1A2DF32AF1DDE4001FD271 /* PhotoManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PhotoManager.swift; sourceTree = "<group>"; };
 		1D1A2DF52AF1E124001FD271 /* PhotoGridView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PhotoGridView.swift; sourceTree = "<group>"; };
+		1D1F6A702B0D1978007F0EB1 /* PostDetailHeaderView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PostDetailHeaderView.swift; sourceTree = "<group>"; };
 		1D5A687D2AF3805A0049AE68 /* MoreVM.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MoreVM.swift; sourceTree = "<group>"; };
 		1D5A687F2AF3813F0049AE68 /* AuthVM.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthVM.swift; sourceTree = "<group>"; };
 		1D5A68852AF77C070049AE68 /* PostsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PostsView.swift; sourceTree = "<group>"; };
@@ -150,6 +153,7 @@
 		1D858B002AE4476800FE6AC4 /* LoginView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginView.swift; sourceTree = "<group>"; };
 		1D858B042AE4479600FE6AC4 /* RegistrationView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RegistrationView.swift; sourceTree = "<group>"; };
 		1D858B0A2AE447E100FE6AC4 /* HomeView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeView.swift; sourceTree = "<group>"; };
+		1DC97B922B13B20200D32C04 /* ShimmerEffect.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ShimmerEffect.swift; sourceTree = "<group>"; };
 		1DDA612D2B07EC5F003D4C5B /* PostDetailContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PostDetailContentView.swift; sourceTree = "<group>"; };
 		1DDA61302B087693003D4C5B /* ApiHeader.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ApiHeader.swift; sourceTree = "<group>"; };
 		1DDA61332B089A02003D4C5B /* PostDetailVM.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PostDetailVM.swift; sourceTree = "<group>"; };
@@ -188,7 +192,6 @@
 		1D1A2DDE2AF14763001FD271 /* Home */ = {
 			isa = PBXGroup;
 			children = (
-				1DDA612C2B07EC43003D4C5B /* PostDetail */,
 				1D5A68842AF77BED0049AE68 /* PostView */,
 				1D1A2DDF2AF14769001FD271 /* HeaderView */,
 				1DFB01982AFD4767006C41CB /* PostEditView.swift */,
@@ -246,6 +249,15 @@
 				1D1A2DF32AF1DDE4001FD271 /* PhotoManager.swift */,
 			);
 			path = Manager;
+			sourceTree = "<group>";
+		};
+		1D1F6A6F2B0D1964007F0EB1 /* PostDetail */ = {
+			isa = PBXGroup;
+			children = (
+				1D1F6A702B0D1978007F0EB1 /* PostDetailHeaderView.swift */,
+				1DC97B922B13B20200D32C04 /* ShimmerEffect.swift */,
+			);
+			path = PostDetail;
 			sourceTree = "<group>";
 		};
 		1D5A687A2AF2B7800049AE68 /* Cloudinar */ = {
@@ -555,15 +567,9 @@
 			children = (
 				1D1A2DEF2AF17980001FD271 /* Components */,
 				1D1A2DDE2AF14763001FD271 /* Home */,
+				1D1F6A6F2B0D1964007F0EB1 /* PostDetail */,
 			);
 			path = DesignKit;
-			sourceTree = "<group>";
-		};
-		1DDA612C2B07EC43003D4C5B /* PostDetail */ = {
-			isa = PBXGroup;
-			children = (
-			);
-			path = PostDetail;
 			sourceTree = "<group>";
 		};
 		1DDA61322B0899E9003D4C5B /* PostDetails */ = {
@@ -725,6 +731,7 @@
 				1D5A687E2AF3805A0049AE68 /* MoreVM.swift in Sources */,
 				1D6CB7482AEB66DB00CE713F /* TutorialModel.swift in Sources */,
 				1D1A2DE82AF147D0001FD271 /* NotificationsView.swift in Sources */,
+				1DC97B932B13B20200D32C04 /* ShimmerEffect.swift in Sources */,
 				1D858AFC2AE4471B00FE6AC4 /* TabContainerView.swift in Sources */,
 				1DFB01992AFD4767006C41CB /* PostEditView.swift in Sources */,
 				1D6E6CE72AFABB3900292740 /* HomeVM+API.swift in Sources */,
@@ -742,6 +749,7 @@
 				1D6CB7602AEB726700CE713F /* PostModel.swift in Sources */,
 				1D1A2DEC2AF1503A001FD271 /* HeaderView.swift in Sources */,
 				1D6E6CE12AFAB9A400292740 /* PostLikeCommentCounterView.swift in Sources */,
+				1D1F6A712B0D1978007F0EB1 /* PostDetailHeaderView.swift in Sources */,
 				1D61295A2AEC3201003C3854 /* AppState.swift in Sources */,
 				1D6CB74C2AEB66DB00CE713F /* DataKitError.swift in Sources */,
 				1DDA612E2B07EC5F003D4C5B /* PostDetailContentView.swift in Sources */,
