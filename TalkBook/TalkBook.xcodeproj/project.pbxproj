@@ -67,6 +67,7 @@
 		1D858B012AE4476800FE6AC4 /* LoginView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1D858B002AE4476800FE6AC4 /* LoginView.swift */; };
 		1D858B052AE4479600FE6AC4 /* RegistrationView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1D858B042AE4479600FE6AC4 /* RegistrationView.swift */; };
 		1D858B0B2AE447E100FE6AC4 /* HomeView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1D858B0A2AE447E100FE6AC4 /* HomeView.swift */; };
+		1DC97B932B13B20200D32C04 /* ShimmerEffect.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1DC97B922B13B20200D32C04 /* ShimmerEffect.swift */; };
 		1DDA612E2B07EC5F003D4C5B /* PostDetailContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1DDA612D2B07EC5F003D4C5B /* PostDetailContentView.swift */; };
 		1DDA61312B087693003D4C5B /* ApiHeader.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1DDA61302B087693003D4C5B /* ApiHeader.swift */; };
 		1DDA61342B089A02003D4C5B /* PostDetailVM.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1DDA61332B089A02003D4C5B /* PostDetailVM.swift */; };
@@ -152,6 +153,7 @@
 		1D858B002AE4476800FE6AC4 /* LoginView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginView.swift; sourceTree = "<group>"; };
 		1D858B042AE4479600FE6AC4 /* RegistrationView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RegistrationView.swift; sourceTree = "<group>"; };
 		1D858B0A2AE447E100FE6AC4 /* HomeView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeView.swift; sourceTree = "<group>"; };
+		1DC97B922B13B20200D32C04 /* ShimmerEffect.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ShimmerEffect.swift; sourceTree = "<group>"; };
 		1DDA612D2B07EC5F003D4C5B /* PostDetailContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PostDetailContentView.swift; sourceTree = "<group>"; };
 		1DDA61302B087693003D4C5B /* ApiHeader.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ApiHeader.swift; sourceTree = "<group>"; };
 		1DDA61332B089A02003D4C5B /* PostDetailVM.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PostDetailVM.swift; sourceTree = "<group>"; };
@@ -253,6 +255,7 @@
 			isa = PBXGroup;
 			children = (
 				1D1F6A702B0D1978007F0EB1 /* PostDetailHeaderView.swift */,
+				1DC97B922B13B20200D32C04 /* ShimmerEffect.swift */,
 			);
 			path = PostDetail;
 			sourceTree = "<group>";
@@ -728,6 +731,7 @@
 				1D5A687E2AF3805A0049AE68 /* MoreVM.swift in Sources */,
 				1D6CB7482AEB66DB00CE713F /* TutorialModel.swift in Sources */,
 				1D1A2DE82AF147D0001FD271 /* NotificationsView.swift in Sources */,
+				1DC97B932B13B20200D32C04 /* ShimmerEffect.swift in Sources */,
 				1D858AFC2AE4471B00FE6AC4 /* TabContainerView.swift in Sources */,
 				1DFB01992AFD4767006C41CB /* PostEditView.swift in Sources */,
 				1D6E6CE72AFABB3900292740 /* HomeVM+API.swift in Sources */,

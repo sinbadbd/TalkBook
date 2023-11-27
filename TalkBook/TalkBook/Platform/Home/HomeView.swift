@@ -25,71 +25,66 @@ struct HomeView: View {
     
     @Binding var appState: AppState
     
-//    init(){
-//        print("Home View")
-//        print("Home---: \(selectedPhotos)")
-//        print("Home.count: \(selectedPhotos.count)")
-//    }
-    
     var body: some View {
-        NavigationStack{
-            ZStack{
-                Color.gray3
-                VStack {
-                    ScrollView{
-                        VStack{
+        //        NavigationStack{
+        //            ZStack{
+        //                Color.gray3
+        VStack {
+            ScrollView{
+                VStack{
+                    VStack{
+                        HeaderView()
+                        HeaderCreatePostView(selectedPhotos: selectedPhotos, statusText: $statusText) { data in
+                            homeVM.createPost(statusText: statusText, images: data) {
+                                homeVM.getPosts()
+                            }
+                            self.statusText = ""
+                        }
+                        .offset(y: -20)
+                    }
+                    .background {
+                        Color.white
+                    }
+                    Text("\(Provider.userId)")
+                    VStack{
+                        ForEach(homeVM.allPosts, id: \.id) { posts in
                             VStack{
-                                HeaderView()
-                                HeaderCreatePostView(selectedPhotos: selectedPhotos, statusText: $statusText) { data in
-                                     homeVM.createPost(statusText: statusText, images: data) {
+                                PostsView(postContent: posts.postContent ?? "-", post: posts) {
+                                    homeVM.toggleLikePost(postId: posts.id ?? "") {
                                         homeVM.getPosts()
                                     }
-                                    self.statusText = ""
-                                }
-                                .offset(y: -20)
-                            }
-                            .background {
-                                Color.white
-                            }
-                            Text("\(Provider.userId)")
-                            VStack{
-                                ForEach(homeVM.allPosts, id: \.id) { posts in
-                                    VStack{
-                                        PostsView(postContent: posts.postContent ?? "-", post: posts) {
-                                            homeVM.toggleLikePost(postId: posts.id ?? "") {
-                                                homeVM.getPosts()
-                                            }
-                                        }
-                                    }
                                 }
                             }
-                            
                         }
                     }
                     
                 }
-                .frame(maxWidth: .infinity, maxHeight: .infinity, alignment: .top)
             }
-            .onAppear(perform: {
-                DispatchQueue.main.async {
-                    
-                    homeVM.getPosts()
-//                    if homeVM.isSuccess == true {
-//                        homeVM.getPosts()
-//                    } else {
-//                      //  appState = .login
-////                        Provider.access_token = ""
-////                        Provider.userId = ""
-////                        print("Provider.access_token: \(Provider.access_token)")
-////                        print("Provider.userId: \(Provider.userId)")
-////                        UserDefaultsManager.shared.isUserLoggedIn = false
-//                    }
-                   
-                }
-            })
-            .refreshable {
+            
+        }
+        .frame(maxWidth: .infinity, maxHeight: .infinity, alignment: .top)
+        //            }
+        //            .ignoresSafeArea()
+        .onAppear(perform: {
+            DispatchQueue.main.async {
+                
                 homeVM.getPosts()
+                //                    if homeVM.isSuccess == true {
+                //                        homeVM.getPosts()
+                //                    } else {
+                //                      //  appState = .login
+                ////                        Provider.access_token = ""
+                ////                        Provider.userId = ""
+                ////                        print("Provider.access_token: \(Provider.access_token)")
+                ////                        print("Provider.userId: \(Provider.userId)")
+                ////                        UserDefaultsManager.shared.isUserLoggedIn = false
+                //                    }
+                
             }
+        })
+        .refreshable {
+            homeVM.getPosts()
+            //            }
         }
     }
     
