@@ -71,6 +71,7 @@
 		1DDA612E2B07EC5F003D4C5B /* PostDetailContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1DDA612D2B07EC5F003D4C5B /* PostDetailContentView.swift */; };
 		1DDA61312B087693003D4C5B /* ApiHeader.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1DDA61302B087693003D4C5B /* ApiHeader.swift */; };
 		1DDA61342B089A02003D4C5B /* PostDetailVM.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1DDA61332B089A02003D4C5B /* PostDetailVM.swift */; };
+		1DF653452B16315A00562FCA /* AppCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1DF653442B16315A00562FCA /* AppCoordinator.swift */; };
 		1DFB01992AFD4767006C41CB /* PostEditView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1DFB01982AFD4767006C41CB /* PostEditView.swift */; };
 /* End PBXBuildFile section */
 
@@ -157,6 +158,7 @@
 		1DDA612D2B07EC5F003D4C5B /* PostDetailContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PostDetailContentView.swift; sourceTree = "<group>"; };
 		1DDA61302B087693003D4C5B /* ApiHeader.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ApiHeader.swift; sourceTree = "<group>"; };
 		1DDA61332B089A02003D4C5B /* PostDetailVM.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PostDetailVM.swift; sourceTree = "<group>"; };
+		1DF653442B16315A00562FCA /* AppCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppCoordinator.swift; sourceTree = "<group>"; };
 		1DFB01982AFD4767006C41CB /* PostEditView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PostEditView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -453,6 +455,7 @@
 		1D858ACB2AE43C4800FE6AC4 /* TalkBook */ = {
 			isa = PBXGroup;
 			children = (
+				1DF653432B16313100562FCA /* AppCoordinator */,
 				1D6CB75B2AEB696400CE713F /* Info.plist */,
 				1D6129582AEC31EE003C3854 /* AppState */,
 				1D858AF82AE446C400FE6AC4 /* App */,
@@ -579,6 +582,14 @@
 				1DDA61332B089A02003D4C5B /* PostDetailVM.swift */,
 			);
 			path = PostDetails;
+			sourceTree = "<group>";
+		};
+		1DF653432B16313100562FCA /* AppCoordinator */ = {
+			isa = PBXGroup;
+			children = (
+				1DF653442B16315A00562FCA /* AppCoordinator.swift */,
+			);
+			path = AppCoordinator;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -738,6 +749,7 @@
 				1D5A68862AF77C080049AE68 /* PostsView.swift in Sources */,
 				1D1A2DEA2AF147D7001FD271 /* MenuView.swift in Sources */,
 				1D1A2DE62AF147C5001FD271 /* ProfileView.swift in Sources */,
+				1DF653452B16315A00562FCA /* AppCoordinator.swift in Sources */,
 				1DDA61312B087693003D4C5B /* ApiHeader.swift in Sources */,
 				1D6CB7442AEB66DB00CE713F /* LoginRequest.swift in Sources */,
 				1D6CB7302AEB66DB00CE713F /* ApiURL.swift in Sources */,
