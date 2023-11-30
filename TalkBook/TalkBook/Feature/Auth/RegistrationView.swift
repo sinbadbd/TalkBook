@@ -78,7 +78,26 @@ struct RegistrationView: View {
                                 }
                         }
                     })
-                    .buttonStyle(KitBaseButtonStyle(size: .lg, variant: .solid, backgroundColor: .white, borderColor: .red, foregroundColor: .gray,buttonWidth: UIScreen.main.bounds.width * 0.7 ,borderWidth: 1))
+                    //.buttonStyle(KitBaseButtonStyle(size: .lg, variant: .solid, backgroundColor: .white, borderColor: .red, foregroundColor: .gray,buttonWidth: UIScreen.main.bounds.width * 0.7 ,borderWidth: 1))
+                    .buttonStyle(
+                        KitBaseButtonStyleBuilder()
+                            .setBackgroundColor(.gray)
+                            .setForegroundColor(.black)
+                            .setButtonWidth(UIScreen.main.bounds.width * 0.8)
+                            .setButtonHeight(30)
+                            .setIcon("square.and.arrow.up")
+                            .setImage("ic_edit")
+                            .setIconColor(.red)
+                            .setIconColor(.red)
+                            .setIconWidth(20)
+                            .setIconHeight(20)
+                            .setShowShadow(false) // Default true
+                        //.setPaddingAll(paddingAll: 0)
+                            .setPaddingVertical(paddingVertical: 0)
+                            .setPaddingHorizontal(paddingHorizontal: 0)
+                            .build()
+                    )
+                    
                     Text(authVM.isSuccess == false ? authVM.user?.message ?? "" : "")
                         .foregroundColor(.red)
                 }
@@ -99,10 +118,33 @@ struct RegistrationView: View {
     private var registrationView: some View{
         VStack(alignment: .leading, spacing: 8){
             VStack(alignment: .leading){
-                KitBaseFormField(title: "Username", error: authVM.error?.username, isValid: $authVM.isSuccess) {
-                    TextField("username", text: $username)
+//                KitBaseFormField(title: "Username", error: authVM.error?.username, isValid: $authVM.isSuccess) {
+//                    TextField("username", text: $username)
+//                        .focused($focusedField, equals: .usernameField)
+//                }
+                
+                KBTextFieldBuilder(content: {
+                    TextField("Username", text: $username)
+                        .keyboardType(.numberPad)
                         .focused($focusedField, equals: .usernameField)
-                }
+                    // .focused($isInputActive)
+                        .toolbar {
+                            ToolbarItemGroup(placement: .keyboard) {
+                                Spacer()
+                                Button("Done") {
+                                    //  isInputActive = false
+                                }
+                            }
+                        }
+                }, isValid: $authVM.isSuccess)
+                .errorFont(.body)
+                .titleSpacing(12)
+                .textColor(.blue)
+                .backgroundColor(.white)
+                .textFieldHeight(44)
+                .borderWidth(0.5)
+                .error(authVM.error?.username) /// `API Error`
+                .build()
                 
                 if focusedField == .usernameField && username.isEmpty {
                     Text("Username can't be blank")
@@ -111,11 +153,33 @@ struct RegistrationView: View {
                 }
             }
             VStack(alignment: .leading){
-                KitBaseFormField(title: "Password", error: authVM.error?.password, isValid: $authVM.isSuccess ) {
-                    SecureField("Password", text: $password)
-                        .keyboardType(.namePhonePad)
+//                KitBaseFormField(title: "Password", error: authVM.error?.password, isValid: $authVM.isSuccess ) {
+//                    SecureField("Password", text: $password)
+//                        .keyboardType(.namePhonePad)
+//                        .focused($focusedField, equals: .passwordField)
+//                }
+                KBTextFieldBuilder(content: {
+                    TextField("Username", text: $password)
+                        .keyboardType(.numberPad)
                         .focused($focusedField, equals: .passwordField)
-                }
+                    // .focused($isInputActive)
+                        .toolbar {
+                            ToolbarItemGroup(placement: .keyboard) {
+                                Spacer()
+                                Button("Done") {
+                                    //  isInputActive = false
+                                }
+                            }
+                        }
+                }, isValid: $authVM.isSuccess)
+                .errorFont(.body)
+                .titleSpacing(12)
+                .textColor(.blue)
+                .backgroundColor(.white)
+                .textFieldHeight(44)
+                .borderWidth(0.5)
+                .error(authVM.error?.password) /// `API Error`
+                .build()
                 
                 if focusedField == .passwordField && password.isEmpty {
                     Text("Password can't be blank")
@@ -124,10 +188,33 @@ struct RegistrationView: View {
                 }
             }
             VStack(alignment: .leading){
-                KitBaseFormField(title: "Email", error: authVM.error?.email, isValid: $authVM.isSuccess ) {
-                    TextField("Email", text: $email)
+//                KitBaseFormField(title: "Email", error: authVM.error?.email, isValid: $authVM.isSuccess ) {
+//                    TextField("Email", text: $email)
+//                        .focused($focusedField, equals: .emailField)
+//                }
+                KBTextFieldBuilder(content: {
+                    TextField("Username", text: $email)
+                        .keyboardType(.numberPad)
                         .focused($focusedField, equals: .emailField)
-                }
+                    // .focused($isInputActive)
+                        .toolbar {
+                            ToolbarItemGroup(placement: .keyboard) {
+                                Spacer()
+                                Button("Done") {
+                                    //  isInputActive = false
+                                }
+                            }
+                        }
+                }, isValid: $authVM.isSuccess)
+                .errorFont(.body)
+                .titleSpacing(12)
+                .textColor(.blue)
+                .backgroundColor(.white)
+                .textFieldHeight(44)
+                .borderWidth(0.5)
+                .error(authVM.error?.email) /// `API Error`
+                .build()
+                
                 if focusedField == .emailField && email.isEmpty {
                     Text("Email can't be blank")
                         .font(.footnote)
@@ -135,10 +222,32 @@ struct RegistrationView: View {
                 }
             }
             VStack(alignment: .leading){
-                KitBaseFormField(title: "Full Name", error: authVM.error?.fullname, isValid: $authVM.isSuccess ) {
-                    TextField("Full name", text: $fullName)
+               // KitBaseFormField(title: "Full Name", error: authVM.error?.fullname, isValid: $authVM.isSuccess ) {
+//                    TextField("Full name", text: $fullName)
+//                        .focused($focusedField, equals: .fullNameField)
+//                }
+                KBTextFieldBuilder(content: {
+                    TextField("Full Name", text: $fullName)
+                        .keyboardType(.numberPad)
                         .focused($focusedField, equals: .fullNameField)
-                }
+                    // .focused($isInputActive)
+                        .toolbar {
+                            ToolbarItemGroup(placement: .keyboard) {
+                                Spacer()
+                                Button("Done") {
+                                    //  isInputActive = false
+                                }
+                            }
+                        }
+                }, isValid: $authVM.isSuccess)
+                .errorFont(.body)
+                .titleSpacing(12)
+                .textColor(.blue)
+                .backgroundColor(.white)
+                .textFieldHeight(44)
+                .borderWidth(0.5)
+                .error(authVM.error?.fullname) /// `API Error`
+                .build()
                 if focusedField == .fullNameField && fullName.isEmpty {
                     Text("Full Name can't be blank")
                         .font(.footnote)

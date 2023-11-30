@@ -56,8 +56,18 @@ struct LoginView: View {
                         }
                         
                     })
-                    .buttonStyle(KitBaseButtonStyle(size: .lg, variant: .outline, backgroundColor: .clear, borderColor: .gray, foregroundColor: .black, buttonWidth: UIScreen.main.bounds.width * 0.8, borderWidth: 1))
+                   // .buttonStyle(KitBaseButtonStyle(size: .lg, variant: .outline, backgroundColor: .clear, borderColor: .gray, foregroundColor: .black, buttonWidth: UIScreen.main.bounds.width * 0.8, borderWidth: 1))
                     
+                    .buttonStyle(
+                        KitBaseButtonStyleBuilder()
+                            .setBackgroundColor(.red)
+                            .setForegroundColor(.white)
+                            .setButtonWidth(UIScreen.main.bounds.width * 0.85)
+//                            .setButtonHeight(24)
+//                            .setPaddingVertical(paddingVertical: 0)
+//                            .setPaddingHorizontal(paddingHorizontal: 0)
+                            .build()
+                    )
                     
                     Text("-------------OR-------------")
                         .font(.caption)
@@ -67,7 +77,17 @@ struct LoginView: View {
                         self.route = true
                         print("Signup")
                     })
-                    .buttonStyle(KitBaseButtonStyle(size: .lg, variant: .solid, backgroundColor: .red, borderColor: .clear, foregroundColor: .white, buttonWidth: UIScreen.main.bounds.width * 0.8, borderWidth: 1))
+                    //.buttonStyle(KitBaseButtonStyle(size: .lg, variant: .solid, backgroundColor: .red, borderColor: .clear, foregroundColor: .white, buttonWidth: UIScreen.main.bounds.width * 0.8, borderWidth: 1))
+                    .buttonStyle(
+                        KitBaseButtonStyleBuilder()
+                            .setBackgroundColor(.clear)
+                            .setForegroundColor(.red)
+                            .setBorderColor(.gray)
+                            .setBorderWidth(1)
+                            .setShowShadow(false)
+                            .setButtonWidth(UIScreen.main.bounds.width * 0.85)
+                            .build()
+                    )
                     
                     Text(authVM.isSuccess == false ? authVM.user?.message ?? "" : "")
                         .foregroundColor(.red)
@@ -89,19 +109,16 @@ struct LoginView: View {
         VStack(alignment: .leading, spacing: 8){
             
             VStack(alignment: .leading){
-                KitBaseFormField(title: "Email", error: authVM.error?.email, isValid: $authVM.isSuccess ) {
-                    TextField("Email", text: $email)
-                        .focused($focusedField, equals: .emailField)
-                }
+//                KitBaseFormField(title: "Email", error: authVM.error?.email, isValid: $authVM.isSuccess ) {
+//                    TextField("Email", text: $email)
+//                        .focused($focusedField, equals: .emailField)
+//                }
                 
                 KBTextFieldBuilder(content: {
                     TextField("Email", text: $email)
                         .keyboardType(.numberPad)
-                        .focused($focusedField, equals: .passwordField)
+                        .focused($focusedField, equals: .emailField)
                     // .focused($isInputActive)
-                        .onChange(of: authVM.msisdn) { newMsisdn in
-                            authVM.validateMsisdn(newMsisdn)
-                        }
                         .toolbar {
                             ToolbarItemGroup(placement: .keyboard) {
                                 Spacer()
@@ -111,7 +128,7 @@ struct LoginView: View {
                             }
                         }
                 }, isValid: $authVM.isSuccess)
-                .errorFont(.customFont(style: .regular, size: 12))
+                .errorFont(.body)
                 .titleSpacing(12)
                 .textColor(.blue)
                 .backgroundColor(.white)
@@ -135,13 +152,11 @@ struct LoginView: View {
 //                }
 //                
                 KBTextFieldBuilder(content: {
-                    TextField("Password", text: $authVM.msisdn)
+                    TextField("Password", text: $password)
                         .keyboardType(.numberPad)
                         .focused($focusedField, equals: .passwordField)
                       // .focused($isInputActive)
-                        .onChange(of: authVM.msisdn) { newMsisdn in
-                            authVM.validateMsisdn(newMsisdn)
-                        }
+                     
                         .toolbar {
                             ToolbarItemGroup(placement: .keyboard) {
                                 Spacer()
@@ -151,7 +166,7 @@ struct LoginView: View {
                             }
                         }
                 }, isValid: $authVM.isSuccess)
-                .errorFont(.customFont(style: .regular, size: 12))
+                .errorFont(.body)
                 .titleSpacing(12)
                 .textColor(.blue)
                 .backgroundColor(.white)
