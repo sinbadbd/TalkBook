@@ -93,6 +93,34 @@ struct LoginView: View {
                     TextField("Email", text: $email)
                         .focused($focusedField, equals: .emailField)
                 }
+                
+                KBTextFieldBuilder(content: {
+                    TextField("Email", text: $email)
+                        .keyboardType(.numberPad)
+                        .focused($focusedField, equals: .passwordField)
+                    // .focused($isInputActive)
+                        .onChange(of: authVM.msisdn) { newMsisdn in
+                            authVM.validateMsisdn(newMsisdn)
+                        }
+                        .toolbar {
+                            ToolbarItemGroup(placement: .keyboard) {
+                                Spacer()
+                                Button("Done") {
+                                    //  isInputActive = false
+                                }
+                            }
+                        }
+                }, isValid: $authVM.isSuccess)
+                .errorFont(.customFont(style: .regular, size: 12))
+                .titleSpacing(12)
+                .textColor(.blue)
+                .backgroundColor(.white)
+                .textFieldHeight(44)
+                .borderWidth(0.5)
+                .error(authVM.error?.password) /// `API Error`
+                .build()
+                
+                
                 if focusedField == .emailField && email.isEmpty {
                     Text("Email can't be blank")
                         .font(.footnote)
@@ -100,11 +128,39 @@ struct LoginView: View {
                 }
             }
             VStack(alignment: .leading){
-                KitBaseFormField(title: "Password", error: authVM.error?.password, isValid: $authVM.isSuccess ) {
-                    SecureField("Password", text: $password)
-                        .keyboardType(.namePhonePad)
+//                KitBaseFormField(title: "Password", error: authVM.error?.password, isValid: $authVM.isSuccess ) {
+//                    SecureField("Password", text: $password)
+//                        .keyboardType(.namePhonePad)
+//                        .focused($focusedField, equals: .passwordField)
+//                }
+//                
+                KBTextFieldBuilder(content: {
+                    TextField("Password", text: $authVM.msisdn)
+                        .keyboardType(.numberPad)
                         .focused($focusedField, equals: .passwordField)
-                }
+                      // .focused($isInputActive)
+                        .onChange(of: authVM.msisdn) { newMsisdn in
+                            authVM.validateMsisdn(newMsisdn)
+                        }
+                        .toolbar {
+                            ToolbarItemGroup(placement: .keyboard) {
+                                Spacer()
+                                Button("Done") {
+                                  //  isInputActive = false
+                                }
+                            }
+                        }
+                }, isValid: $authVM.isSuccess)
+                .errorFont(.customFont(style: .regular, size: 12))
+                .titleSpacing(12)
+                .textColor(.blue)
+                .backgroundColor(.white)
+                .textFieldHeight(44)
+                .borderWidth(0.5)
+                .error(authVM.error?.password) /// `API Error`
+                .build()
+                
+                
                 
                 if focusedField == .passwordField && password.isEmpty {
                     Text("Password can't be blank")

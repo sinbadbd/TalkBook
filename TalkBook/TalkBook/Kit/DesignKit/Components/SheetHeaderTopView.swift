@@ -27,8 +27,10 @@ struct SheetHeaderTopView: View {
             Button {
                 onClose()
             } label: {
-                KBButtonCircleView(iconName: "xmark", foregroundColor: .black
-                                   , backgroundColor: .clear, borderColor: .clear, width: 10, height: 10, fontSize: 20)
+                //KBButtonCircleView(iconName: "xmark", foregroundColor: .black
+//                                   , backgroundColor: .clear, borderColor: .clear, width: 10, height: 10, fontSize: 20)
+                KBButtonType(imageType: .icon, imageViewType: .circle, iconName: "xmark", foregroundColor: .black, backgroundColor: .clear, borderColor: .clear, width: 10, height: 10, fontSize: 20)
+
             }
             
             Spacer()
@@ -43,7 +45,25 @@ struct SheetHeaderTopView: View {
             } label: {
                 Text(buttonTitle)
             }
-            .buttonStyle(KitBaseButtonStyle(size: .xs, variant: .solid, backgroundColor: .clear, borderColor: .red, foregroundColor: .black, borderWidth: 1))
+            //.buttonStyle(KitBaseButtonStyle(size: .xs, variant: .solid, backgroundColor: .clear, borderColor: .red, foregroundColor: .black, borderWidth: 1))
+            .buttonStyle(
+                KitBaseButtonStyleBuilder()
+                    .setBackgroundColor(.gray)
+                    .setForegroundColor(.black)
+                    .setButtonWidth(200)
+                    .setButtonHeight(30)
+                    .setIcon("square.and.arrow.up")
+                    .setImage("ic_edit")
+                    .setIconColor(.red)
+                    .setIconColor(.red)
+                    .setIconWidth(20)
+                    .setIconHeight(20)
+                    .setShowShadow(false) // Default true
+                //.setPaddingAll(paddingAll: 0)
+                    .setPaddingVertical(paddingVertical: 0)
+                    .setPaddingHorizontal(paddingHorizontal: 0)
+                    .build()
+            )
             
         }
         .padding(.horizontal, 16)

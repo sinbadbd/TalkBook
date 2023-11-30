@@ -22,17 +22,17 @@ struct HeaderView: View {
                 Button {
                     
                 } label: {
-                    KBButtonCircleView(iconName: "plus", foregroundColor: .black, backgroundColor: .gray.opacity(0.2), borderColor: .gray.opacity(0.2), width: 4, height: 4, fontSize: 20)
+                    KBButtonType(imageType: .icon, imageViewType: .circle, iconName: "plus", foregroundColor: .black, backgroundColor: .gray.opacity(0.2), borderColor: .gray.opacity(0.2), width: 40, height: 40, fontSize: 40)
                 }
                 Button {
                     
                 } label: {
-                    KBButtonCircleView(iconName: "magnifyingglass",  foregroundColor: .black, backgroundColor: .gray.opacity(0.2), borderColor: .gray.opacity(0.2), width: 4, height: 4, fontSize: 20)
+                    KBButtonType(imageType: .icon, imageViewType: .rectangle, iconName: "magnifyingglass",  foregroundColor: .black, backgroundColor: .gray.opacity(0.2), borderColor: .gray.opacity(0.2), width: 40, height: 40, fontSize: 40)
                 }
                 Button {
                     
                 } label: {
-                    KBButtonCircleView(iconName: "ellipsis.message.fill",  foregroundColor: .black, backgroundColor: .gray.opacity(0.2), borderColor: .gray.opacity(0.2), width: 4, height: 4, fontSize: 20)
+                    KBButtonType(imageType: .icon, imageViewType: .circle, iconName: "ellipsis.message.fill",  foregroundColor: .black, backgroundColor: .gray.opacity(0.2), borderColor: .gray.opacity(0.2), width: 40, height: 4, fontSize: 40)
                 }
 
             }

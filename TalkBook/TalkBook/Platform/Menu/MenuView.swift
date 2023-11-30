@@ -29,7 +29,24 @@ struct MenuView: View {
         } label: {
             Text("logout")
         }
-        .buttonStyle(KitBaseButtonStyle(size: .lg, variant: .solid, backgroundColor: .red, foregroundColor: .white))
+        .buttonStyle(
+            KitBaseButtonStyleBuilder()
+                .setBackgroundColor(.gray)
+                .setForegroundColor(.black)
+                .setButtonWidth(200)
+                .setButtonHeight(30)
+                .setIcon("square.and.arrow.up")
+                .setImage("ic_edit")
+                .setIconColor(.red)
+                .setIconColor(.red)
+                .setIconWidth(20)
+                .setIconHeight(20)
+                .setShowShadow(false) // Default true
+            //.setPaddingAll(paddingAll: 0)
+                .setPaddingVertical(paddingVertical: 0)
+                .setPaddingHorizontal(paddingHorizontal: 0)
+                .build()
+        )
         
     }
 }
