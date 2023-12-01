@@ -22,19 +22,18 @@ struct HeaderView: View {
                 Button {
                     
                 } label: {
-                    KBButtonType(imageType: .icon, imageViewType: .circle, iconName: "plus", foregroundColor: .black, backgroundColor: .gray.opacity(0.2), borderColor: .gray.opacity(0.2), width: 40, height: 40, fontSize: 40)
+                    KBButtonType(imageType: .icon, imageViewType: .circle, iconName: "plus", foregroundColor: .black, backgroundColor: .gray.opacity(0.2), borderColor: .gray.opacity(0.2), width: 8, height: 8, fontSize: 16)
                 }
                 Button {
                     
                 } label: {
-                    KBButtonType(imageType: .icon, imageViewType: .rectangle, iconName: "magnifyingglass",  foregroundColor: .black, backgroundColor: .gray.opacity(0.2), borderColor: .gray.opacity(0.2), width: 40, height: 40, fontSize: 40)
+                    KBButtonType(imageType: .icon, imageViewType: .circle, iconName: "magnifyingglass",  foregroundColor: .black, backgroundColor: .gray.opacity(0.2), borderColor: .gray.opacity(0.2), width: 8, height: 8, fontSize: 16)
                 }
                 Button {
                     
                 } label: {
-                    KBButtonType(imageType: .icon, imageViewType: .circle, iconName: "ellipsis.message.fill",  foregroundColor: .black, backgroundColor: .gray.opacity(0.2), borderColor: .gray.opacity(0.2), width: 40, height: 4, fontSize: 40)
+                    KBButtonType(imageType: .icon, imageViewType: .circle, iconName: "ellipsis.message.fill",  foregroundColor: .black, backgroundColor: .gray.opacity(0.2), borderColor: .gray.opacity(0.2), width: 8, height: 8, fontSize: 16)
                 }
-
             }
         }
         .padding(.horizontal, 16)

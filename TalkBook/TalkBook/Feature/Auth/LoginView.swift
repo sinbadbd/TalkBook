@@ -22,7 +22,8 @@ struct LoginView: View {
     @Binding var appState: AppState
     
     @FocusState private var focusedField: Field?
-
+    @State private var isInputActive: Bool = false
+    
     var body: some View {
         NavigationStack{
             ZStack{
@@ -77,7 +78,6 @@ struct LoginView: View {
                         self.route = true
                         print("Signup")
                     })
-                    //.buttonStyle(KitBaseButtonStyle(size: .lg, variant: .solid, backgroundColor: .red, borderColor: .clear, foregroundColor: .white, buttonWidth: UIScreen.main.bounds.width * 0.8, borderWidth: 1))
                     .buttonStyle(
                         KitBaseButtonStyleBuilder()
                             .setBackgroundColor(.clear)
@@ -116,14 +116,14 @@ struct LoginView: View {
                 
                 KBTextFieldBuilder(content: {
                     TextField("Email", text: $email)
-                        .keyboardType(.numberPad)
+                        .keyboardType(.emailAddress)
                         .focused($focusedField, equals: .emailField)
                     // .focused($isInputActive)
                         .toolbar {
                             ToolbarItemGroup(placement: .keyboard) {
                                 Spacer()
                                 Button("Done") {
-                                    //  isInputActive = false
+                                    isInputActive = false
                                 }
                             }
                         }
@@ -134,7 +134,7 @@ struct LoginView: View {
                 .backgroundColor(.white)
                 .textFieldHeight(44)
                 .borderWidth(0.5)
-                .error(authVM.error?.password) /// `API Error`
+                .error(authVM.error?.email) /// `API Error`
                 .build()
                 
                 
@@ -153,15 +153,13 @@ struct LoginView: View {
 //                
                 KBTextFieldBuilder(content: {
                     TextField("Password", text: $password)
-                        .keyboardType(.numberPad)
+                        .keyboardType(.default)
                         .focused($focusedField, equals: .passwordField)
-                      // .focused($isInputActive)
-                     
                         .toolbar {
                             ToolbarItemGroup(placement: .keyboard) {
                                 Spacer()
                                 Button("Done") {
-                                  //  isInputActive = false
+                                    isInputActive = false
                                 }
                             }
                         }
