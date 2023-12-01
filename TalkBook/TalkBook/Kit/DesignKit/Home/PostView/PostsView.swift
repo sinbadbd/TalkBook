@@ -46,7 +46,10 @@ struct PostsView: View {
             
             Divider().padding([.top], 8)
            
-            PostButtonView(isLikeTapped: $isLikeTapped, post: post) {
+//            PostButtonView(isLikeTapped: $isLikeTapped, isCommentEnable: .constant(<#T##value: Bool##Bool#>), post: post) {
+//                onSuccess?()
+//            }
+            PostButtonView(isLikeTapped: $isLikeTapped, isCommentEnable: .constant(true), post: post) {
                 onSuccess?()
             }
                
