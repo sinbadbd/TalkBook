@@ -22,7 +22,8 @@ struct LoginView: View {
     @Binding var appState: AppState
     
     @FocusState private var focusedField: Field?
-
+    @State private var isInputActive: Bool = false
+    
     var body: some View {
         NavigationStack{
             ZStack{
@@ -56,8 +57,18 @@ struct LoginView: View {
                         }
                         
                     })
-                    .buttonStyle(KitBaseButtonStyle(size: .lg, variant: .outline, backgroundColor: .clear, borderColor: .gray, foregroundColor: .black, buttonWidth: UIScreen.main.bounds.width * 0.8, borderWidth: 1))
+                   // .buttonStyle(KitBaseButtonStyle(size: .lg, variant: .outline, backgroundColor: .clear, borderColor: .gray, foregroundColor: .black, buttonWidth: UIScreen.main.bounds.width * 0.8, borderWidth: 1))
                     
+                    .buttonStyle(
+                        KitBaseButtonStyleBuilder()
+                            .setBackgroundColor(.red)
+                            .setForegroundColor(.white)
+                            .setButtonWidth(UIScreen.main.bounds.width * 0.85)
+//                            .setButtonHeight(24)
+//                            .setPaddingVertical(paddingVertical: 0)
+//                            .setPaddingHorizontal(paddingHorizontal: 0)
+                            .build()
+                    )
                     
                     Text("-------------OR-------------")
                         .font(.caption)
@@ -67,7 +78,16 @@ struct LoginView: View {
                         self.route = true
                         print("Signup")
                     })
-                    .buttonStyle(KitBaseButtonStyle(size: .lg, variant: .solid, backgroundColor: .red, borderColor: .clear, foregroundColor: .white, buttonWidth: UIScreen.main.bounds.width * 0.8, borderWidth: 1))
+                    .buttonStyle(
+                        KitBaseButtonStyleBuilder()
+                            .setBackgroundColor(.clear)
+                            .setForegroundColor(.red)
+                            .setBorderColor(.gray)
+                            .setBorderWidth(1)
+                            .setShowShadow(false)
+                            .setButtonWidth(UIScreen.main.bounds.width * 0.85)
+                            .build()
+                    )
                     
                     Text(authVM.isSuccess == false ? authVM.user?.message ?? "" : "")
                         .foregroundColor(.red)
@@ -89,10 +109,35 @@ struct LoginView: View {
         VStack(alignment: .leading, spacing: 8){
             
             VStack(alignment: .leading){
-                KitBaseFormField(title: "Email", error: authVM.error?.email, isValid: $authVM.isSuccess ) {
+//                KitBaseFormField(title: "Email", error: authVM.error?.email, isValid: $authVM.isSuccess ) {
+//                    TextField("Email", text: $email)
+//                        .focused($focusedField, equals: .emailField)
+//                }
+                
+                KBTextFieldBuilder(content: {
                     TextField("Email", text: $email)
+                        .keyboardType(.emailAddress)
                         .focused($focusedField, equals: .emailField)
-                }
+                    // .focused($isInputActive)
+                        .toolbar {
+                            ToolbarItemGroup(placement: .keyboard) {
+                                Spacer()
+                                Button("Done") {
+                                    isInputActive = false
+                                }
+                            }
+                        }
+                }, isValid: $authVM.isSuccess)
+                .errorFont(.body)
+                .titleSpacing(12)
+                .textColor(.blue)
+                .backgroundColor(.white)
+                .textFieldHeight(44)
+                .borderWidth(0.5)
+                .error(authVM.error?.email) /// `API Error`
+                .build()
+                
+                
                 if focusedField == .emailField && email.isEmpty {
                     Text("Email can't be blank")
                         .font(.footnote)
@@ -100,11 +145,35 @@ struct LoginView: View {
                 }
             }
             VStack(alignment: .leading){
-                KitBaseFormField(title: "Password", error: authVM.error?.password, isValid: $authVM.isSuccess ) {
-                    SecureField("Password", text: $password)
-                        .keyboardType(.namePhonePad)
+//                KitBaseFormField(title: "Password", error: authVM.error?.password, isValid: $authVM.isSuccess ) {
+//                    SecureField("Password", text: $password)
+//                        .keyboardType(.namePhonePad)
+//                        .focused($focusedField, equals: .passwordField)
+//                }
+//                
+                KBTextFieldBuilder(content: {
+                    TextField("Password", text: $password)
+                        .keyboardType(.default)
                         .focused($focusedField, equals: .passwordField)
-                }
+                        .toolbar {
+                            ToolbarItemGroup(placement: .keyboard) {
+                                Spacer()
+                                Button("Done") {
+                                    isInputActive = false
+                                }
+                            }
+                        }
+                }, isValid: $authVM.isSuccess)
+                .errorFont(.body)
+                .titleSpacing(12)
+                .textColor(.blue)
+                .backgroundColor(.white)
+                .textFieldHeight(44)
+                .borderWidth(0.5)
+                .error(authVM.error?.password) /// `API Error`
+                .build()
+                
+                
                 
                 if focusedField == .passwordField && password.isEmpty {
                     Text("Password can't be blank")

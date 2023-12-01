@@ -115,7 +115,9 @@ struct HeaderCreatePostView: View {
             Button {
                 showPhotoModal = true
             } label: {
-                KBButtonCircleView(iconName: "photo.on.rectangle.angled", foregroundColor: .red, backgroundColor: .clear, borderColor: .clear, width: 24, height: 24, fontSize: 24)
+               // KBButtonCircleView(iconName: "photo.on.rectangle.angled", foregroundColor: .red, backgroundColor: .clear, borderColor: .clear, width: 24, height: 24, fontSize: 24)
+                KBButtonType(imageType: .icon, imageViewType: .circle, iconName: "photo.on.rectangle.angled", foregroundColor: .black, backgroundColor: .clear, borderColor: .clear, width: 24, height: 24, fontSize: 24)
+
             }
             .fullScreenCover(isPresented: $showPhotoModal) {
                 VStack{
