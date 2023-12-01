@@ -65,5 +65,5 @@ struct PostDetailHeaderView: View {
 
 #Preview {
     //    PostDetailHeaderView()
-    PostDetailContentView(id: "1  ")
+    PostDetailContentView(id: "1  ", post: .init())
 }
