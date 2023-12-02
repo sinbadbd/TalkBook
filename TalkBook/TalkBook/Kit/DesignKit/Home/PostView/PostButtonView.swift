@@ -52,7 +52,7 @@ struct PostButtonView: View {
                 }
             }else {
                 Button {
-                    
+                    isCommentEnable = false
                 } label: {
                     HStack{
                         Image(systemName: "ellipsis.message")

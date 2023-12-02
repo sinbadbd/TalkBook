@@ -12,7 +12,9 @@ struct PostDetailContentView: View {
     
     @StateObject var detailVM: PostDetailVM = .init()
     @State var isLikeTapped: Bool = false
+    @State var isCommenting: String = ""
     @State var isCommentEmable: Bool = false
+  
     
     var id: String = String()
     var post: Posts?
@@ -23,9 +25,9 @@ struct PostDetailContentView: View {
     }
     
     var body: some View {
-        ScrollView {
-            PostDetailHeaderView()
-            VStack{
+        VStack{
+            ScrollView {
+                PostDetailHeaderView()
                 VStack{
                     Text(detailVM.singlePost?.postContent ?? "")
                         .font(.caption)
@@ -42,9 +44,43 @@ struct PostDetailContentView: View {
             }.onAppear {
                 detailVM.getSinglePosts(id: id)
             }
+            .padding(.top, 40)
             .ignoresSafeArea()
             .navigationBarBackButtonHidden()
+            if isCommentEmable == false {
+                VStack{
+                //BottomCommentView(isComment: $isCommenting)
+            }
+                .background(content: {
+                    Color.red
+                })
+                .frame(height: 44)
+                .toolbar {
+                    ToolbarItem(placement: .keyboard) {
+                        HStack{
+                            //                        TextField("Comment here...", text: $isComment)
+                            //                            .focused($keyboardShown)
+                            //                        if isComment.count > 0 {
+                            Button {
+                                
+                            } label: {
+                                Image(systemName: "paperplane.fill")
+                                    .resizable()
+                                    .aspectRatio(contentMode: .fit)
+                                    .frame(width: 24, height: 24)
+                            }
+                        }
+                        //                    }
+                    }
+                }
         }
+           // BottomCommentView(isComment: $isCommenting)
+
+//                .edgesIgnoringSafeArea(.bottom)
+        }
+//        .ignoresSafeArea(.keyboard)
+        .ignoresSafeArea()
+        .navigationBarBackButtonHidden()
     }
 }
 
