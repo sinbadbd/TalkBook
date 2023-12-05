@@ -60,7 +60,11 @@ struct PostDetailContentView: View {
                 }
             }
             if isCommentEmable == false {
-                BottomCommentView(isComment: $isCommenting)
+//                BottomCommentView(isComment: $isCommenting)
+                BottomCommentView(isComment: $isCommenting) {
+                    detailVM.postComment(postId: detailVM.singlePost?.id, content: isCommenting, tag: "tet", reply: detailVM.singlePost?.id)
+                }
+                .padding(.bottom, 50)
                 
 //                VStack {
 //                    BottomCommentView(isComment: $isCommenting)
