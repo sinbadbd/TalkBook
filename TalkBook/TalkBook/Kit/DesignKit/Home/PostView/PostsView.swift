@@ -17,6 +17,7 @@ struct PostsView: View {
     @State var isEditPost: Bool = false
     @State var postContent: String = "--"
     var onSuccess: (() -> Void)?
+    @State private var showFullText = false
     
     var post: Posts?
 
@@ -35,8 +36,31 @@ struct PostsView: View {
             PostsProfileHeaderView(isPresentPost: $isPresentPost, isEditPost: $isEditPost, isPostContent: $postContent, post: post ?? .init())
                 .padding(.horizontal, 12)
             
-            Text(post?.postContent ?? "not working")
+            if let postContent = post?.postContent, postContent.count > 250 {
+                let displayedContent = showFullText ? postContent : String(postContent.prefix(250) + "...")
+                
+                Text(displayedContent)
+                    .font(.footnote)
+                    .foregroundColor(.gray8)
+                    .padding(.horizontal, 12)
+                
+                Button {
+                    withAnimation {
+                        showFullText.toggle()
+                    }
+                } label: {
+                    Text(showFullText ? "See less" : "See more")
+                        .font(.caption2)
+                        .bold()
+                        .foregroundColor(.gray)
+                }
                 .padding(.horizontal, 12)
+                
+            } else {
+                Text(post?.postContent ?? "not working")
+                    .padding(.horizontal, 12)
+            }
+
             
             PostImagesView(image: post?.images ?? [])
             
