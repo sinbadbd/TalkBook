@@ -19,24 +19,24 @@ struct BottomCommentView: View {
             HStack{
                 TextField("Comment here...", text: $isComment)
                     .focused($keyboardShown)
-                    .toolbar {
-                        ToolbarItem(placement: .keyboard) {
-                            HStack{
-                                TextField("Comment here...", text: $isComment)
-                                    .focused($keyboardShown)
-                                if isComment.count > 0 {
-                                    Button {
-                                        
-                                    } label: {
-                                        Image(systemName: "paperplane.fill")
-                                            .resizable()
-                                            .aspectRatio(contentMode: .fit)
-                                            .frame(width: 24, height: 24)
-                                    }
-                                }
-                            }
-                        }
-                    }
+//                    .toolbar {
+//                        ToolbarItem(placement: .keyboard) {
+//                            HStack{
+//                                TextField("Comment here...", text: $isComment)
+//                                    .focused($keyboardShown)
+//                                if isComment.count > 0 {
+//                                    Button {
+//                                        
+//                                    } label: {
+//                                        Image(systemName: "paperplane.fill")
+//                                            .resizable()
+//                                            .aspectRatio(contentMode: .fit)
+//                                            .frame(width: 24, height: 24)
+//                                    }
+//                                }
+//                            }
+//                        }
+//                    }
 //                    .autocapitalization(.none)     // Disables auto-capitalization
 //                    .disableAutocorrection(true)   // Disables auto-correction
                     .background(content: {

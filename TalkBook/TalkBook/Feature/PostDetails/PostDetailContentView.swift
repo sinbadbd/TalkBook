@@ -14,10 +14,12 @@ struct PostDetailContentView: View {
     @State var isLikeTapped: Bool = false
     @State var isCommenting: String = ""
     @State var isCommentEmable: Bool = false
-  
+    
     
     var id: String = String()
     var post: Posts?
+    // Define a variable to store the keyboard height
+    @State private var keyboardHeight: CGFloat = 0
     
     init(id: String, post:  Posts?){
         self.id = id
@@ -47,38 +49,47 @@ struct PostDetailContentView: View {
             .padding(.top, 40)
             .ignoresSafeArea()
             .navigationBarBackButtonHidden()
-            if isCommentEmable == false {
-                VStack{
-                //BottomCommentView(isComment: $isCommenting)
-            }
-                .background(content: {
-                    Color.red
-                })
-                .frame(height: 44)
-                .toolbar {
-                    ToolbarItem(placement: .keyboard) {
-                        HStack{
-                            //                        TextField("Comment here...", text: $isComment)
-                            //                            .focused($keyboardShown)
-                            //                        if isComment.count > 0 {
-                            Button {
-                                
-                            } label: {
-                                Image(systemName: "paperplane.fill")
-                                    .resizable()
-                                    .aspectRatio(contentMode: .fit)
-                                    .frame(width: 24, height: 24)
-                            }
-                        }
-                        //                    }
-                    }
+            .onAppear {
+                NotificationCenter.default.addObserver(forName: UIResponder.keyboardWillShowNotification, object: nil, queue: .main) { notification in
+                    guard let keyboardFrame = notification.userInfo?[UIResponder.keyboardFrameEndUserInfoKey] as? CGRect else { return }
+                    keyboardHeight = keyboardFrame.height
                 }
+                
+                NotificationCenter.default.addObserver(forName: UIResponder.keyboardWillHideNotification, object: nil, queue: .main) { _ in
+                    keyboardHeight = 0
+                }
+            }
+            if isCommentEmable == false {
+                BottomCommentView(isComment: $isCommenting)
+                
+//                VStack {
+//                    BottomCommentView(isComment: $isCommenting)
+//                        .background(Color.red)
+//                        .frame(height: 44)
+//                }
+//                .toolbar {
+//                    ToolbarItem(placement: .keyboard) {
+//                        HStack {
+//                            TextField("Comment here...", text: $isCommenting)
+//                                //.focused($isCommentEmable)
+//                            
+//                            Button(action: {
+//                                // Handle send button action
+//                            }) {
+//                                Image(systemName: "paperplane.fill")
+//                                    .resizable()
+//                                    .aspectRatio(contentMode: .fit)
+//                                    .frame(width: 24, height: 24)
+//                            }
+//                        }
+//                    }
+//                }
+            }
+            // BottomCommentView(isComment: $isCommenting)
+            
+            //                .edgesIgnoringSafeArea(.bottom)
         }
-           // BottomCommentView(isComment: $isCommenting)
-
-//                .edgesIgnoringSafeArea(.bottom)
-        }
-//        .ignoresSafeArea(.keyboard)
+        //        .ignoresSafeArea(.keyboard)
         .ignoresSafeArea()
         .navigationBarBackButtonHidden()
     }

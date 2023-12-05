@@ -11,6 +11,8 @@ struct PostButtonView: View {
     
     @Binding var isLikeTapped: Bool
     @Binding var isCommentEnable: Bool
+    // Add an @State variable to track navigation activation
+    @State private var isNavigationActive: Bool = false
     
     var post: Posts?
     var onSuccess: (() -> Void)?
@@ -40,29 +42,37 @@ struct PostButtonView: View {
             })
             Spacer()
             
-            if isCommentEnable == true{
-                NavigationLink {
-                    PostDetailContentView(id: post?.id ?? "", post: post)
-                } label: {
-                    Image(systemName: "ellipsis.message")
-                        .foregroundColor(.gray)
-                    Text("Comments")
-                        .font(.callout)
-                        .foregroundColor(.gray)
-                }
-            }else {
+            if isCommentEnable == true {
+                // Use NavigationLink with isActive binding
+                NavigationLink(
+                    destination: PostDetailContentView(id: post?.id ?? "", post: post),
+                    isActive: $isNavigationActive,
+                    label: {
+                        HStack {
+                            Image(systemName: "ellipsis.message")
+                                .foregroundColor(.gray)
+                            Text("Comments")
+                                .font(.callout)
+                                .foregroundColor(.gray)
+                        }
+                    }
+                )
+            } else {
                 Button {
                     isCommentEnable = false
                 } label: {
-                    HStack{
+                    HStack {
                         Image(systemName: "ellipsis.message")
                             .foregroundColor(.gray)
                         Text("Comments")
                             .font(.callout)
                             .foregroundColor(.gray)
                     }
+                    // Set the isNavigationActive to true to activate the NavigationLink
+                    .onTapGesture {
+                        isNavigationActive = true
+                    }
                 }
-                
             }
             Spacer()
             Button(action: {}, label: {
