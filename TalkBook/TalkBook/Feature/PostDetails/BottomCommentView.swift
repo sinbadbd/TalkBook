@@ -14,6 +14,8 @@ struct BottomCommentView: View {
     @State private var keyboardHeight: CGFloat = 0
     @FocusState private var keyboardShown: Bool
     
+    var onPostComment: (()-> Void)?
+    
     var body: some View {
         VStack{
             HStack{
@@ -45,7 +47,8 @@ struct BottomCommentView: View {
                     .frame(height: 44)
                 if isComment.count > 0 {
                     Button {
-                        
+                        onPostComment?()
+                        print("--")
                     } label: {
                         Image(systemName: "paperplane.fill")
                             .resizable()
