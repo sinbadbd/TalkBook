@@ -43,9 +43,31 @@ struct PostDetailContentView: View {
                     Divider()
                     PostButtonView(isLikeTapped: $isLikeTapped, isCommentEnable: $isCommentEmable)
                     Divider()
+                    
+                    VStack {
+                        ForEach(detailVM.commentList, id:\.id){ comment in
+                            HStack{
+                                
+                                KFImage.url(URL(string: comment.user.avatar ?? ""))
+                                    .onSuccess { r in
+                                        //print(r)
+                                    }
+                                    .placeholder { p in
+                                        ProgressView(p)
+                                    }
+                                    .resizable()
+                                    .aspectRatio(contentMode: .fill)
+                                    .frame(width: 40, height: 40)
+                                    .clipShape(Circle())
+                                
+                                VStack{
+                                    Text(comment.user.username ?? "")
+                                    Text(comment.content)
+                                }
+                            }
+                        }
+                    }
                 }
-            }.onAppear {
-                detailVM.getSinglePosts(id: id)
             }
             .padding(.top, 40)
             .ignoresSafeArea()
@@ -63,7 +85,9 @@ struct PostDetailContentView: View {
             if isCommentEmable == false {
 //                BottomCommentView(isComment: $isCommenting)
                 BottomCommentView(isComment: $isCommenting) {
-                    detailVM.postComment(postId: detailVM.singlePost?.id, content: isCommenting, tag: "tet", reply: detailVM.singlePost?.id)
+                    detailVM.postComment(postId: detailVM.singlePost?.id, content: isCommenting, tag: "tet", reply: detailVM.singlePost?.id) {
+                        detailVM.getComments(postId: id)
+                    }
                 }
                 .padding(.bottom, 50)
                 
@@ -90,14 +114,20 @@ struct PostDetailContentView: View {
 //                    }
 //                }
             }
+            
             // BottomCommentView(isComment: $isCommenting)
             
             //                .edgesIgnoringSafeArea(.bottom)
+        }
+        .onAppear {
+            detailVM.getSinglePosts(id: id)
+            detailVM.getComments(postId: id)
         }
         //        .ignoresSafeArea(.keyboard)
         .ignoresSafeArea()
         .navigationBarBackButtonHidden()
     }
+   
 }
 
 #Preview {

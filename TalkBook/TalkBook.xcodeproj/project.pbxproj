@@ -58,6 +58,7 @@
 		1D6E6CE32AFABA0C00292740 /* PostButtonView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1D6E6CE22AFABA0C00292740 /* PostButtonView.swift */; };
 		1D6E6CE52AFABACF00292740 /* PostImagesView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1D6E6CE42AFABACF00292740 /* PostImagesView.swift */; };
 		1D6E6CE72AFABB3900292740 /* HomeVM+API.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1D6E6CE62AFABB3900292740 /* HomeVM+API.swift */; };
+		1D7177E92B3759AA0043CD1A /* CommentModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1D7177E82B3759AA0043CD1A /* CommentModel.swift */; };
 		1D858ACD2AE43C4800FE6AC4 /* TalkBookApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1D858ACC2AE43C4800FE6AC4 /* TalkBookApp.swift */; };
 		1D858ACF2AE43C4800FE6AC4 /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1D858ACE2AE43C4800FE6AC4 /* ContentView.swift */; };
 		1D858AD12AE43C4A00FE6AC4 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 1D858AD02AE43C4A00FE6AC4 /* Assets.xcassets */; };
@@ -142,6 +143,7 @@
 		1D6E6CE22AFABA0C00292740 /* PostButtonView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PostButtonView.swift; sourceTree = "<group>"; };
 		1D6E6CE42AFABACF00292740 /* PostImagesView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PostImagesView.swift; sourceTree = "<group>"; };
 		1D6E6CE62AFABB3900292740 /* HomeVM+API.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "HomeVM+API.swift"; sourceTree = "<group>"; };
+		1D7177E82B3759AA0043CD1A /* CommentModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CommentModel.swift; sourceTree = "<group>"; };
 		1D858AC92AE43C4800FE6AC4 /* TalkBook.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = TalkBook.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		1D858ACC2AE43C4800FE6AC4 /* TalkBookApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TalkBookApp.swift; sourceTree = "<group>"; };
 		1D858ACE2AE43C4800FE6AC4 /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
@@ -431,6 +433,7 @@
 			isa = PBXGroup;
 			children = (
 				1D6CB75F2AEB726600CE713F /* PostModel.swift */,
+				1D7177E82B3759AA0043CD1A /* CommentModel.swift */,
 			);
 			path = Post;
 			sourceTree = "<group>";
@@ -747,6 +750,7 @@
 				1D1A2DEA2AF147D7001FD271 /* MenuView.swift in Sources */,
 				1D1A2DE62AF147C5001FD271 /* ProfileView.swift in Sources */,
 				1DDA61312B087693003D4C5B /* ApiHeader.swift in Sources */,
+				1D7177E92B3759AA0043CD1A /* CommentModel.swift in Sources */,
 				1D6CB7442AEB66DB00CE713F /* LoginRequest.swift in Sources */,
 				1D6CB7302AEB66DB00CE713F /* ApiURL.swift in Sources */,
 				1D6CB7432AEB66DB00CE713F /* RequestToken.swift in Sources */,

@@ -18,6 +18,9 @@ class PostDetailVM: ObservableObject {
     @Published var singlePost: Posts? = nil
     @Published var authModel: User?
     
+    
+    @Published var comments: CommentsModel? = nil
+    @Published var commentList: [Comment] = []
     //Like and comments
     @Published var likeCount: Int = 0
     @Published var error: ErrorsObject?
@@ -51,7 +54,7 @@ class PostDetailVM: ObservableObject {
     }
     
     
-    func postComment(postId: String?, content: String?, tag: String?, reply: String?){
+    func postComment(postId: String?, content: String?, tag: String?, reply: String?, completion: @escaping (()->Void)){
         /*
          {
          "postId": "656f4583a88e52be87d16e75",
@@ -92,6 +95,34 @@ class PostDetailVM: ObservableObject {
                     print("self.isSuccess: \(self.isSuccess)")
                     self.singlePost = response.post
                     print("self.get-posts: \(String(describing: self.allPosts))")
+                    completion()
+                })
+            .store(in: &cancellables)
+    }
+    
+    
+    
+    
+    func getComments(postId: String){
+        
+        let url = String(format: ApiURL.Comment.getComments.getURL(), postId)
+        //_ = Provider.access_token
+        
+        let headers = NetworkHeaders.createHeaders()
+        let endPoint = EndPoint(url: url, headers: headers, method: .get)
+        print("endPoint; \(endPoint)")
+        
+        NetworkKit.shared.request(endPoint)
+            .sink(
+                receiveCompletion: { completion in
+                    NetworkKit.shared.handleCompletion(url: URL(string: endPoint.url)!, completion: completion)
+                },
+                receiveValue: { (response: CommentsModel) in
+                    self.isSuccess = response.success
+                    print("self.isSuccess: \(self.isSuccess)")
+                    self.comments = response// ?? []
+                    self.commentList = self.comments?.comments ?? []
+                    print("self.get-commentList: \(String(describing: self.commentList))")
                 })
             .store(in: &cancellables)
     }

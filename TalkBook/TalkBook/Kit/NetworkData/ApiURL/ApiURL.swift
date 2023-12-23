@@ -28,7 +28,7 @@ struct ApiURL {
         getSinglePost
     }
     enum Comment {
-        case createComment
+        case createComment, getComments
     }
  
 }

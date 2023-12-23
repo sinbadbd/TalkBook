@@ -12,6 +12,7 @@ extension ApiURL.Comment {
         var endPart = ""
         switch self {
         case .createComment: endPart = "createComment"
+        case .getComments: endPart = "getComments/%@"
         }
         return "\(baseURL)\(endPart)"
     }
