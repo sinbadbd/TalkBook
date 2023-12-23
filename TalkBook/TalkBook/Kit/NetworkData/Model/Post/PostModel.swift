@@ -22,13 +22,11 @@ struct NewPosts: Model {
     var images: [String]?
     var likes, comments: [String]?
     var id, postContent, createdAt, updatedAt: String?
-    var v: Int?
 
     enum CodingKeys: String, CodingKey {
         case images, likes, comments
         case id = "_id"
         case postContent, createdAt, updatedAt
-        case v = "__v"
     }
 }
 
@@ -39,14 +37,12 @@ struct Posts: Model {
     var liked: Bool?
     var comments: [String]?
     var id, postContent, createdAt, updatedAt: String?
-    var v: Int?
     var user: UserModel?
     
     enum CodingKeys: String, CodingKey {
         case images, likes, liked, comments
         case id = "_id"
         case postContent, createdAt, updatedAt
-        case v = "__v"
         case user
     }
 }
