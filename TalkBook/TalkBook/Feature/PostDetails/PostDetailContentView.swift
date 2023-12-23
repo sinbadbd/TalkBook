@@ -31,7 +31,8 @@ struct PostDetailContentView: View {
             ScrollView {
                 PostDetailHeaderView()
                 VStack{
-                    Text(detailVM.singlePost?.postContent ?? "")
+                    //Text(detailVM.singlePost?.postContent ?? "")
+                    Text(post?.postContent ?? "")
                         .font(.caption)
                         .foregroundColor(.gray8)
                         .padding(.horizontal, 8)

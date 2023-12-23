@@ -106,7 +106,7 @@ class PhotoManager {
                             }
                         }
                         
-                        dispatchGroup.leave()
+                        dispatchGroup.leave() /// ``Bug Here`
                     }
                 } else {
                     // Log asset processing failure

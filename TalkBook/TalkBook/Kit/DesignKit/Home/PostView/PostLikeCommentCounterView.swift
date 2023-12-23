@@ -34,12 +34,15 @@ struct PostLikeCommentCounterView: View {
             }
             
             HStack{
-                Text("122")
-                    .font(.caption)
-                    .foregroundColor(.gray)
-                Text("Comments")
-                    .font(.caption)
-                    .foregroundColor(.gray)
+                
+                if let comments = post?.comments, !comments.isEmpty {
+                    Text("\(comments.count)")
+                        .font(.caption)
+                        .foregroundColor(.gray)
+                    Text("Comments")
+                        .font(.caption)
+                        .foregroundColor(.gray)
+                }
             }
         }
     }
