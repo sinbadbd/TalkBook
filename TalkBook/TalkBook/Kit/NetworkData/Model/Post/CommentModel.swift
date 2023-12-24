@@ -17,9 +17,9 @@ struct CommentsModel: Model {
 // MARK: - Comment
 struct Comment: Model {
     let likes: [String]
-    let id, content, tag, reply: String
-    let postUserID, postID, createdAt, updatedAt: String
-    let user: UserModel
+    let id, content, tag, reply: String?
+    let postUserID, postID, createdAt, updatedAt: String?
+    let user: UserModel?
     enum CodingKeys: String, CodingKey {
         case likes
         case id = "_id"

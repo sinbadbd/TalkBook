@@ -14,7 +14,8 @@ struct PostDetailContentView: View {
     @State var isLikeTapped: Bool = false
     @State var isCommenting: String = ""
     @State var isCommentEmable: Bool = false
-    
+    @State private var isShowPostFullText = false
+    @State private var isShowCommentFullText = false
     
     var id: String = String()
     var post: Posts?
@@ -28,16 +29,12 @@ struct PostDetailContentView: View {
     
     var body: some View {
         VStack{
+            PostDetailHeaderView()
             ScrollView {
-                PostDetailHeaderView()
                 VStack{
-                    //Text(detailVM.singlePost?.postContent ?? "")
-                    Text(post?.postContent ?? "")
-                        .font(.caption)
-                        .foregroundColor(.gray8)
-                        .padding(.horizontal, 8)
-                        .padding(.bottom, 8)
-                        .frame(maxWidth: .infinity, alignment: .leading)
+                    PostContentAdjustHeightView(postText: post?.postContent, isShowFullText: $isShowPostFullText)
+                        .padding(.horizontal, 16)
+                        .padding(.bottom, 16)
                     
                     PostImagesView(image: post?.images ?? [])
                     Divider()
@@ -46,9 +43,9 @@ struct PostDetailContentView: View {
                     
                     VStack {
                         ForEach(detailVM.commentList, id:\.id){ comment in
-                            HStack{
+                            HStack(alignment:.top){
                                 
-                                KFImage.url(URL(string: comment.user.avatar ?? ""))
+                                KFImage.url(URL(string: comment.user?.avatar ?? ""))
                                     .onSuccess { r in
                                         //print(r)
                                     }
@@ -60,28 +57,27 @@ struct PostDetailContentView: View {
                                     .frame(width: 40, height: 40)
                                     .clipShape(Circle())
                                 
-                                VStack{
-                                    Text(comment.user.username ?? "")
-                                    Text(comment.content)
+                                VStack(alignment: .leading){
+                                    Text(comment.user?.username ?? "")
+                                        .font(.subheadline)
+                                        .bold()
+                                    PostContentAdjustHeightView(postText: comment.content, isShowFullText: $isShowCommentFullText)
                                 }
+                                .padding(8)
+                                .background {
+                                    Color.gray3
+                                }
+                                .cornerRadius(8)
                             }
+                            .frame(maxWidth: .infinity, alignment:.leading)
                         }
                     }
+                    .padding(.horizontal, 16)
+//                    .frame(maxWidth: .infinity, alignment:.leading)
                 }
+                .frame(alignment: .leading)
             }
-            .padding(.top, 40)
-            .ignoresSafeArea()
-            .navigationBarBackButtonHidden()
-            .onAppear {
-                NotificationCenter.default.addObserver(forName: UIResponder.keyboardWillShowNotification, object: nil, queue: .main) { notification in
-                    guard let keyboardFrame = notification.userInfo?[UIResponder.keyboardFrameEndUserInfoKey] as? CGRect else { return }
-                    keyboardHeight = keyboardFrame.height
-                }
-                
-                NotificationCenter.default.addObserver(forName: UIResponder.keyboardWillHideNotification, object: nil, queue: .main) { _ in
-                    keyboardHeight = 0
-                }
-            }
+
             if isCommentEmable == false {
 //                BottomCommentView(isComment: $isCommenting)
                 BottomCommentView(isComment: $isCommenting) {
@@ -124,7 +120,19 @@ struct PostDetailContentView: View {
             detailVM.getComments(postId: id)
         }
         //        .ignoresSafeArea(.keyboard)
+        .padding(.top, 40)
         .ignoresSafeArea()
+        .navigationBarBackButtonHidden()
+        .onAppear {
+            NotificationCenter.default.addObserver(forName: UIResponder.keyboardWillShowNotification, object: nil, queue: .main) { notification in
+                guard let keyboardFrame = notification.userInfo?[UIResponder.keyboardFrameEndUserInfoKey] as? CGRect else { return }
+                keyboardHeight = keyboardFrame.height
+            }
+            
+            NotificationCenter.default.addObserver(forName: UIResponder.keyboardWillHideNotification, object: nil, queue: .main) { _ in
+                keyboardHeight = 0
+            }
+        }
         .navigationBarBackButtonHidden()
     }
    
