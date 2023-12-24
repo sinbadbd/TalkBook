@@ -35,33 +35,8 @@ struct PostsView: View {
             
             PostsProfileHeaderView(isPresentPost: $isPresentPost, isEditPost: $isEditPost, isPostContent: $postContent, post: post ?? .init())
                 .padding(.horizontal, 12)
-            
-            if let postContent = post?.postContent, postContent.count > 250 {
-                let displayedContent = showFullText ? postContent : String(postContent.prefix(250) + "...")
-                
-                Text(displayedContent)
-                    .font(.footnote)
-                    .foregroundColor(.gray8)
-                    .padding(.horizontal, 12)
-                
-                Button {
-                    withAnimation {
-                        showFullText.toggle()
-                    }
-                } label: {
-                    Text(showFullText ? "See less" : "See more")
-                        .font(.caption2)
-                        .bold()
-                        .foregroundColor(.gray)
-                }
+            PostContentAdjustHeightView(postText: post?.postContent, isShowFullText: $showFullText)
                 .padding(.horizontal, 12)
-                
-            } else {
-                Text(post?.postContent ?? "not working")
-                    .padding(.horizontal, 12)
-            }
-
-            
             PostImagesView(image: post?.images ?? [])
             
             PostLikeCommentCounterView(post: post)
