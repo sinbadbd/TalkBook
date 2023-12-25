@@ -16,6 +16,8 @@ struct PostDetailContentView: View {
     @State var isCommentEmable: Bool = false
     @State private var isShowPostFullText = false
     @State private var isShowCommentFullText = false
+    @State var getCommentId = ""
+    @State private var showActionSheet = false
     
     var id: String = String()
     var post: Posts?
@@ -35,6 +37,7 @@ struct PostDetailContentView: View {
                     PostContentAdjustHeightView(postText: post?.postContent, isShowFullText: $isShowPostFullText)
                         .padding(.horizontal, 16)
                         .padding(.bottom, 16)
+                        .frame(maxWidth: .infinity, alignment: .leading)
                     
                     PostImagesView(image: post?.images ?? [])
                     Divider()
@@ -56,12 +59,37 @@ struct PostDetailContentView: View {
                                     .aspectRatio(contentMode: .fill)
                                     .frame(width: 40, height: 40)
                                     .clipShape(Circle())
-                                
                                 VStack(alignment: .leading){
                                     Text(comment.user?.username ?? "")
                                         .font(.subheadline)
                                         .bold()
                                     PostContentAdjustHeightView(postText: comment.content, isShowFullText: $isShowCommentFullText)
+                                }
+                                .onLongPressGesture {
+                                    self.showActionSheet = true
+                                    self.getCommentId = comment.id ?? ""
+                                    
+                                }
+                                .actionSheet(isPresented: $showActionSheet) {
+                                    ActionSheet(
+                                        title: Text(""),
+                                        buttons: [
+                                            .default(Text("Reply")) {
+                                                // Handle action 1
+                                            },
+                                            .default(Text("Edit")) {
+                                                // Handle action 1
+                                            },
+                                            .default(Text("Delete").foregroundColor(.red)) {
+                                                // Handle action 2
+                                                detailVM.deleteComment(for: getCommentId)
+                                            },
+                                            .default(Text("Copy")) {
+                                                // Handle action 2
+                                            },
+                                            .cancel()
+                                        ]
+                                    )
                                 }
                                 .padding(8)
                                 .background {

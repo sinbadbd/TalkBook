@@ -127,5 +127,35 @@ class PostDetailVM: ObservableObject {
             .store(in: &cancellables)
     }
     
+    func likeComment(){
+        
+    }
+    
+    func unLikeComment(){
+        
+    }
+    
+    func deleteComment(for commentId: String){
+        let url = String(format: ApiURL.Comment.deleteComment.getURL(), commentId)
+        //_ = Provider.access_token
+        
+        let headers = NetworkHeaders.createHeaders()
+        let endPoint = EndPoint(url: url, headers: headers, method: .delete)
+        print("endPoint; \(endPoint)")
+        
+        NetworkKit.shared.request(endPoint)
+            .sink(
+                receiveCompletion: { completion in
+                    NetworkKit.shared.handleCompletion(url: URL(string: endPoint.url)!, completion: completion)
+                },
+                receiveValue: { (response: SuccessModelData) in
+                    self.isSuccess = response.success
+                    print("self.isSuccess: \(self.isSuccess)")
+                   // self.comments = response// ?? []
+//                    self.commentList = self.comments?.comments ?? []
+//                    print("self.get-commentList: \(String(describing: self.commentList))")
+                })
+            .store(in: &cancellables)
+    }
     
 }

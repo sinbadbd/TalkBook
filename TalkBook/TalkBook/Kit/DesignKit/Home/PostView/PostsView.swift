@@ -35,7 +35,7 @@ struct PostsView: View {
             
             PostsProfileHeaderView(isPresentPost: $isPresentPost, isEditPost: $isEditPost, isPostContent: $postContent, post: post ?? .init())
                 .padding(.horizontal, 12)
-            PostContentAdjustHeightView(postText: post?.postContent, isShowFullText: $showFullText)
+            PostContentAdjustHeightView(postText: post?.postContent,textFont: .footnote, isShowFullText: $showFullText)
                 .padding(.horizontal, 12)
             PostImagesView(image: post?.images ?? [])
             
