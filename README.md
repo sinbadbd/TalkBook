@@ -10,6 +10,13 @@ A SwiftUI social media app powered by MongoDB and Node.js.
 1. **Login, Registration**
 2. **Create Post**
 3. **Like & Comment**
+4. - 
+5. 
+6.
+7.
+8.
+9.
+10.
 
 ### Architecture:
 
@@ -34,3 +41,12 @@ Follows MVVM (Model-View-ViewModel):
 ## Coming Soon:
 
 Exciting updates in progress!
+
+### Demo
+
+
+https://github.com/sinbadbd/TalkBook/assets/21377498/62792b92-edc2-45c7-8062-f0caa74d3be7
+
+
+
+
