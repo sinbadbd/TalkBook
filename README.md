@@ -10,7 +10,7 @@ A SwiftUI social media app powered by MongoDB and Node.js.
 1. **Login, Registration**
 2. **Create Post**
 3. **Like & Comment**
-4. - 
+4. 
 5. 
 6.
 7.
