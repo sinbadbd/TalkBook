@@ -23,8 +23,9 @@ Follows MVVM (Model-View-ViewModel):
 
 1. Clone the Xcode project.
 2. Open the project in Xcode.
-3. Configure MongoDB connections in the project settings.
-4. Build and run the app.
+3. Install Swift dependencies
+4. Configure MongoDB connections in the project settings.
+5. Build and run the app.
 
 ### Behind the Scenes:
 
