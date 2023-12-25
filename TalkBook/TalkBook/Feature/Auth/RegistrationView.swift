@@ -143,7 +143,7 @@ struct RegistrationView: View {
                 .backgroundColor(.white)
                 .textFieldHeight(44)
                 .borderWidth(0.5)
-                .error(authVM.error?.username) /// `API Error`
+                .setErrorMessage(authVM.error?.username) /// `API Error`
                 .build()
                 
                 if focusedField == .usernameField && username.isEmpty {
@@ -178,7 +178,7 @@ struct RegistrationView: View {
                 .backgroundColor(.white)
                 .textFieldHeight(44)
                 .borderWidth(0.5)
-                .error(authVM.error?.password) /// `API Error`
+                .setErrorMessage(authVM.error?.password) /// `API Error`
                 .build()
                 
                 if focusedField == .passwordField && password.isEmpty {
@@ -212,7 +212,7 @@ struct RegistrationView: View {
                 .backgroundColor(.white)
                 .textFieldHeight(44)
                 .borderWidth(0.5)
-                .error(authVM.error?.email) /// `API Error`
+                .setErrorMessage(authVM.error?.email) /// `API Error`
                 .build()
                 
                 if focusedField == .emailField && email.isEmpty {
@@ -246,7 +246,7 @@ struct RegistrationView: View {
                 .backgroundColor(.white)
                 .textFieldHeight(44)
                 .borderWidth(0.5)
-                .error(authVM.error?.fullname) /// `API Error`
+                .setErrorMessage(authVM.error?.fullname) /// `API Error`
                 .build()
                 if focusedField == .fullNameField && fullName.isEmpty {
                     Text("Full Name can't be blank")

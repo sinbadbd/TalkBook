@@ -11,9 +11,15 @@ extension ApiURL.Comment {
         let baseURL = ApiConfig.httpBase
         var endPart = ""
         switch self {
-        case .createComment: endPart = "createComment"
-        case .getComments: endPart = "getComments/%@"
+        case .createComment: endPart = "comment/createComment"
+        case .getComments: endPart = "comment/getComments/%@"
+        case .commentEdit: endPart = "comment/%@"
+        case .likeComment: endPart = "comment/%@/like"
+        case .unlikeComment: endPart = "comment/%@/unlike"
+        case .deleteComment: endPart = "comment/%@"
         }
         return "\(baseURL)\(endPart)"
     }
 }
+
+    //comment/6587a306cee381065877a1c2/like

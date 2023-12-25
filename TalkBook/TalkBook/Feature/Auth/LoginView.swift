@@ -134,7 +134,7 @@ struct LoginView: View {
                 .backgroundColor(.white)
                 .textFieldHeight(44)
                 .borderWidth(0.5)
-                .error(authVM.error?.email) /// `API Error`
+                .setErrorMessage(authVM.error?.email) /// `API Error`
                 .build()
                 
                 
@@ -170,7 +170,7 @@ struct LoginView: View {
                 .backgroundColor(.white)
                 .textFieldHeight(44)
                 .borderWidth(0.5)
-                .error(authVM.error?.password) /// `API Error`
+                .setErrorMessage(authVM.error?.password) /// `API Error`
                 .build()
                 
                 
