@@ -57,8 +57,6 @@ struct LoginView: View {
                         }
                         
                     })
-                   // .buttonStyle(KitBaseButtonStyle(size: .lg, variant: .outline, backgroundColor: .clear, borderColor: .gray, foregroundColor: .black, buttonWidth: UIScreen.main.bounds.width * 0.8, borderWidth: 1))
-                    
                     .buttonStyle(
                         KitBaseButtonStyleBuilder()
                             .setBackgroundColor(.red)
@@ -84,7 +82,7 @@ struct LoginView: View {
                             .setForegroundColor(.red)
                             .setBorderColor(.gray)
                             .setBorderWidth(1)
-                            .setShowShadow(false)
+                            .setShowShadow(true)
                             .setButtonWidth(UIScreen.main.bounds.width * 0.85)
                             .build()
                     )
@@ -109,11 +107,6 @@ struct LoginView: View {
         VStack(alignment: .leading, spacing: 8){
             
             VStack(alignment: .leading){
-//                KitBaseFormField(title: "Email", error: authVM.error?.email, isValid: $authVM.isSuccess ) {
-//                    TextField("Email", text: $email)
-//                        .focused($focusedField, equals: .emailField)
-//                }
-                
                 KBTextFieldBuilder(content: {
                     TextField("Email", text: $email)
                         .keyboardType(.emailAddress)
@@ -145,14 +138,9 @@ struct LoginView: View {
                 }
             }
             VStack(alignment: .leading){
-//                KitBaseFormField(title: "Password", error: authVM.error?.password, isValid: $authVM.isSuccess ) {
-//                    SecureField("Password", text: $password)
-//                        .keyboardType(.namePhonePad)
-//                        .focused($focusedField, equals: .passwordField)
-//                }
-//                
+
                 KBTextFieldBuilder(content: {
-                    TextField("Password", text: $password)
+                    SecureField("Password", text: $password)
                         .keyboardType(.default)
                         .focused($focusedField, equals: .passwordField)
                         .toolbar {
