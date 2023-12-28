@@ -222,16 +222,16 @@ class PostDetailVM: ObservableObject {
             .store(in: &cancellables)
     }
     
-    func editComment(for commentId: String, completion: @escaping (()->Void)){
+    func editComment(for commentId: String, content: String?, completion: @escaping (()->Void)){
         let url = String(format: ApiURL.Comment.commentEdit.getURL(), commentId)
         
         let params: Parameters = [
-            "userId": Provider.userId
+            "content": content ?? ""
         ]
         print("params-edit: \(params)")
         
         let headers = NetworkHeaders.createHeaders()
-        let endPoint = EndPoint(url: url, parameters: params, headers: headers, method: .delete)
+        let endPoint = EndPoint(url: url, parameters: params, headers: headers, method: .put)
         print("endPoint; \(endPoint)")
         
         NetworkKit.shared.request(endPoint)
