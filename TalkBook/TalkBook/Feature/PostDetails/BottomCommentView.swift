@@ -8,7 +8,7 @@
 import SwiftUI
 import Combine
 
-struct BottomCommentView: View {
+struct TextEditorView: View {
     
     @Binding var isComment: String
     @State private var keyboardHeight: CGFloat = 0
@@ -19,7 +19,7 @@ struct BottomCommentView: View {
     var body: some View {
         VStack{
             HStack{
-                TextField("Comment here...", text: $isComment)
+                TextField("Comment here...", text: $isComment, axis: .vertical)
                     .focused($keyboardShown)
 //                    .toolbar {
 //                        ToolbarItem(placement: .keyboard) {
@@ -44,7 +44,7 @@ struct BottomCommentView: View {
                     .background(content: {
                         Color.gray
                     })
-                    .frame(height: 44)
+//                    .frame(height: 44)
                 if isComment.count > 0 {
                     Button {
                         onPostComment?()
@@ -59,7 +59,7 @@ struct BottomCommentView: View {
             }
             .padding(.horizontal, 16)
         }
-        .frame(height: 44)
+        .frame(minHeight: 44, maxHeight: .infinity)
         .frame(maxWidth: .infinity)
 //        .modifier(KeyboardAdaptive())
 //        .onTapGesture {
@@ -70,7 +70,7 @@ struct BottomCommentView: View {
 }
 
 #Preview {
-    BottomCommentView(isComment: .constant("false"))
+    TextEditorView(isComment: .constant("false"))
 }
 
 final class KeyboardResponder: ObservableObject {

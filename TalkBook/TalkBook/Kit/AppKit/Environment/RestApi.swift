@@ -24,9 +24,10 @@ extension RestApi {
     init(for environment: TalkBookEnvironment) {
         switch environment {
         case .production:       host = "localhost:2000/api/"
+            //"talk-book-soical-backend.vercel.app/2000/api/" //"localhost:2000/api/"
         case .preProduction:    host = ""
         case .staging:          host = ""
-        case .develop:          host = "localhost:2000/api/"
+        case .develop:          host = "talk-book-soical-backend.vercel.app/2000/api"//"localhost:2000/api/"
         }
         version = ""
         apiKey = ""

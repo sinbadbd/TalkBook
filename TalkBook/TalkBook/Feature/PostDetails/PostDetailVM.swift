@@ -27,7 +27,17 @@ class PostDetailVM: ObservableObject {
     
     @Published var isSuccess: Bool = false
     
+    @Published var editingCommentIds: Set<String> = []
     
+    // ... (existing code)
+    
+    func toggleEditingComment(commentId: String) {
+        if editingCommentIds.contains(commentId) {
+            editingCommentIds.remove(commentId)
+        } else {
+            editingCommentIds.insert(commentId)
+        }
+    }
     
     
     func getSinglePosts(id: String){
@@ -127,12 +137,66 @@ class PostDetailVM: ObservableObject {
             .store(in: &cancellables)
     }
     
-    func likeComment(){
+    
+    
+    
+    func likeComment(for commentId: String){
         
+        let url = String(format: ApiURL.Comment.likeComment.getURL(), commentId)
+ 
+        let params: Parameters = [
+            "userId": Provider.userId
+        ]
+        print("params-login: \(params)")
+       
+        let headers = NetworkHeaders.createHeaders()
+        let endPoint = EndPoint(url: url, parameters: params, headers: headers, method: .put)
+        print("endPoint; \(endPoint)")
+        
+        NetworkKit.shared.request(endPoint)
+            .sink(
+                receiveCompletion: { completion in
+                    NetworkKit.shared.handleCompletion(url: URL(string: endPoint.url)!, completion: completion)
+                },
+                receiveValue: { (response: SuccessModelData) in
+                    self.isSuccess = response.success
+                    print("self.isSuccess: \(self.isSuccess)")
+                    // self.comments = response// ?? []
+                    //                    self.commentList = self.comments?.comments ?? []
+                    //                    print("self.get-commentList: \(String(describing: self.commentList))")
+                })
+            .store(in: &cancellables)
     }
     
-    func unLikeComment(){
+    func unLikeComment(for commentId: String){
+        let url = String(format: ApiURL.Comment.likeComment.getURL(), commentId)
         
+        
+        let params: Parameters = [
+            "userId": Provider.userId
+        ]
+        print("params-login: \(params)")
+        
+        
+        //_ = Provider.access_token
+        
+        let headers = NetworkHeaders.createHeaders()
+        let endPoint = EndPoint(url: url, headers: headers, method: .put)
+        print("endPoint; \(endPoint)")
+        
+        NetworkKit.shared.request(endPoint)
+            .sink(
+                receiveCompletion: { completion in
+                    NetworkKit.shared.handleCompletion(url: URL(string: endPoint.url)!, completion: completion)
+                },
+                receiveValue: { (response: SuccessModelData) in
+                    self.isSuccess = response.success
+                    print("self.isSuccess: \(self.isSuccess)")
+                    // self.comments = response// ?? []
+                    //                    self.commentList = self.comments?.comments ?? []
+                    //                    print("self.get-commentList: \(String(describing: self.commentList))")
+                })
+            .store(in: &cancellables)
     }
     
     func deleteComment(for commentId: String){
@@ -158,4 +222,28 @@ class PostDetailVM: ObservableObject {
             .store(in: &cancellables)
     }
     
+    func editComment(for commentId: String, content: String?, completion: @escaping (()->Void)){
+        let url = String(format: ApiURL.Comment.commentEdit.getURL(), commentId)
+        
+        let params: Parameters = [
+            "content": content ?? ""
+        ]
+        print("params-edit: \(params)")
+        
+        let headers = NetworkHeaders.createHeaders()
+        let endPoint = EndPoint(url: url, parameters: params, headers: headers, method: .put)
+        print("endPoint; \(endPoint)")
+        
+        NetworkKit.shared.request(endPoint)
+            .sink(
+                receiveCompletion: { completion in
+                    NetworkKit.shared.handleCompletion(url: URL(string: endPoint.url)!, completion: completion)
+                },
+                receiveValue: { (response: SuccessModelData) in
+                    self.isSuccess = response.success
+                    print("self.isSuccess: \(self.isSuccess)")
+                    completion()
+                })
+            .store(in: &cancellables)
+    }
 }

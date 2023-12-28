@@ -21,11 +21,11 @@ struct RegistrationView: View {
     
     
     @ObservedObject private var authVM: AuthVM = .init()
-//    @Environment(\.presentationMode) var presentationMode
+    //    @Environment(\.presentationMode) var presentationMode
     
-//    @Environment(\.colorScheme) var colorScheme: ColorScheme
-
-
+    //    @Environment(\.colorScheme) var colorScheme: ColorScheme
+    
+    
     @State private var username: String = ""
     @State private var password: String = ""
     @State private var fullName: String = ""
@@ -37,7 +37,7 @@ struct RegistrationView: View {
     @State private var selected = 1
     @FocusState private var focusedField: Field?
     
- 
+    
     enum Gender: String, CaseIterable, Identifiable {
         case Male, Female, Other
         var id: Self { self }
@@ -73,28 +73,20 @@ struct RegistrationView: View {
                                 fullname:fullName,
                                 email: email,
                                 gender: selectedFlavor.rawValue) {
-                                   // clearFields()
+                                    // clearFields()
                                     //presentationMode.wrappedValue.dismiss()
                                 }
                         }
                     })
-                    //.buttonStyle(KitBaseButtonStyle(size: .lg, variant: .solid, backgroundColor: .white, borderColor: .red, foregroundColor: .gray,buttonWidth: UIScreen.main.bounds.width * 0.7 ,borderWidth: 1))
+                    
                     .buttonStyle(
                         KitBaseButtonStyleBuilder()
-                            .setBackgroundColor(.gray)
-                            .setForegroundColor(.black)
-                            .setButtonWidth(UIScreen.main.bounds.width * 0.8)
-                            .setButtonHeight(30)
-                            .setIcon("square.and.arrow.up")
-                            .setImage("ic_edit")
-                            .setIconColor(.red)
-                            .setIconColor(.red)
-                            .setIconWidth(20)
-                            .setIconHeight(20)
-                            .setShowShadow(false) // Default true
-                        //.setPaddingAll(paddingAll: 0)
+                            .setBackgroundColor(.red)
+                            .setForegroundColor(.white)
+                            .setButtonHeight(40)
                             .setPaddingVertical(paddingVertical: 0)
                             .setPaddingHorizontal(paddingHorizontal: 0)
+                            .setButtonWidth(UIScreen.main.bounds.width * 0.85)
                             .build()
                     )
                     
@@ -118,10 +110,10 @@ struct RegistrationView: View {
     private var registrationView: some View{
         VStack(alignment: .leading, spacing: 8){
             VStack(alignment: .leading){
-//                KitBaseFormField(title: "Username", error: authVM.error?.username, isValid: $authVM.isSuccess) {
-//                    TextField("username", text: $username)
-//                        .focused($focusedField, equals: .usernameField)
-//                }
+                //                KitBaseFormField(title: "Username", error: authVM.error?.username, isValid: $authVM.isSuccess) {
+                //                    TextField("username", text: $username)
+                //                        .focused($focusedField, equals: .usernameField)
+                //                }
                 
                 KBTextFieldBuilder(content: {
                     TextField("Username", text: $username)
@@ -131,9 +123,9 @@ struct RegistrationView: View {
                         .toolbar {
                             ToolbarItemGroup(placement: .keyboard) {
                                 Spacer()
-                                Button("Done") {
-                                    //  isInputActive = false
-                                }
+                                //                                Button("Done") {
+                                //                                    //  isInputActive = false
+                                //                                }
                             }
                         }
                 }, isValid: $authVM.isSuccess)
@@ -153,22 +145,22 @@ struct RegistrationView: View {
                 }
             }
             VStack(alignment: .leading){
-//                KitBaseFormField(title: "Password", error: authVM.error?.password, isValid: $authVM.isSuccess ) {
-//                    SecureField("Password", text: $password)
-//                        .keyboardType(.namePhonePad)
-//                        .focused($focusedField, equals: .passwordField)
-//                }
+                //                KitBaseFormField(title: "Password", error: authVM.error?.password, isValid: $authVM.isSuccess ) {
+                //                    SecureField("Password", text: $password)
+                //                        .keyboardType(.namePhonePad)
+                //                        .focused($focusedField, equals: .passwordField)
+                //                }
                 KBTextFieldBuilder(content: {
-                    TextField("Username", text: $password)
-                        .keyboardType(.numberPad)
+                    SecureField("Password", text: $password)
+                        .keyboardType(.default)
                         .focused($focusedField, equals: .passwordField)
                     // .focused($isInputActive)
                         .toolbar {
                             ToolbarItemGroup(placement: .keyboard) {
                                 Spacer()
-                                Button("Done") {
-                                    //  isInputActive = false
-                                }
+                                //                                Button("Done") {
+                                //                                    //  isInputActive = false
+                                //                                }
                             }
                         }
                 }, isValid: $authVM.isSuccess)
@@ -188,21 +180,21 @@ struct RegistrationView: View {
                 }
             }
             VStack(alignment: .leading){
-//                KitBaseFormField(title: "Email", error: authVM.error?.email, isValid: $authVM.isSuccess ) {
-//                    TextField("Email", text: $email)
-//                        .focused($focusedField, equals: .emailField)
-//                }
+                //                KitBaseFormField(title: "Email", error: authVM.error?.email, isValid: $authVM.isSuccess ) {
+                //                    TextField("Email", text: $email)
+                //                        .focused($focusedField, equals: .emailField)
+                //                }
                 KBTextFieldBuilder(content: {
-                    TextField("Username", text: $email)
+                    TextField("Email", text: $email)
                         .keyboardType(.numberPad)
                         .focused($focusedField, equals: .emailField)
                     // .focused($isInputActive)
                         .toolbar {
                             ToolbarItemGroup(placement: .keyboard) {
                                 Spacer()
-                                Button("Done") {
-                                    //  isInputActive = false
-                                }
+                                //                                Button("Done") {
+                                //                                    //  isInputActive = false
+                                //                                }
                             }
                         }
                 }, isValid: $authVM.isSuccess)
@@ -222,21 +214,21 @@ struct RegistrationView: View {
                 }
             }
             VStack(alignment: .leading){
-               // KitBaseFormField(title: "Full Name", error: authVM.error?.fullname, isValid: $authVM.isSuccess ) {
-//                    TextField("Full name", text: $fullName)
-//                        .focused($focusedField, equals: .fullNameField)
-//                }
+                // KitBaseFormField(title: "Full Name", error: authVM.error?.fullname, isValid: $authVM.isSuccess ) {
+                //                    TextField("Full name", text: $fullName)
+                //                        .focused($focusedField, equals: .fullNameField)
+                //                }
                 KBTextFieldBuilder(content: {
                     TextField("Full Name", text: $fullName)
-                        .keyboardType(.numberPad)
+                        .keyboardType(.default)
                         .focused($focusedField, equals: .fullNameField)
                     // .focused($isInputActive)
                         .toolbar {
                             ToolbarItemGroup(placement: .keyboard) {
                                 Spacer()
-                                Button("Done") {
-                                    //  isInputActive = false
-                                }
+                                //                                Button("Done") {
+                                //                                    //  isInputActive = false
+                                //                                }
                             }
                         }
                 }, isValid: $authVM.isSuccess)
@@ -279,22 +271,3 @@ struct RegistrationView: View {
     RegistrationView()
 }
 
-//extension RegistrationView{
-//
-//    @ViewBuilder
-//    func showPopup() -> some View{
-//        ZStack{
-//            ModalViewBuilder(isShowPopup: $registraionVM.isSuccess) {
-//
-//            }
-//            .title("Confirm")
-//            .summary("Are you want to logout?")
-//            .width(80)
-//            .height(80)
-//            .buttonOneText("No")
-//            .buttonTwoText("Yes")
-//            .layoutKind(.horizontal)
-//            .build()
-//        }
-//    }
-//}
