@@ -76,8 +76,8 @@ struct PostDetailContentView: View {
                                     
                                     if  isCommentEditEnable  {
                                         VStack{
-                                            //                                            TextEditor(text: $editComment)
-                                            //                                                .frame(height: 40)
+                                            // TextEditor(text: $editComment)
+                                            //      .frame(height: 40)
                                             TextField("Comment", text: $editComment, prompt: Text("Please input your comment"), axis: .vertical)
                                                 .padding()
                                                 .background(.green.opacity(0.2))
