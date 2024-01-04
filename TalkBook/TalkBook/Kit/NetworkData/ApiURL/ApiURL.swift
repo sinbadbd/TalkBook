@@ -21,7 +21,7 @@ struct ApiURL {
         case register, login, logout
     }
     enum User{
-        
+        case getUser
     }
     enum Post{
         case createPost, getPosts, updatePost, likePost, unLike, toggleLikePost,

@@ -10,9 +10,11 @@ import SwiftUI
 struct PostDetailHeaderView: View {
     
     @Environment(\.presentationMode) var dismiss
+    
     var profileImage: String?
     var title: String?
     var date: String?
+    
     var body: some View {
         VStack{
             HStack{
