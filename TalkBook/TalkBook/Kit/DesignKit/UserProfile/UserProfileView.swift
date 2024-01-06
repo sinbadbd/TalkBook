@@ -14,16 +14,19 @@ struct UserProfileView: View {
     
     @ObservedObject var userMVM: UserPfileVM = .init()
     
+    var isNavBarShow: Bool = false
+    
     var id: String
     
-    init(id:String){
+    init(id:String, isNavBarShow: Bool = false){
         self.id = id
+        self.isNavBarShow = isNavBarShow
     }
     
     var body: some View {
         
         VStack{
-            UserProfileNavView(userModel: userMVM.userModel)
+            UserProfileNavView(isNavBarShow: isNavBarShow, userModel: userMVM.userModel)
             ScrollView(.vertical) {
                 UserProfileCoverPhotoView()
                 UserProfileInfoView(userModel: userMVM.userModel)
