@@ -8,6 +8,7 @@
 import SwiftUI
 import KitBase
 import Photos
+import Kingfisher
 
 @MainActor
 struct HeaderCreatePostView: View {
@@ -32,11 +33,34 @@ struct HeaderCreatePostView: View {
     var body: some View {
         
         HStack{
-            Image("dsfs copy")
-                .resizable()
-                .aspectRatio(contentMode: .fill)
-                .frame(width: 40, height: 40)
-                .clipShape(Circle())
+            
+            NavigationLink {
+                UserProfileView(id: Provider.userId)
+            } label: {
+               /*
+                Image("dsfs copy")
+                    .resizable()
+                    .aspectRatio(contentMode: .fill)
+                    .frame(width: 40, height: 40)
+                    .clipShape(Circle())*/
+                
+                KFImage.url(URL(string: "https://media.licdn.com/dms/image/C4E03AQEXXT4-gF69kA/profile-displayphoto-shrink_100_100/0/1516980726651?e=1709769600&v=beta&t=DyAUpBKdkWunSCM_SwllUMf3AKFAuJ6hQYMvmMfi3HM"))
+                    .resizable()
+                    .placeholder({ ProgressView() })
+                //.setProcessor(processor)
+                    .loadDiskFileSynchronously()
+                    .cacheMemoryOnly()
+                    .fade(duration: 0.25)
+                //.lowDataModeSource(.network(image as! Resource))
+                    .onProgress { receivedSize, totalSize in  }
+                    .onSuccess { result in  }
+                    .onFailure { error in }
+                    .frame(width: 40, height: 40)
+                    .clipShape(Circle())
+            }
+
+            
+            
             Button {
                 showPostModal = true
             } label: {

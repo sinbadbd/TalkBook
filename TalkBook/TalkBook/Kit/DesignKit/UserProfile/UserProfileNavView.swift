@@ -10,27 +10,27 @@ import SwiftUI
 struct UserProfileNavView: View {
 
     @Environment(\.presentationMode) var dismiss
-//    var profileImage: String?
-//    var title: String?
-//        
+
+    var isNavBarShow: Bool = false
     
     var userModel: UserModel?
     
     var body: some View {
         VStack{
             HStack(alignment:.center){
-                
-                Button(action: {
-                    dismiss.wrappedValue.dismiss()
-                }, label: {
-                    Image(systemName: "arrow.left")
-                        .resizable()
-                        .frame(width: 16, height: 16)
-                })
+                if !isNavBarShow{
+                    Button(action: {
+                        dismiss.wrappedValue.dismiss()
+                    }, label: {
+                        Image(systemName: "arrow.left")
+                            .resizable()
+                            .frame(width: 16, height: 16)
+                    })
+                }
                 Spacer()
                 VStack{
                     Text(userModel?.fullname ?? "")
-                        .font(.title2)
+                        .font(!isNavBarShow ? .title2 : .title)
                         .frame(alignment: .center)
                         .multilineTextAlignment(.center)
                 }
