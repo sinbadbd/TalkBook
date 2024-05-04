@@ -11,12 +11,12 @@ import SwiftUIKit
 struct MenuView: View {
     
     @ObservedObject private var auth: AuthVM = .init()
-    @Binding var appState: AppState
+
     var body: some View {
         Button {
             auth.logout { success in
                 if success == true {
-                    appState = .login
+                    //appState = .login
                     Provider.access_token = ""
                     Provider.userId = ""
                     print("Provider.access_token: \(Provider.access_token)")
@@ -52,5 +52,5 @@ struct MenuView: View {
 }
 
 #Preview {
-    MenuView(appState: .constant(.dashboard))
+    MenuView()
 }

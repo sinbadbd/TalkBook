@@ -10,14 +10,12 @@ import Cloudinary
 
 @main
 struct TalkBookApp: App {
-     
-    @State private var appState: AppState = .splash
 
+    @ObservedObject var coordinator = AppCoordinator()
+    
     var body: some Scene {
         WindowGroup {
-            //NavigationView {
-                ContentView(appState: $appState)
-            //}
+            ContentView()
         }
     }
 }

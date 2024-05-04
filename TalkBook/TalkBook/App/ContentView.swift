@@ -8,39 +8,74 @@
 import SwiftUI
 
 struct ContentView: View {
-    @Binding var appState: AppState
+ 
+    @ObservedObject var coordinator = AppCoordinator()
+ 
+    @State private var isOnboardComplete: Bool
+    @State private var showSplashScreen: Bool = true
+    
+    init() {
+        isOnboardComplete = UserDefaultsManager.shared.isFirstLaunch
+    }
     var body: some View {
         
-        NavigationStack{
-            viewForState(appState)
-                .onAppear {
-                    DispatchQueue.main.asyncAfter(deadline: .now() + 0.2) {
-                        if UserDefaultsManager.shared.isUserLoggedIn {
-                            appState = .dashboard
-                        } else if !UserDefaultsManager.shared.isFirstLaunch {
-                            appState = .onboarding
-                        } else {
-                            appState = .login
+        NavigationStack(path:  $coordinator.path) {
+            if showSplashScreen {
+                SplashScreen()
+                    .onAppear {
+                        DispatchQueue.main.asyncAfter(deadline: .now() + 0.5) {
+                            showSplashScreen = false
                         }
                     }
+            } else if isOnboardComplete {
+                CommonNavigationView {
+                    if UserDefaultsManager.shared.isUserLoggedIn {
+                        Platform()
+                    } else {
+                        LoginView()
+                    }
                 }
+                    
+            } else {
+                OnboardingScreen(onContinue: onContinue)
+            }
+            
+        }
+        .environmentObject(coordinator)
+        .onAppear {
+            print("destination: \(coordinator.path)")
+        }
+        .onOpenURL { url in
+            coordinator.handleDeepLink(url: url)
         }
     }
-}
-extension ContentView{
-    private func viewForState(_ state: AppState) -> some View {
-        switch state {
-        case .splash:
-            return AnyView(SplashScreen())
-        case .onboarding:
-            return AnyView(OnboardingScreen(appState: $appState))
-        case .login:
-            return AnyView(LoginView(appState: $appState))
-        case .dashboard:
-            return AnyView(TabContainerView(appState:  $appState))
-        }
+    
+    private func onContinue() {
+        UserDefaultsManager.shared.isFirstLaunch = true
+        isOnboardComplete = true
+        //coordinator.loadPlatfromAsRoot(onSuccess: nil)
     }
 }
+ 
 #Preview {
-    ContentView(appState: .constant(.dashboard))
+    ContentView()
+}
+
+struct CommonNavigationView<Content: View>: View {
+    var content: Content
+    @EnvironmentObject var coordinator: AppCoordinator
+    
+    init(@ViewBuilder content: () -> Content) {
+        self.content = content()
+    }
+    
+    var body: some View {
+        content
+            .navigationDestination(for: DestinationFlowPage.self) { destination in
+                NavigateViewFactory.viewForDestination(destination)
+            }
+            .sheet(item: $coordinator.sheetPage) { page in
+                NavigateViewFactory.viewForDestination(page)
+            }
+    }
 }

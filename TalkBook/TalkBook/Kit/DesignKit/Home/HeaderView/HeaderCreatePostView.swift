@@ -177,7 +177,7 @@ struct HeaderCreatePostView: View {
 //}
 
 #Preview {
-    HomeView(appState: .constant(.dashboard))
+    HomeView()
 }
 struct TextViewHeightPreferenceKey: PreferenceKey {
     static var defaultValue: CGFloat = 0

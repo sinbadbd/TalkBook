@@ -11,7 +11,7 @@ import Photos
 import Kingfisher
 
 struct HomeView: View {
-    
+    let edges = UIWindow.keyWindow?.safeAreaInsets
     @StateObject private var homeVM: HomeVM = .init()
     
     @State private var image: UIImage? = nil
@@ -22,18 +22,15 @@ struct HomeView: View {
     @State private var isUploading = false // Loading indicator state
     
     @StateObject private var authVM: AuthVM = .init()
-    
-    @Binding var appState: AppState
-    
+        
     var body: some View {
-        //        NavigationStack{
-        //            ZStack{
-        //                Color.gray3
+ 
         VStack {
+            HeaderView()
             ScrollView{
                 VStack{
                     VStack{
-                        HeaderView()
+               
                         HeaderCreatePostView(selectedPhotos: selectedPhotos, statusText: $statusText) { data in
                             homeVM.createPost(statusText: statusText, images: data) {
                                 homeVM.getPosts()
@@ -62,6 +59,8 @@ struct HomeView: View {
             }
             
         }
+        .padding(.top, edges?.top)
+        .ignoresSafeArea()
         .frame(maxWidth: .infinity, maxHeight: .infinity, alignment: .top)
         //            }
         //            .ignoresSafeArea()
@@ -110,5 +109,5 @@ struct HomeView: View {
     
 }
 #Preview {
-    HomeView(appState: .constant(.dashboard))
+    HomeView()
 }

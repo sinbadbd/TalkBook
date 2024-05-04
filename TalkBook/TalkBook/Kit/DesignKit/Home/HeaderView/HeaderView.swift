@@ -44,7 +44,7 @@ struct HeaderView: View {
 }
 
 #Preview {
-    HomeView(appState: .constant(.dashboard))
+    HomeView()
 }
 
 #Preview {

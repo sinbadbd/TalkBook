@@ -10,102 +10,98 @@ import SwiftUIKit
 
 struct LoginView: View {
     
+    @EnvironmentObject private var route: AppCoordinator
     @ObservedObject private var authVM: AuthVM = .init()
     
     @State private var email: String = ""
     @State private var password: String = ""
-
+    
     @State private var borderColor:Color? = Color.gray
     
     @State private var isShwoModal = false
-    @State private var route: Bool = false
-    @Binding var appState: AppState
     
     @FocusState private var focusedField: Field?
     @State private var isInputActive: Bool = false
     
     var body: some View {
-        NavigationStack{
-            ZStack(alignment: .center){
-                Color.white
-                    .ignoresSafeArea()
-                VStack(spacing: 16){
-               
-                    ScrollView {
-                        loginView
-                            .padding(.top, 120)
+        
+        ZStack(alignment: .center){
+            Color.white
+                .ignoresSafeArea()
+            VStack(spacing: 16){
+                
+                ScrollView {
+                    loginView
+                        .padding(.top, 120)
+                    
+                    Button("Login", action: {
                         
-                        Button("Login", action: {
+                        isShwoModal =  authVM.isSuccess
+                        print("isShwoModal: \(isShwoModal)")
+                        //registraionVM.isSuccess = false
+                        
+                        if email.isEmpty{
+                            focusedField = .emailField
+                        }else if password.isEmpty {
+                            focusedField = .passwordField
+                        }else {
                             
-                            isShwoModal =  authVM.isSuccess
-                            print("isShwoModal: \(isShwoModal)")
-                            //registraionVM.isSuccess = false
-                            
-                            if email.isEmpty{
-                                focusedField = .emailField
-                            }else if password.isEmpty {
-                                focusedField = .passwordField
-                            }else {
-                                
-                                authVM.loginApiCall(email: email, password: password) { user in
-                                    if user?.success == true {
-                                        
-                                        print("Login success")
-                                        UserDefaultsManager.shared.isUserLoggedIn = true
-                                        UserDefaults.standard.set(Provider.access_token, forKey: "token")
-                                        UserDefaults.standard.set(Provider.userId, forKey: "userId")
-                                        appState = .dashboard
-                                    }
+                            authVM.loginApiCall(email: email, password: password) { user in
+                                if user?.success == true {
+                                    
+                                    print("Login success")
+                                    UserDefaultsManager.shared.isUserLoggedIn = true
+                                    UserDefaults.standard.set(Provider.access_token, forKey: "token")
+                                    UserDefaults.standard.set(Provider.userId, forKey: "userId")
+                                    
+                                    route.goPlatfromAsRoot()
                                 }
                             }
-                            
-                        })
-                        .buttonStyle(
-                            KitBaseButtonStyleBuilder()
-                                .setBackgroundColor(.red)
-                                .setForegroundColor(.white)
-                                .setButtonWidth(UIScreen.main.bounds.width * 0.85)
-                                .build()
-                        )
+                        }
                         
-                        Text("-------------OR-------------")
-                            .font(.caption)
-                            .foregroundColor(.white)
-                        
-                        Button("Signup", action: {
-                            self.route = true
-                            print("Signup")
-                        })
-                        .buttonStyle(
-                            KitBaseButtonStyleBuilder()
-                                .setBackgroundColor(.clear)
-                                .setForegroundColor(.red)
-                                .setBorderColor(.gray)
-                                .setBorderWidth(1)
-                                .setShowShadow(true)
-                                .setButtonWidth(UIScreen.main.bounds.width * 0.85)
-                                .build()
-                        )
-                        
-                        Text(authVM.isSuccess == false ? authVM.user?.message ?? "" : "")
-                            .foregroundColor(.red)
-                    }
-                    .padding(.horizontal, 16)
-                    .frame(alignment: .center)
+                    })
+                    .buttonStyle(
+                        KitBaseButtonStyleBuilder()
+                            .setBackgroundColor(.red)
+                            .setForegroundColor(.white)
+                            .setButtonWidth(UIScreen.main.bounds.width * 0.85)
+                            .build()
+                    )
+                    
+                    Text("-------------OR-------------")
+                        .font(.caption)
+                        .foregroundColor(.white)
+                    
+                    Button("Signup", action: {
+                        route.goToRegistrationPage()
+                        print("Signup")
+                    })
+                    .buttonStyle(
+                        KitBaseButtonStyleBuilder()
+                            .setBackgroundColor(.clear)
+                            .setForegroundColor(.red)
+                            .setBorderColor(.gray)
+                            .setBorderWidth(1)
+                            .setShowShadow(true)
+                            .setButtonWidth(UIScreen.main.bounds.width * 0.85)
+                            .build()
+                    )
+                    
+                    Text(authVM.isSuccess == false ? authVM.user?.message ?? "" : "")
+                        .foregroundColor(.red)
                 }
-                
-                
-                
-                if authVM.isSuccess{
-                    LoadingView(progressColor: .red)
-                        .frame(maxWidth: .infinity, maxHeight: .infinity)
-                }
+                .padding(.horizontal, 16)
+                .frame(alignment: .center)
             }
             
-            .navigationDestination(isPresented: $route, destination: {
-                RegistrationView()
-            })
+            
+            
+            if authVM.isSuccess{
+                LoadingView(progressColor: .red)
+                    .frame(maxWidth: .infinity, maxHeight: .infinity)
+            }
         }
+        
     }
     
     private var loginView: some View{
@@ -143,17 +139,17 @@ struct LoginView: View {
                 }
             }
             VStack(alignment: .leading){
-
+                
                 KBTextFieldBuilder(content: {
                     SecureField("Password", text: $password)
                         .keyboardType(.default)
                         .focused($focusedField, equals: .passwordField)
                         .toolbar {
                             ToolbarItemGroup(placement: .keyboard) {
-//                                Spacer()
-//                                Button("Done") {
-//                                    isInputActive = false
-//                                }
+                                //                                Spacer()
+                                //                                Button("Done") {
+                                //                                    isInputActive = false
+                                //                                }
                             }
                         }
                 }, isValid: $authVM.isSuccess)
@@ -179,5 +175,5 @@ struct LoginView: View {
 }
 
 #Preview {
-    LoginView(appState: .constant(.login))
+    LoginView()
 }

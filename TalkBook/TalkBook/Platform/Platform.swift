@@ -7,13 +7,11 @@
 
 import SwiftUI
 
-struct TabContainerView: View {
-    
-    @Binding var appState: AppState
+struct Platform: View {
     
     var body: some View {
         TabView {
-            HomeView(appState: $appState)
+            HomeView()
                 .tabItem {
                     Label("Home", systemImage: "house").foregroundColor(.red)
                 }
@@ -29,7 +27,7 @@ struct TabContainerView: View {
                 .tabItem {
                     Label("Notifications", systemImage: "bell").foregroundColor(.red)
                 }
-            MenuView(appState: $appState)
+            MenuView()
                 .tabItem {
                     Label("Menu", systemImage: "gear").foregroundColor(.red)
                 }
@@ -41,5 +39,5 @@ struct TabContainerView: View {
 }
 
 #Preview {
-    TabContainerView(appState: .constant(.dashboard))
+    Platform()
 }

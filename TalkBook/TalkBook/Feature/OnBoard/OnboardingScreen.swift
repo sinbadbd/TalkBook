@@ -9,15 +9,14 @@ import SwiftUI
 import SwiftUIKit
 
 struct OnboardingScreen: View {
-    @Binding var appState: AppState
+    let onContinue: () -> Void
     var body: some View {
         VStack{
             
             Button {
                 withAnimation {
-            
-                        UserDefaultsManager.shared.isFirstLaunch = true
-                        appState = .login
+                   // UserDefaultsManager.shared.isFirstLaunch = true
+                    onContinue()
                     
                 }
             } label: {
@@ -52,5 +51,7 @@ struct OnboardingScreen: View {
 }
 
 #Preview {
-    OnboardingScreen(appState: .constant(.onboarding))
+    OnboardingScreen {
+        
+    }
 }
