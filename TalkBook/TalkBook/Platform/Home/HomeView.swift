@@ -25,11 +25,14 @@ struct HomeView: View {
         
     var body: some View {
  
-        VStack {
+        VStack(spacing:0){
+            
             HeaderView()
+                .padding(.bottom, 8)
+
             ScrollView{
-                VStack{
-                    VStack{
+                VStack(spacing:0){
+                    VStack(spacing:0){
                
                         HeaderCreatePostView(selectedPhotos: selectedPhotos, statusText: $statusText) { data in
                             homeVM.createPost(statusText: statusText, images: data) {
@@ -37,15 +40,15 @@ struct HomeView: View {
                             }
                             self.statusText = ""
                         }
-                        .offset(y: -20)
+//                        .offset(y: -20)
                     }
                     .background {
-                        Color.white
+                        Color.red
                     }
                     Text("\(Provider.userId)")
-                    VStack{
+                    LazyVStack{
                         ForEach(homeVM.allPosts, id: \.id) { posts in
-                            VStack{
+                            LazyVStack{
                                 PostsView(postContent: posts.postContent ?? "-", post: posts) {
                                     homeVM.toggleLikePost(postId: posts.id ?? "") {
                                         homeVM.getPosts()
@@ -61,9 +64,8 @@ struct HomeView: View {
         }
         .padding(.top, edges?.top)
         .ignoresSafeArea()
+        .navigationBarBackButtonHidden()
         .frame(maxWidth: .infinity, maxHeight: .infinity, alignment: .top)
-        //            }
-        //            .ignoresSafeArea()
         .onAppear(perform: {
             DispatchQueue.main.async {
                 
