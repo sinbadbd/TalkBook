@@ -6,7 +6,7 @@
 //
 
 import SwiftUI
-import KitBase
+import SwiftUIKit
 
 struct OnboardingScreen: View {
     @Binding var appState: AppState

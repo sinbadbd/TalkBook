@@ -6,7 +6,7 @@
 //
 
 import SwiftUI
-import KitBase
+import SwiftUIKit
 
 enum Field: Hashable {
     case usernameField

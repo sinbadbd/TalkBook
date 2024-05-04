@@ -57,72 +57,53 @@ class PhotoManager {
         return image
     }
     
-    func convertPHAssetToData(asset: PHAsset, completion: @escaping (Data?) -> Void?) {
+    func convertPHAssetToData(asset: PHAsset) async -> Data? {
         let imageManager = PHImageManager.default()
         let requestOptions = PHImageRequestOptions()
         requestOptions.isSynchronous = false
         requestOptions.deliveryMode = .opportunistic
+        requestOptions.isNetworkAccessAllowed = true
         
-        // Request the image data for the PHAsset
-        imageManager.requestImage(for: asset, targetSize: PHImageManagerMaximumSize, contentMode: .default, options: requestOptions) { (image, info) in
-            if let image = image {
-                if let imageData = image.pngData() { // Convert UIImage to Data
-                    completion(imageData)
-                    print("xxxxx")
+        return await withCheckedContinuation { continuation in
+            imageManager.requestImageData(for: asset, options: requestOptions) { (data, _, _, info) in
+                if let isDegraded = info?[PHImageResultIsDegradedKey] as? Bool, isDegraded {
+                    continuation.resume(returning: nil)
                 } else {
-                    // Handle the case where imageData couldn't be created from the UIImage
-                    completion(nil)
-                    print("zzzzz")
+                    continuation.resume(returning: data)
                 }
-            } else {
-                // Handle the case where
             }
         }
     }
-    
-    func uploadSelectedPhotos(selectedPhotos: [PHAsset], onDone: @escaping ([String]) -> Void) {
-        let dispatchGroup = DispatchGroup()
+
+  
+    func uploadSelectedPhotos(selectedPhotos: [PHAsset], onDone: @escaping ([String]) -> Void) async {
         var uploadedImageURLs: [String] = []
         
         for (index, asset) in selectedPhotos.enumerated() {
-            dispatchGroup.enter()
+            print("Processing asset \(index + 1)")
             
-            PhotoManager.shared.convertPHAssetToData(asset: asset) { data in
-                if let data = data {
-                    let imageData = Data(data)
-                    CloudinaryManager.uploadImage(data: imageData) { result, error in
-                        // Log asset cand upload progress
-                        print("Processing asset \(index + 1)")
-                        
-                        if let error = error {
-                            print("Image \(index + 1) upload failed: \(error.localizedDescription)")
-                        } else if let result = result {
-                            print("Image \(index + 1) uploaded successfully: \(result)")
-                            print("Image uploaded successfully. Result: \(result)")
-                            print("Public ID: \(result.publicId ?? "N/A")")
-                            print("URL: \(result.url ?? "N/A")")
-                            if let imageURL = result.url {
-                                uploadedImageURLs.append(imageURL)
-                            }
-                        }
-                        
-                        dispatchGroup.leave() /// ``Bug Here`
+            if let data = await PhotoManager.shared.convertPHAssetToData(asset: asset) {
+                let imageData = Data(data)
+                
+                let (result, error) = await CloudinaryManager.uploadImage(data: imageData)
+                
+                if let error = error {
+                    print("Image \(index + 1) upload failed: \(error.localizedDescription)")
+                } else if let result = result {
+                    print("Image \(index + 1) uploaded successfully: \(result)")
+                    print("Public ID: \(result.publicId ?? "N/A")")
+                    print("URL: \(result.url ?? "N/A")")
+                    if let imageURL = result.url {
+                        uploadedImageURLs.append(imageURL)
                     }
-                } else {
-                    // Log asset processing failure
-                    print("Image \(index + 1) processing failed")
-                    dispatchGroup.leave()
                 }
+            } else {
+                print("Image \(index + 1) processing failed")
             }
         }
         
-        dispatchGroup.notify(queue: .global()) {
-            // Notify when all images are uploaded
-            onDone(uploadedImageURLs)
-        }
+        onDone(uploadedImageURLs)  // Call the completion handler
     }
-    
-    
     
 }
 // Helper function to combine multiple image data into one Data object

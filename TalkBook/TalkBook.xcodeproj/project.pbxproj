@@ -23,6 +23,7 @@
 		1D2BEB102B1AFD64001D6448 /* TextEditorView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1D2BEB0F2B1AFD64001D6448 /* TextEditorView.swift */; };
 		1D2BEB722B1F8B03001D6448 /* ApiURL+Comment.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1D2BEB712B1F8B03001D6448 /* ApiURL+Comment.swift */; };
 		1D36056E2B39DF9700C2088F /* SuccessModelData.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1D36056D2B39DF9700C2088F /* SuccessModelData.swift */; };
+		1D51E7562BE5FB1B004DAB6A /* SwiftUIKit in Frameworks */ = {isa = PBXBuildFile; productRef = 1D51E7552BE5FB1B004DAB6A /* SwiftUIKit */; };
 		1D5A687E2AF3805A0049AE68 /* MoreVM.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1D5A687D2AF3805A0049AE68 /* MoreVM.swift */; };
 		1D5A68802AF3813F0049AE68 /* AuthVM.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1D5A687F2AF3813F0049AE68 /* AuthVM.swift */; };
 		1D5A68832AF3BC390049AE68 /* Kingfisher in Frameworks */ = {isa = PBXBuildFile; productRef = 1D5A68822AF3BC390049AE68 /* Kingfisher */; };
@@ -52,7 +53,6 @@
 		1D6CB75D2AEB6F3C00CE713F /* ApiURL+Post.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1D6CB75C2AEB6F3C00CE713F /* ApiURL+Post.swift */; };
 		1D6CB7602AEB726700CE713F /* PostModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1D6CB75F2AEB726600CE713F /* PostModel.swift */; };
 		1D6CB7652AEB73AC00CE713F /* HomeVM.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1D6CB7642AEB73AC00CE713F /* HomeVM.swift */; };
-		1D6CB7702AEB7BE100CE713F /* KitBase in Frameworks */ = {isa = PBXBuildFile; productRef = 1D6CB76F2AEB7BE100CE713F /* KitBase */; };
 		1D6CB7722AEB81A200CE713F /* Registration.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1D6CB7712AEB81A200CE713F /* Registration.swift */; };
 		1D6E6CDF2AFAB8DC00292740 /* PostsProfileHeaderView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1D6E6CDE2AFAB8DC00292740 /* PostsProfileHeaderView.swift */; };
 		1D6E6CE12AFAB9A400292740 /* PostLikeCommentCounterView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1D6E6CE02AFAB9A400292740 /* PostLikeCommentCounterView.swift */; };
@@ -184,8 +184,8 @@
 			buildActionMask = 2147483647;
 			files = (
 				1D5A68832AF3BC390049AE68 /* Kingfisher in Frameworks */,
+				1D51E7562BE5FB1B004DAB6A /* SwiftUIKit in Frameworks */,
 				1D61298A2AEECB6A003C3854 /* NetworkKit in Frameworks */,
-				1D6CB7702AEB7BE100CE713F /* KitBase in Frameworks */,
 				1D1A2DD92AF12672001FD271 /* Cloudinary in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -277,6 +277,13 @@
 				1DC97B922B13B20200D32C04 /* ShimmerEffect.swift */,
 			);
 			path = PostDetail;
+			sourceTree = "<group>";
+		};
+		1D51E7542BE5FB1B004DAB6A /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			name = Frameworks;
 			sourceTree = "<group>";
 		};
 		1D5A687A2AF2B7800049AE68 /* Cloudinar */ = {
@@ -461,6 +468,7 @@
 				1D858ADD2AE43C4A00FE6AC4 /* TalkBookTests */,
 				1D858AE72AE43C4A00FE6AC4 /* TalkBookUITests */,
 				1D858ACA2AE43C4800FE6AC4 /* Products */,
+				1D51E7542BE5FB1B004DAB6A /* Frameworks */,
 			);
 			sourceTree = "<group>";
 		};
@@ -641,10 +649,10 @@
 			);
 			name = TalkBook;
 			packageProductDependencies = (
-				1D6CB76F2AEB7BE100CE713F /* KitBase */,
 				1D6129892AEECB6A003C3854 /* NetworkKit */,
 				1D1A2DD82AF12672001FD271 /* Cloudinary */,
 				1D5A68822AF3BC390049AE68 /* Kingfisher */,
+				1D51E7552BE5FB1B004DAB6A /* SwiftUIKit */,
 			);
 			productName = TalkBook;
 			productReference = 1D858AC92AE43C4800FE6AC4 /* TalkBook.app */;
@@ -719,10 +727,10 @@
 			);
 			mainGroup = 1D858AC02AE43C4800FE6AC4;
 			packageReferences = (
-				1D6CB76E2AEB7BE100CE713F /* XCRemoteSwiftPackageReference "KitBase" */,
 				1D6129882AEECB6A003C3854 /* XCRemoteSwiftPackageReference "NetworkKit" */,
 				1D1A2DD72AF12672001FD271 /* XCRemoteSwiftPackageReference "cloudinary_ios" */,
 				1D5A68812AF3BC390049AE68 /* XCRemoteSwiftPackageReference "Kingfisher" */,
+				1D51E7532BE5FB0C004DAB6A /* XCRemoteSwiftPackageReference "KitBase" */,
 			);
 			productRefGroup = 1D858ACA2AE43C4800FE6AC4 /* Products */;
 			projectDirPath = "";
@@ -1202,6 +1210,14 @@
 				minimumVersion = 4.2.0;
 			};
 		};
+		1D51E7532BE5FB0C004DAB6A /* XCRemoteSwiftPackageReference "KitBase" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/sinbadbd/KitBase/";
+			requirement = {
+				branch = main;
+				kind = branch;
+			};
+		};
 		1D5A68812AF3BC390049AE68 /* XCRemoteSwiftPackageReference "Kingfisher" */ = {
 			isa = XCRemoteSwiftPackageReference;
 			repositoryURL = "https://github.com/onevcat/Kingfisher.git";
@@ -1218,14 +1234,6 @@
 				kind = branch;
 			};
 		};
-		1D6CB76E2AEB7BE100CE713F /* XCRemoteSwiftPackageReference "KitBase" */ = {
-			isa = XCRemoteSwiftPackageReference;
-			repositoryURL = "https://github.com/sinbadbd/KitBase";
-			requirement = {
-				branch = main;
-				kind = branch;
-			};
-		};
 /* End XCRemoteSwiftPackageReference section */
 
 /* Begin XCSwiftPackageProductDependency section */
@@ -1233,6 +1241,11 @@
 			isa = XCSwiftPackageProductDependency;
 			package = 1D1A2DD72AF12672001FD271 /* XCRemoteSwiftPackageReference "cloudinary_ios" */;
 			productName = Cloudinary;
+		};
+		1D51E7552BE5FB1B004DAB6A /* SwiftUIKit */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 1D51E7532BE5FB0C004DAB6A /* XCRemoteSwiftPackageReference "KitBase" */;
+			productName = SwiftUIKit;
 		};
 		1D5A68822AF3BC390049AE68 /* Kingfisher */ = {
 			isa = XCSwiftPackageProductDependency;
@@ -1243,11 +1256,6 @@
 			isa = XCSwiftPackageProductDependency;
 			package = 1D6129882AEECB6A003C3854 /* XCRemoteSwiftPackageReference "NetworkKit" */;
 			productName = NetworkKit;
-		};
-		1D6CB76F2AEB7BE100CE713F /* KitBase */ = {
-			isa = XCSwiftPackageProductDependency;
-			package = 1D6CB76E2AEB7BE100CE713F /* XCRemoteSwiftPackageReference "KitBase" */;
-			productName = KitBase;
 		};
 /* End XCSwiftPackageProductDependency section */
 	};

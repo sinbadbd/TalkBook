@@ -6,7 +6,7 @@
 //
 
 import SwiftUI
-import KitBase
+import SwiftUIKit
 import Photos
 
 @MainActor
@@ -53,10 +53,16 @@ struct HeaderCreatePostView: View {
                         showPostModal = false
                         //isUploading = true
                         //onPost?()
-                        PhotoManager.shared.uploadSelectedPhotos(selectedPhotos: selectedPhotos) { image in
+                        Task {
+                         //   let urls = await uploadSelectedPhotos(selectedPhotos: somePHAssets)
+                            // Handle the URLs (e.g., update UI or save them somewhere)
+                      
+
+                        await  PhotoManager.shared.uploadSelectedPhotos(selectedPhotos: selectedPhotos) { image in
                             onUploaded?(image)
                             statusText = ""
                             selectedPhotos.removeAll()
+                        }
                         }
                     }
                     //.disabled(isUploading) // Disable the button while uploading
