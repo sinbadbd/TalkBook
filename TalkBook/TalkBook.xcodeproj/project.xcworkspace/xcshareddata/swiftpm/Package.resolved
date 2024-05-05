@@ -1,5 +1,5 @@
 {
-  "originHash" : "c2fdfcee0bb30bbaeea69ab59cd9c36424c4cc157caecbee12dc8d8d646fe109",
+  "originHash" : "279131fffa88799c57b3f545b8043b4e114cf2b1c7912fc3b330a13d057e3788",
   "pins" : [
     {
       "identity" : "cloudinary_ios",
@@ -22,10 +22,10 @@
     {
       "identity" : "kitbase",
       "kind" : "remoteSourceControl",
-      "location" : "https://github.com/sinbadbd/KitBase",
+      "location" : "https://github.com/sinbadbd/KitBase/",
       "state" : {
         "branch" : "main",
-        "revision" : "cd2dd74f5dba97a05f3befe8986f067d09e62c7a"
+        "revision" : "2dcbb0ac80deb57ca0d1b7cf1109de1354559414"
       }
     },
     {

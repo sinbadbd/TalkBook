@@ -6,10 +6,31 @@
 //
 
 import SwiftUI
+import SwiftUIKit
 
 struct ProfileView: View {
+    
+    let edges = UIWindow.keyWindow?.safeAreaInsets
+    
     var body: some View {
-        Text(/*@START_MENU_TOKEN@*/"Hello, World!"/*@END_MENU_TOKEN@*/)
+        VStack{
+            HeaderView_one(backButton: "chevron.backward", title: "The Nav Title", rightImageOne: "pencil", rightImageTwo: "magnifyingglass") {
+                
+            } onRightOne: {
+                
+            } onRightTwo: {
+                
+            }
+            .padding(.horizontal, 16)
+            
+            ScrollView {
+                ProfileConviewPhotoView()
+            }
+        }
+        .padding(.top, edges?.top)
+        .ignoresSafeArea()
+        .navigationBarBackButtonHidden()
+        .frame(maxWidth: .infinity, maxHeight: .infinity, alignment: .top)
     }
 }
 

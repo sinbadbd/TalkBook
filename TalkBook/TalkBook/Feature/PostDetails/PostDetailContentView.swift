@@ -11,6 +11,7 @@ import Kingfisher
 
 struct PostDetailContentView: View {
     
+    let edges = UIWindow.keyWindow?.safeAreaInsets
     
     @StateObject var detailVM: PostDetailVM = .init()
     @State var isLikeTapped: Bool = false
@@ -180,7 +181,7 @@ struct PostDetailContentView: View {
             detailVM.getComments(postId: id)
         }
         //        .ignoresSafeArea(.keyboard)
-        .padding(.top, 40)
+        .padding(.top, edges?.top)
         .ignoresSafeArea()
         .navigationBarBackButtonHidden()
         .onAppear {
