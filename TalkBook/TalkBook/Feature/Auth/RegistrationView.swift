@@ -21,10 +21,8 @@ struct RegistrationView: View {
     
     
     @ObservedObject private var authVM: AuthVM = .init()
-    //    @Environment(\.presentationMode) var presentationMode
-    
-    //    @Environment(\.colorScheme) var colorScheme: ColorScheme
-    
+ 
+    @EnvironmentObject private var route: AppCoordinator
     
     @State private var username: String = ""
     @State private var password: String = ""
@@ -45,6 +43,7 @@ struct RegistrationView: View {
     
     @State private var selectedFlavor: Gender = .Male
     
+    let edges = UIWindow.keyWindow?.safeAreaInsets
     
     var body: some View {
         
@@ -52,9 +51,9 @@ struct RegistrationView: View {
             Color.white
                 .ignoresSafeArea()
             
-            Form{
-                VStack(spacing: 16){
-                    
+            VStack(spacing: 16){
+                CustomBackView(coordinator: _route, title: "Sign Up")
+                Form{
                     registrationView
                     
                     Button("Signup", action: {
@@ -94,7 +93,9 @@ struct RegistrationView: View {
                         .foregroundColor(.red)
                 }
             }
-            
+            .padding(.top, edges?.top)
+            .ignoresSafeArea()
+            .navigationBarBackButtonHidden()
             .background {  Color.clear }
             .scrollContentBackground(.hidden)
             .background {  Color.clear }
