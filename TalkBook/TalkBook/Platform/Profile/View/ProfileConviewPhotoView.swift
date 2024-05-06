@@ -41,10 +41,16 @@ struct ProfileConviewPhotoView: View {
                                 .padding(.leading, 16)
                                 .padding(.bottom, 12)
                                 .offset(y: 50)
+                                .overlay(alignment:.bottomTrailing) {
+                                    KBButtonType(imageType: .icon, imageViewType: .circle, iconName: "camera.fill", foregroundColor: .black, backgroundColor: .gray4, borderColor: .white, width: 10, height: 10, fontSize: 14)
+                                        .padding(.trailing, 12)
+                                        .padding(.bottom, 12)
+                                        .offset(x:20,y: 50)
+                                }
                         }
                 }
             
-            //.frame(height: 50)
+            //.frame(height: 150)
                 .frame(maxWidth: .infinity, maxHeight: .infinity)
             
             
@@ -55,5 +61,6 @@ struct ProfileConviewPhotoView: View {
 }
 
 #Preview {
-    ProfileConviewPhotoView()
+   // ProfileConviewPhotoView()
+    ProfileView()
 }

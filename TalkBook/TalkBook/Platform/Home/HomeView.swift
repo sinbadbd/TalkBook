@@ -65,6 +65,7 @@ struct HomeView: View {
         .padding(.top, edges?.top)
         .ignoresSafeArea()
         .navigationBarBackButtonHidden()
+        .navigationBarBackButtonHidden(true)
         .frame(maxWidth: .infinity, maxHeight: .infinity, alignment: .top)
         .onAppear(perform: {
             DispatchQueue.main.async {

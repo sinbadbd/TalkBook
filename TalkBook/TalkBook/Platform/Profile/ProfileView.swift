@@ -24,7 +24,12 @@ struct ProfileView: View {
             .padding(.horizontal, 16)
             
             ScrollView {
-                ProfileConviewPhotoView()
+                VStack{
+                    ProfileConviewPhotoView()
+                    ProfileInfoView()
+                        .padding(.top, 40)
+                        .padding(.horizontal, 16)
+                }
             }
         }
         .padding(.top, edges?.top)

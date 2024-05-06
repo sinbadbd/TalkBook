@@ -32,9 +32,7 @@ struct Platform: View {
                     Label("Menu", systemImage: "gear").foregroundColor(.red)
                 }
         }
-        .background {
-            Color.white
-        }
+        .navigationBarBackButtonHidden()
     }
 }
 

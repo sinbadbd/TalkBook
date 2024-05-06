@@ -11,7 +11,8 @@ import SwiftUIKit
 struct MenuView: View {
     
     @ObservedObject private var auth: AuthVM = .init()
-
+    @EnvironmentObject private var route: AppCoordinator
+    
     var body: some View {
         Button {
             auth.logout { success in
@@ -22,6 +23,8 @@ struct MenuView: View {
                     print("Provider.access_token: \(Provider.access_token)")
                     print("Provider.userId: \(Provider.userId)")
                     UserDefaultsManager.shared.isUserLoggedIn = false
+//                    route.navigateAsRoot(.auth(.login))
+                    route.replaceLastWith(.auth(.login))
                 }else {
                     print("Something wrong!")
                 }

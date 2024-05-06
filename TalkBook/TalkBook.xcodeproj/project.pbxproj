@@ -96,6 +96,7 @@
 		1DDA61312B087693003D4C5B /* ApiHeader.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1DDA61302B087693003D4C5B /* ApiHeader.swift */; };
 		1DDA61342B089A02003D4C5B /* PostDetailVM.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1DDA61332B089A02003D4C5B /* PostDetailVM.swift */; };
 		1DF7D8112BE7D3AA0032D6CF /* ProfileConviewPhotoView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1DF7D8102BE7D3AA0032D6CF /* ProfileConviewPhotoView.swift */; };
+		1DF7D8132BE7D4680032D6CF /* ProfileInfoView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1DF7D8122BE7D4680032D6CF /* ProfileInfoView.swift */; };
 		1DFB01992AFD4767006C41CB /* PostEditView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1DFB01982AFD4767006C41CB /* PostEditView.swift */; };
 /* End PBXBuildFile section */
 
@@ -207,6 +208,7 @@
 		1DDA61302B087693003D4C5B /* ApiHeader.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ApiHeader.swift; sourceTree = "<group>"; };
 		1DDA61332B089A02003D4C5B /* PostDetailVM.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PostDetailVM.swift; sourceTree = "<group>"; };
 		1DF7D8102BE7D3AA0032D6CF /* ProfileConviewPhotoView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileConviewPhotoView.swift; sourceTree = "<group>"; };
+		1DF7D8122BE7D4680032D6CF /* ProfileInfoView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileInfoView.swift; sourceTree = "<group>"; };
 		1DFB01982AFD4767006C41CB /* PostEditView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PostEditView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -732,6 +734,7 @@
 			isa = PBXGroup;
 			children = (
 				1DF7D8102BE7D3AA0032D6CF /* ProfileConviewPhotoView.swift */,
+				1DF7D8122BE7D4680032D6CF /* ProfileInfoView.swift */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -892,6 +895,7 @@
 				1D51E7812BE61208004DAB6A /* AppCoordinator.swift in Sources */,
 				1DC97B932B13B20200D32C04 /* ShimmerEffect.swift in Sources */,
 				1D2BEB722B1F8B03001D6448 /* ApiURL+Comment.swift in Sources */,
+				1DF7D8132BE7D4680032D6CF /* ProfileInfoView.swift in Sources */,
 				1D858AFC2AE4471B00FE6AC4 /* Platform.swift in Sources */,
 				1DFB01992AFD4767006C41CB /* PostEditView.swift in Sources */,
 				1D6E6CE72AFABB3900292740 /* HomeVM+API.swift in Sources */,

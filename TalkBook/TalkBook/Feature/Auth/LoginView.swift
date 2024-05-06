@@ -93,7 +93,8 @@ struct LoginView: View {
                 .padding(.horizontal, 16)
                 .frame(alignment: .center)
             }
-            
+            .ignoresSafeArea()
+            .navigationBarBackButtonHidden()
             
             
             if authVM.isSuccess{
