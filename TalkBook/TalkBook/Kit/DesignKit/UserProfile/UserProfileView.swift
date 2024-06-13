@@ -12,7 +12,7 @@ struct UserProfileView: View {
     
     let edges = UIApplication.shared.windows.first?.safeAreaInsets
     
-    @ObservedObject var userMVM: UserPfileVM = .init()
+    @ObservedObject var userMVM: UserProfileVM = .init()
     
     var id: String
     

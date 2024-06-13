@@ -9,7 +9,7 @@ import Foundation
 import Combine
 import NetworkKit
 
-class UserPfileVM: ObservableObject{
+class UserProfileVM: ObservableObject{
     
     var cancellables = Set<AnyCancellable>()
     

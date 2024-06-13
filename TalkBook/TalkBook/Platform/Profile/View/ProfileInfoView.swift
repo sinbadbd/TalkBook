@@ -8,13 +8,16 @@
 import SwiftUI
 
 struct ProfileInfoView: View {
+    
+    var userInfo: UserModel?
+    
     var body: some View {
         VStack(alignment:.leading, spacing: 0){
-            Text("The Advanture of Sinbad")
+            Text(userInfo?.fullname ?? "")
                 .font(.title2)
                 .bold()
             HStack(spacing:4){
-                Text("400")
+                Text("\(userInfo?.followers?.count ?? 0)")
                     .font(.title3)
                     .bold()
                 

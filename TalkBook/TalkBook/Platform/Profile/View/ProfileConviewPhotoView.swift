@@ -9,6 +9,9 @@ import SwiftUI
 import SwiftUIKit
 
 struct ProfileConviewPhotoView: View {
+    
+    var userInfo: UserModel?
+    
     var body: some View {
         VStack{
             Image("cover")

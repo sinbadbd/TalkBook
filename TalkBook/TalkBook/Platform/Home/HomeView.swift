@@ -45,6 +45,11 @@ struct HomeView: View {
                     .background {
                         Color.red
                     }
+                    Divider()
+                        .frame(height: 4)
+                        .background {
+                            Color.gray3
+                        }
                     Text("\(Provider.userId)")
                     LazyVStack{
                         ForEach(homeVM.allPosts, id: \.id) { posts in

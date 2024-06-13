@@ -11,10 +11,13 @@ import SwiftUIKit
 struct ProfileView: View {
     
     let edges = UIWindow.keyWindow?.safeAreaInsets
+    var userInfo: UserModel?
+    @ObservedObject var userMVM: UserProfileVM = .init()
+    
     
     var body: some View {
         VStack{
-            HeaderView_one(backButton: "chevron.backward", title: "The Nav Title", rightImageOne: "pencil", rightImageTwo: "magnifyingglass") {
+            HeaderView_one(backButton: "chevron.backward", title: userInfo?.username, rightImageOne: "pencil", rightImageTwo: "magnifyingglass") {
                 
             } onRightOne: {
                 
@@ -25,13 +28,16 @@ struct ProfileView: View {
             
             ScrollView {
                 VStack{
-                    ProfileConviewPhotoView()
-                    ProfileInfoView()
+                    ProfileConviewPhotoView(userInfo: userInfo)
+                    ProfileInfoView(userInfo: userInfo)
                         .padding(.top, 40)
                         .padding(.horizontal, 16)
                 }
             }
         }
+        .onAppear(perform: {
+            userMVM.getUserData(id: userInfo?.id)
+        })
         .padding(.top, edges?.top)
         .ignoresSafeArea()
         .navigationBarBackButtonHidden()
